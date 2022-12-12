@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production/Futuro_Codigo_Final.production.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>131072</length>
+      <used>5450</used>
+      <free>125622</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>3359</length>
+      <used>715</used>
+      <free>2644</free>
+    </memory>
+  </executable>
+</project>
