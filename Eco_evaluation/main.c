@@ -77,6 +77,7 @@ void main(void) {
         
         if(get_char != 0)
         {
+            get_char = get_char + 1;
             putch(get_char);
             get_char = 0;
         }
@@ -145,12 +146,6 @@ void show_adc_result(void){
     return;
 }
 
-
-void envia_bit(void){
-    adc_result=42;
-    putchar(adc_result);
-    return;
-}
 
 void getch(void)   //this function gets the received char from XXXXXX
 {

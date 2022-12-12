@@ -1,7 +1,7 @@
 #include <xc.inc>
 
     
-GLOBAL _int_handler, _getch, _adc_result, _show_adc_result, _comutar, _envia_bit     ;declare global functions
+GLOBAL _int_handler, _getch, _adc_result, _show_adc_result, _comutar     ;declare global functions
     
 PSECT intcode
 
@@ -38,8 +38,6 @@ _timer0_int_handler:
     BTG PORTA,5  ;TOGGLE LED ON PORTA,5
     BANKSEL PIR0
     BCF PIR0,5 ;clear timer_int flag
-    
-    call _envia_bit;
     
     RETFIE  ;return from interruption
     
