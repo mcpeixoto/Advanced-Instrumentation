@@ -5,5 +5,6 @@ clear; clc;
 s = serialport("/dev/ttyACM0", 9600);
 
 
-enviado = read(s,1,"uint8")
+enviado = 1
+write(s, enviado, "char");
 recebido = read(s,5,"uint8")
