@@ -1,0 +1,397 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F47Q10 ]
+[d frameptr 4065 ]
+"1007 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1520
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 /opt/microchip/xc8/v2.40/pic/sources/c99/common/float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 /opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+[v _printf printf `(i  1 e 2 0 ]
+"10 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 /opt/microchip/xc8/v2.40/pic/sources/c99/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 /opt/microchip/xc8/v2.40/pic/sources/c99/common/Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"72 /home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+[v _main main `(v  1 e 1 0 ]
+"124
+[v _putch putch `(v  1 e 1 0 ]
+[v i1_putch putch `(v  1 e 1 0 ]
+"139
+[v _add_to_receiv_buff add_to_receiv_buff `(v  1 e 1 0 ]
+"147
+[v _identify_NCAP_cmd identify_NCAP_cmd `(v  1 e 1 0 ]
+"243
+[v _define_METATEDS define_METATEDS `(v  1 e 1 0 ]
+"254
+[v _define_TCTEDS define_TCTEDS `(v  1 e 1 0 ]
+"344
+[v _send_METATEDS send_METATEDS `(v  1 e 1 0 ]
+"362
+[v _send_TCTEDS send_TCTEDS `(v  1 e 1 0 ]
+"493
+[v _send_data send_data `(v  1 e 1 0 ]
+"558
+[v _send_error send_error `(v  1 e 1 0 ]
+[s S188 . 1 `uc 1 ADIF 1 0 :1:0 
+`uc 1 ADTIF 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+`uc 1 CSWIF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"15691 /home/mcpeixoto/.mchp_packs/Microchip/PIC18F-Q_DFP/1.14.237/xc8/pic/include/proc/pic18f47q10.h
+[u S194 . 1 `S188 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES194  1 e 1 @3782 ]
+[s S70 . 1 `uc 1 SSPIF 1 0 :1:0 
+`uc 1 BCLIF 1 0 :1:1 
+`uc 1 SSP2IF 1 0 :1:2 
+`uc 1 BCL2IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 TX2IF 1 0 :1:6 
+`uc 1 RC2IF 1 0 :1:7 
+]
+"15779
+[s S79 . 1 `uc 1 SSP1IF 1 0 :1:0 
+`uc 1 BCL1IF 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S85 . 1 `S70 1 . 1 0 `S79 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES85  1 e 1 @3784 ]
+"24856
+[v _ADPCH ADPCH `VEuc  1 e 1 @3930 ]
+[s S136 . 1 `uc 1 ADGO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ADCONT 1 0 :1:6 
+`uc 1 ADON 1 0 :1:7 
+]
+"24949
+[s S145 . 1 `uc 1 GO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM0 1 0 :1:2 
+]
+[s S149 . 1 `uc 1 DONE 1 0 :1:0 
+]
+[s S151 . 1 `uc 1 GO_NOT_DONE 1 0 :1:0 
+]
+[s S153 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+]
+[s S155 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 ADCAL 1 0 :1:7 
+]
+[u S158 . 1 `S136 1 . 1 0 `S145 1 . 1 0 `S149 1 . 1 0 `S151 1 . 1 0 `S153 1 . 1 0 `S155 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES158  1 e 1 @3931 ]
+"25163
+[v _ADRESL ADRESL `VEuc  1 e 1 @3934 ]
+"29633
+[v _RC1REG RC1REG `VEuc  1 e 1 @3992 ]
+"29687
+[v _TX1REG TX1REG `VEuc  1 e 1 @3993 ]
+"99 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"100
+[v _flags flags `uc  1 s 1 flags ]
+"50 /home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+[v _var_global var_global `uc  1 e 1 0 ]
+"51
+[v _get_char get_char `uc  1 e 1 0 ]
+"52
+[v _comutar comutar `uc  1 e 1 0 ]
+[s S24 METATEDS_TEMPLATE 22 `[6]uc 1 TEDSID 6 0 `[12]uc 1 UUID 12 6 `[4]uc 1 MAXCHAN 4 18 ]
+"56
+[v _METATED METATED `S24  1 e 22 0 ]
+[s S28 TRANSDUCERCHANNEL_TEDS_TEMPLATE 36 `[6]uc 1 TEDSID 6 0 `[3]uc 1 CHANNEL_TYPE 3 6 `[12]uc 1 UNITS 12 9 `[3]uc 1 LOW_RANGE_LIMIT 3 21 `[3]uc 1 HIGH_RANGE_LIMIT 3 24 `[3]uc 1 DATA_MODEL 3 27 `[3]uc 1 DATA_MODEL_LENGTH 3 30 `[3]uc 1 MODEL_SIG_BITS 3 33 ]
+"57
+[v _TCTEDS1 TCTEDS1 `S28  1 e 36 0 ]
+"58
+[v _TCTEDS2 TCTEDS2 `S28  1 e 36 0 ]
+"59
+[v _TCTEDS3 TCTEDS3 `S28  1 e 36 0 ]
+"60
+[v _TCTEDS4 TCTEDS4 `S28  1 e 36 0 ]
+"63
+[v _rec_buffer rec_buffer `[100]uc  1 e 100 0 ]
+"64
+[v _rec_head rec_head `i  1 e 2 0 ]
+"72
+[v _main main `(v  1 e 1 0 ]
+{
+"83
+[v main@j j `i  1 a 2 61 ]
+"79
+[v main@result result `VEuc  1 a 1 63 ]
+"122
+} 0
+"5 /opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.39v  1 a 2 26 ]
+"5
+[v printf@fmt fmt `*.32Cuc  1 p 2 24 ]
+"13
+} 0
+"1520 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1523
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 22 ]
+[s S829 _IO_FILE 0 ]
+"1520
+[v vfprintf@fp fp `*.2S829  1 p 2 16 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 18 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 20 ]
+"1543
+} 0
+"1007
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[s S829 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.2S829  1 p 2 10 ]
+[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 12 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 14 ]
+"1517
+} 0
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 1 ]
+[u S807 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S810 _IO_FILE 11 `S807 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.2S810  1 p 2 3 ]
+"24
+} 0
+"124 /home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 0 ]
+"136
+} 0
+"254
+[v _define_TCTEDS define_TCTEDS `(v  1 e 1 0 ]
+{
+"332
+[v define_TCTEDS@array9 array9 `[12]uc  1 a 12 23 ]
+"281
+[v define_TCTEDS@array3 array3 `[12]uc  1 a 12 11 ]
+"262
+[v define_TCTEDS@array1 array1 `[6]uc  1 a 6 35 ]
+"302
+[v define_TCTEDS@array8 array8 `[3]uc  1 a 3 56 ]
+"297
+[v define_TCTEDS@array7 array7 `[3]uc  1 a 3 53 ]
+"292
+[v define_TCTEDS@array6 array6 `[3]uc  1 a 3 50 ]
+"287
+[v define_TCTEDS@array5 array5 `[3]uc  1 a 3 47 ]
+"285
+[v define_TCTEDS@array4 array4 `[3]uc  1 a 3 44 ]
+"270
+[v define_TCTEDS@array2 array2 `[3]uc  1 a 3 41 ]
+"254
+[v define_TCTEDS@F13232 F13232 `[6]uc  1 s 6 F13232 ]
+"263
+[v define_TCTEDS@F13234 F13234 `[3]uc  1 s 3 F13234 ]
+"271
+[v define_TCTEDS@F13236 F13236 `[12]uc  1 s 12 F13236 ]
+"282
+[v define_TCTEDS@F13238 F13238 `[3]uc  1 s 3 F13238 ]
+"286
+[v define_TCTEDS@F13240 F13240 `[3]uc  1 s 3 F13240 ]
+"288
+[v define_TCTEDS@F13242 F13242 `[3]uc  1 s 3 F13242 ]
+"293
+[v define_TCTEDS@F13244 F13244 `[3]uc  1 s 3 F13244 ]
+"298
+[v define_TCTEDS@F13246 F13246 `[3]uc  1 s 3 F13246 ]
+"330
+[v define_TCTEDS@F13248 F13248 `[12]uc  1 s 12 F13248 ]
+"341
+} 0
+"243
+[v _define_METATEDS define_METATEDS `(v  1 e 1 0 ]
+{
+"246
+[v define_METATEDS@array2 array2 `[12]uc  1 a 12 11 ]
+"244
+[v define_METATEDS@array1 array1 `[6]uc  1 a 6 23 ]
+"248
+[v define_METATEDS@array3 array3 `[4]uc  1 a 4 29 ]
+"243
+[v define_METATEDS@F13225 F13225 `[6]uc  1 s 6 F13225 ]
+"245
+[v define_METATEDS@F13227 F13227 `[12]uc  1 s 12 F13227 ]
+"247
+[v define_METATEDS@F13229 F13229 `[4]uc  1 s 4 F13229 ]
+"252
+} 0
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+{
+"8
+[v memcpy@s s `*.39Cuc  1 a 2 8 ]
+"7
+[v memcpy@d d `*.39uc  1 a 2 6 ]
+"9
+[v memcpy@tmp tmp `uc  1 a 1 10 ]
+"4
+[v memcpy@d1 d1 `*.39v  1 p 2 0 ]
+[v memcpy@s1 s1 `*.39Cv  1 p 2 2 ]
+[v memcpy@n n `ui  1 p 2 4 ]
+"18
+} 0
+"139 /home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+[v _add_to_receiv_buff add_to_receiv_buff `(v  1 e 1 0 ]
+{
+"145
+} 0
+"147
+[v _identify_NCAP_cmd identify_NCAP_cmd `(v  1 e 1 0 ]
+{
+"239
+} 0
+"493
+[v _send_data send_data `(v  1 e 1 0 ]
+{
+[v send_data@channel channel `uc  1 a 1 wreg ]
+[v send_data@channel channel `uc  1 a 1 wreg ]
+"508
+[v send_data@channel channel `uc  1 a 1 3 ]
+"553
+} 0
+"362
+[v _send_TCTEDS send_TCTEDS `(v  1 e 1 0 ]
+{
+[v send_TCTEDS@channel channel `uc  1 a 1 wreg ]
+"479
+[v send_TCTEDS@i_341 i `i  1 a 2 65 ]
+"476
+[v send_TCTEDS@i_340 i `i  1 a 2 63 ]
+"473
+[v send_TCTEDS@i_339 i `i  1 a 2 61 ]
+"470
+[v send_TCTEDS@i_338 i `i  1 a 2 59 ]
+"467
+[v send_TCTEDS@i_337 i `i  1 a 2 57 ]
+"464
+[v send_TCTEDS@i_336 i `i  1 a 2 55 ]
+"461
+[v send_TCTEDS@i_335 i `i  1 a 2 53 ]
+"458
+[v send_TCTEDS@i_334 i `i  1 a 2 51 ]
+"450
+[v send_TCTEDS@i_333 i `i  1 a 2 49 ]
+"447
+[v send_TCTEDS@i_332 i `i  1 a 2 47 ]
+"444
+[v send_TCTEDS@i_331 i `i  1 a 2 45 ]
+"441
+[v send_TCTEDS@i_330 i `i  1 a 2 43 ]
+"438
+[v send_TCTEDS@i_329 i `i  1 a 2 41 ]
+"435
+[v send_TCTEDS@i_328 i `i  1 a 2 39 ]
+"432
+[v send_TCTEDS@i_327 i `i  1 a 2 37 ]
+"429
+[v send_TCTEDS@i_326 i `i  1 a 2 35 ]
+"421
+[v send_TCTEDS@i_325 i `i  1 a 2 33 ]
+"418
+[v send_TCTEDS@i_324 i `i  1 a 2 31 ]
+"415
+[v send_TCTEDS@i_323 i `i  1 a 2 29 ]
+"412
+[v send_TCTEDS@i_322 i `i  1 a 2 27 ]
+"409
+[v send_TCTEDS@i_321 i `i  1 a 2 25 ]
+"406
+[v send_TCTEDS@i_320 i `i  1 a 2 23 ]
+"403
+[v send_TCTEDS@i_319 i `i  1 a 2 21 ]
+"400
+[v send_TCTEDS@i_318 i `i  1 a 2 19 ]
+"392
+[v send_TCTEDS@i_317 i `i  1 a 2 17 ]
+"389
+[v send_TCTEDS@i_316 i `i  1 a 2 15 ]
+"386
+[v send_TCTEDS@i_315 i `i  1 a 2 13 ]
+"383
+[v send_TCTEDS@i_314 i `i  1 a 2 11 ]
+"380
+[v send_TCTEDS@i_313 i `i  1 a 2 9 ]
+"377
+[v send_TCTEDS@i_312 i `i  1 a 2 7 ]
+"374
+[v send_TCTEDS@i_311 i `i  1 a 2 5 ]
+"371
+[v send_TCTEDS@i i `i  1 a 2 3 ]
+"362
+[v send_TCTEDS@channel channel `uc  1 a 1 wreg ]
+"366
+[v send_TCTEDS@channel channel `uc  1 a 1 67 ]
+"488
+} 0
+"558
+[v _send_error send_error `(v  1 e 1 0 ]
+{
+"559
+[v send_error@i i `i  1 a 2 1 ]
+"563
+} 0
+"344
+[v _send_METATEDS send_METATEDS `(v  1 e 1 0 ]
+{
+"355
+[v send_METATEDS@k k `i  1 a 2 5 ]
+"352
+[v send_METATEDS@j j `i  1 a 2 3 ]
+"349
+[v send_METATEDS@i i `i  1 a 2 1 ]
+"359
+} 0
+"124
+[v i1_putch putch `(v  1 e 1 0 ]
+{
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 0 ]
+"136
+} 0

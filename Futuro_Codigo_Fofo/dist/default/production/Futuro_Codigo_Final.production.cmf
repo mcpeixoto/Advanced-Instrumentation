@@ -1,0 +1,1096 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta> <reloc>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production/Futuro_Codigo_Final.production.o
+cinit CODE 0 2112 2112 A2 1 2
+idloc IDLOC 5 200000 200000 100 1 1
+text0 CODE 0 1FB8 1FB8 B2 1 2
+text1 CODE 0 2460 2460 28 1 2
+text2 CODE 0 235E 235E 52 1 2
+text3 CODE 0 22DC 22DC 82 1 2
+text4 CODE 0 21B4 21B4 98 1 2
+text5 CODE 0 2488 2488 28 1 2
+text6 CODE 0 18EC 18EC 440 1 2
+text7 CODE 0 224C 224C 90 1 2
+text8 CODE 0 23B0 23B0 52 1 2
+text9 CODE 0 24D6 24D6 1A 1 2
+text10 CODE 0 1D2C 1D2C 114 1 2
+text11 CODE 0 206A 206A A8 1 2
+text12 CODE 0 1046 1046 8A6 1 2
+text13 CODE 0 2402 2402 30 1 2
+text14 CODE 0 1E40 1E40 C2 1 2
+text15 CODE 0 24B0 24B0 26 1 2
+idataCOMRAM CODE 0 2500 2500 C 1 1
+cstackCOMRAM COMRAM 1 1 1 44 1 1
+cstackBANK0 BANK0 1 60 60 40 1 1
+bssBANK0 BANK0 1 CE CE 2B 1 1
+bssBANK1 BANK1 1 100 100 E6 1 1
+bssBANK2 BANK2 1 200 200 E8 1 1
+smallconst SMALLCONST 0 1000 1000 46 1 2
+idataBANK0 CODE 0 2432 2432 2E 1 1
+idataBANK1 CODE 0 250C 250C C 1 1
+dataBANK0 BANK0 1 A0 A0 2E 1 1
+dataBANK1 BANK1 1 1E6 1E6 C 1 1
+dataCOMRAM COMRAM 1 45 45 C 1 1
+bssCOMRAM COMRAM 1 51 51 8 1 1
+config CONFIG 4 300000 300000 C 1 1
+$/tmp/xcXKPfHBE.o
+idloc IDLOC 5 200000 200000 100 1 1
+init CODE 0 32 32 4 1 2
+reset_vec CODE 0 0 0 4 1 2
+config CONFIG 4 300000 300000 C 1 1
+$build/default/production/interrupt_handler.o
+intcode CODE 0 8 8 2A 1 2
+$build/default/production/config.o
+text0 CODE 0 1F02 1F02 B6 1 2
+config CONFIG 4 300000 300000 C 1 1
+$build/default/production/pass_variable_between_C_and_ASM.o
+text3 CODE 0 24F0 24F0 10 1 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM F9-FF 1
+RAM 1F2-1FF 1
+RAM 2E8-CFF 1
+RAM E00-E1E 1
+SFR D00-DFF 1
+SFR E1F-FFF 1
+BANK0 F9-FF 1
+BANK1 1F2-1FF 1
+BANK2 2E8-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-7 1
+CONST 36-FFF 1
+CONST 2518-1FFFF 1
+SMALLCONST 2518-1FFFF 1
+CODE 4-7 1
+CODE 36-FFF 1
+CODE 2518-1FFFF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK14 E00-E1E 1
+BIGRAM 59-5F 1
+BIGRAM F9-FF 1
+BIGRAM 1F2-1FF 1
+BIGRAM 2E8-CFF 1
+BIGRAM E00-E1E 1
+BIGSFR D00-DFF 1
+BIGSFR E1F-FFF 1
+COMRAM 59-5F 1
+EEDATA 310000-3103FF 1
+MEDIUMCONST 2518-FFFF 1
+MEDIUMCONST 11000-1FFFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production/Futuro_Codigo_Final.production.o
+24B0 text15 CODE >124:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24B2 text15 CODE >126:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24B2 text15 CODE >128:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24C2 text15 CODE >130:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24C6 text15 CODE >133:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24C6 text15 CODE >135:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24D4 text15 CODE >136:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E40 text14 CODE >344:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E40 text14 CODE >346:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E46 text14 CODE >347:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E4C text14 CODE >348:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E52 text14 CODE >349:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E5A text14 CODE >350:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E6C text14 CODE >351:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E8C text14 CODE >352:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E94 text14 CODE >353:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1EA6 text14 CODE >354:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1EC6 text14 CODE >355:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1ECE text14 CODE >356:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1EE0 text14 CODE >357:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1F00 text14 CODE >359:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2402 text13 CODE >558:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2402 text13 CODE >559:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+240A text13 CODE >560:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2410 text13 CODE >561:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2430 text13 CODE >563:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1046 text12 CODE >362:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1048 text12 CODE >366:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1058 text12 CODE >367:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+105E text12 CODE >368:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1064 text12 CODE >369:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+106A text12 CODE >371:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1072 text12 CODE >372:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1084 text12 CODE >373:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10A4 text12 CODE >374:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10AC text12 CODE >375:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10BE text12 CODE >376:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10DE text12 CODE >377:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10E6 text12 CODE >378:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+10F8 text12 CODE >379:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1118 text12 CODE >380:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1120 text12 CODE >381:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1132 text12 CODE >382:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1152 text12 CODE >383:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+115A text12 CODE >384:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+116C text12 CODE >385:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+118C text12 CODE >386:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1194 text12 CODE >387:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+11A6 text12 CODE >388:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+11C6 text12 CODE >389:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+11EE text12 CODE >390:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1200 text12 CODE >391:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1208 text12 CODE >392:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1230 text12 CODE >393:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1242 text12 CODE >394:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+124A text12 CODE >395:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+125C text12 CODE >396:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1262 text12 CODE >397:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1268 text12 CODE >398:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+126E text12 CODE >400:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1296 text12 CODE >401:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+12A8 text12 CODE >402:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+12B0 text12 CODE >403:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+12D8 text12 CODE >404:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+12EA text12 CODE >405:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+12F2 text12 CODE >406:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+131A text12 CODE >407:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+132C text12 CODE >408:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1334 text12 CODE >409:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+135C text12 CODE >410:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+136E text12 CODE >411:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1376 text12 CODE >412:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+139E text12 CODE >413:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+13B0 text12 CODE >414:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+13B8 text12 CODE >415:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+13E0 text12 CODE >416:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+13F2 text12 CODE >417:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+13FA text12 CODE >418:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1422 text12 CODE >419:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1434 text12 CODE >420:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+143C text12 CODE >421:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1464 text12 CODE >422:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1476 text12 CODE >423:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+147E text12 CODE >424:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1490 text12 CODE >425:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1496 text12 CODE >426:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+149C text12 CODE >427:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+14A2 text12 CODE >429:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+14CA text12 CODE >430:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+14DC text12 CODE >431:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+14E4 text12 CODE >432:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+150C text12 CODE >433:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+151E text12 CODE >434:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1526 text12 CODE >435:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+154E text12 CODE >436:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1560 text12 CODE >437:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1568 text12 CODE >438:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1590 text12 CODE >439:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+15A2 text12 CODE >440:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+15AA text12 CODE >441:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+15D2 text12 CODE >442:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+15E4 text12 CODE >443:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+15EC text12 CODE >444:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1614 text12 CODE >445:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1626 text12 CODE >446:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+162E text12 CODE >447:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1656 text12 CODE >448:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1668 text12 CODE >449:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1670 text12 CODE >450:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1698 text12 CODE >451:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16AA text12 CODE >452:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16B2 text12 CODE >453:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16C4 text12 CODE >454:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16CA text12 CODE >455:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16D0 text12 CODE >456:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16D6 text12 CODE >458:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+16FE text12 CODE >459:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1710 text12 CODE >460:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1718 text12 CODE >461:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1740 text12 CODE >462:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1752 text12 CODE >463:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+175A text12 CODE >464:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1782 text12 CODE >465:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1794 text12 CODE >466:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+179C text12 CODE >467:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+17C4 text12 CODE >468:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+17D6 text12 CODE >469:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+17DE text12 CODE >470:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1806 text12 CODE >471:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1818 text12 CODE >472:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1820 text12 CODE >473:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1848 text12 CODE >474:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+185A text12 CODE >475:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1862 text12 CODE >476:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+188A text12 CODE >477:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+189C text12 CODE >478:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18A4 text12 CODE >479:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18CC text12 CODE >480:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18DE text12 CODE >481:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18E6 text12 CODE >484:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18EA text12 CODE >488:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+206A text11 CODE >493:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+206C text11 CODE >508:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+207C text11 CODE >509:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2082 text11 CODE >512:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2098 text11 CODE >513:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+209E text11 CODE >516:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20B4 text11 CODE >517:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20BA text11 CODE >520:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20D0 text11 CODE >521:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20D6 text11 CODE >523:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20DA text11 CODE >525:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20E2 text11 CODE >527:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20E2 text11 CODE >530:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20E4 text11 CODE >532:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20E4 text11 CODE >534:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20F4 text11 CODE >536:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20F6 text11 CODE >541:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+20FC text11 CODE >544:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2102 text11 CODE >546:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2108 text11 CODE >548:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2110 text11 CODE >553:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D2C text10 CODE >147:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D2C text10 CODE >150:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D4C text10 CODE >197:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D5E text10 CODE >199:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D70 text10 CODE >201:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D82 text10 CODE >203:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DA2 text10 CODE >205:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DAA text10 CODE >209:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DCC text10 CODE >211:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DD6 text10 CODE >215:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DDA text10 CODE >220:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DEC text10 CODE >223:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1DFC text10 CODE >225:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E1C text10 CODE >227:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E2C text10 CODE >228:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E32 text10 CODE >232:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E32 text10 CODE >235:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E36 text10 CODE >238:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1E3E text10 CODE >239:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24D6 text9 CODE >139:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24D6 text9 CODE >140:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24E6 text9 CODE >141:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24EA text9 CODE >143:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24EE text9 CODE >145:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+23B0 text8 CODE >4:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23B0 text8 CODE >11:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23B8 text8 CODE >12:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23C0 text8 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23C4 text8 CODE >14:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23D4 text8 CODE >15:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+23E4 text8 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+2400 text8 CODE >18:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+224C text7 CODE >243:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+224C text7 CODE >244:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+225E text7 CODE >245:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+227C text7 CODE >246:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+228E text7 CODE >247:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+22AC text7 CODE >248:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+22BC text7 CODE >249:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+22DA text7 CODE >252:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18EC text6 CODE >254:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18EC text6 CODE >262:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+18FE text6 CODE >263:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+191C text6 CODE >270:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1928 text6 CODE >271:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1946 text6 CODE >281:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1958 text6 CODE >282:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1976 text6 CODE >285:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1982 text6 CODE >286:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+19A0 text6 CODE >287:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+19AC text6 CODE >288:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+19CA text6 CODE >292:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+19D6 text6 CODE >293:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+19F4 text6 CODE >297:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A00 text6 CODE >298:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A1E text6 CODE >302:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A2A text6 CODE >303:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A48 text6 CODE >307:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A66 text6 CODE >308:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1A84 text6 CODE >309:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1AA2 text6 CODE >310:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1AC0 text6 CODE >311:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1ADE text6 CODE >312:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1AFC text6 CODE >313:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1B1A text6 CODE >314:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1B38 text6 CODE >317:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1B56 text6 CODE >318:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1B74 text6 CODE >319:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1B92 text6 CODE >320:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1BB0 text6 CODE >321:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1BCE text6 CODE >322:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1BEC text6 CODE >323:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C0A text6 CODE >324:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C28 text6 CODE >329:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C46 text6 CODE >330:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C64 text6 CODE >332:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C76 text6 CODE >333:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1C94 text6 CODE >334:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1CB2 text6 CODE >335:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1CD0 text6 CODE >336:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1CEE text6 CODE >337:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D0C text6 CODE >338:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1D2A text6 CODE >341:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2488 text5 CODE >124:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+248C text5 CODE >126:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+248C text5 CODE >128:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+249C text5 CODE >130:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24A0 text5 CODE >133:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24A0 text5 CODE >135:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+24AE text5 CODE >136:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+21B4 text4 CODE >8:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+21B4 text4 CODE >12:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+21DA text4 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+21E0 text4 CODE >14:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+21E4 text4 CODE >15:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+2238 text4 CODE >20:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+224A text4 CODE >24:/opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+22DC text3 CODE >1007:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+22DC text3 CODE >1019:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2300 text3 CODE >1020:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+230E text3 CODE >1022:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+231C text3 CODE >1023:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2320 text3 CODE >1509:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2332 text3 CODE >1514:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+235C text3 CODE >1517:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+235E text2 CODE >1520:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+235E text2 CODE >1525:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2366 text2 CODE >1529:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+236A text2 CODE >1533:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2388 text2 CODE >1529:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+23A4 text2 CODE >1538:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+23AE text2 CODE >1543:/opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+2460 text1 CODE >5:/opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+2460 text1 CODE >9:/opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+246A text1 CODE >10:/opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+2486 text1 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+1FB8 text0 CODE >72:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FB8 text0 CODE >74:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FBC text0 CODE >75:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FC0 text0 CODE >76:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FC4 text0 CODE >79:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FCE text0 CODE >83:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FD6 text0 CODE >86:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FDC text0 CODE >88:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+1FF4 text0 CODE >100:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2002 text0 CODE >109:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2012 text0 CODE >111:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+201E text0 CODE >112:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2026 text0 CODE >113:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2034 text0 CODE >114:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2042 text0 CODE >115:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2048 text0 CODE >116:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+204E text0 CODE >117:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+205C text0 CODE >118:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/main.c
+2112 cinit CODE >1515:/tmp/xcXcHBFLF.s
+2112 cinit CODE >1517:/tmp/xcXcHBFLF.s
+2112 cinit CODE >1520:/tmp/xcXcHBFLF.s
+2112 cinit CODE >1522:/tmp/xcXcHBFLF.s
+2112 cinit CODE >1523:/tmp/xcXcHBFLF.s
+2114 cinit CODE >1524:/tmp/xcXcHBFLF.s
+2116 cinit CODE >1525:/tmp/xcXcHBFLF.s
+2116 cinit CODE >1669:/tmp/xcXcHBFLF.s
+2118 cinit CODE >1670:/tmp/xcXcHBFLF.s
+211A cinit CODE >1671:/tmp/xcXcHBFLF.s
+211C cinit CODE >1672:/tmp/xcXcHBFLF.s
+211E cinit CODE >1673:/tmp/xcXcHBFLF.s
+2120 cinit CODE >1674:/tmp/xcXcHBFLF.s
+2122 cinit CODE >1675:/tmp/xcXcHBFLF.s
+2126 cinit CODE >1676:/tmp/xcXcHBFLF.s
+212A cinit CODE >1677:/tmp/xcXcHBFLF.s
+212A cinit CODE >1678:/tmp/xcXcHBFLF.s
+212C cinit CODE >1679:/tmp/xcXcHBFLF.s
+2130 cinit CODE >1680:/tmp/xcXcHBFLF.s
+2132 cinit CODE >1681:/tmp/xcXcHBFLF.s
+2134 cinit CODE >1682:/tmp/xcXcHBFLF.s
+2136 cinit CODE >1686:/tmp/xcXcHBFLF.s
+2138 cinit CODE >1687:/tmp/xcXcHBFLF.s
+213A cinit CODE >1688:/tmp/xcXcHBFLF.s
+213C cinit CODE >1689:/tmp/xcXcHBFLF.s
+213E cinit CODE >1690:/tmp/xcXcHBFLF.s
+2140 cinit CODE >1691:/tmp/xcXcHBFLF.s
+2142 cinit CODE >1692:/tmp/xcXcHBFLF.s
+2146 cinit CODE >1693:/tmp/xcXcHBFLF.s
+214A cinit CODE >1694:/tmp/xcXcHBFLF.s
+214A cinit CODE >1695:/tmp/xcXcHBFLF.s
+214C cinit CODE >1696:/tmp/xcXcHBFLF.s
+2150 cinit CODE >1697:/tmp/xcXcHBFLF.s
+2152 cinit CODE >1698:/tmp/xcXcHBFLF.s
+2154 cinit CODE >1699:/tmp/xcXcHBFLF.s
+2156 cinit CODE >1703:/tmp/xcXcHBFLF.s
+2158 cinit CODE >1704:/tmp/xcXcHBFLF.s
+215A cinit CODE >1705:/tmp/xcXcHBFLF.s
+215C cinit CODE >1706:/tmp/xcXcHBFLF.s
+215E cinit CODE >1707:/tmp/xcXcHBFLF.s
+2160 cinit CODE >1708:/tmp/xcXcHBFLF.s
+2162 cinit CODE >1709:/tmp/xcXcHBFLF.s
+2166 cinit CODE >1710:/tmp/xcXcHBFLF.s
+216A cinit CODE >1711:/tmp/xcXcHBFLF.s
+216A cinit CODE >1712:/tmp/xcXcHBFLF.s
+216C cinit CODE >1713:/tmp/xcXcHBFLF.s
+2170 cinit CODE >1714:/tmp/xcXcHBFLF.s
+2172 cinit CODE >1715:/tmp/xcXcHBFLF.s
+2174 cinit CODE >1716:/tmp/xcXcHBFLF.s
+2176 cinit CODE >1720:/tmp/xcXcHBFLF.s
+217A cinit CODE >1721:/tmp/xcXcHBFLF.s
+217C cinit CODE >1722:/tmp/xcXcHBFLF.s
+217C cinit CODE >1723:/tmp/xcXcHBFLF.s
+217E cinit CODE >1724:/tmp/xcXcHBFLF.s
+2180 cinit CODE >1725:/tmp/xcXcHBFLF.s
+2182 cinit CODE >1728:/tmp/xcXcHBFLF.s
+2186 cinit CODE >1729:/tmp/xcXcHBFLF.s
+2188 cinit CODE >1730:/tmp/xcXcHBFLF.s
+2188 cinit CODE >1731:/tmp/xcXcHBFLF.s
+218A cinit CODE >1732:/tmp/xcXcHBFLF.s
+218C cinit CODE >1733:/tmp/xcXcHBFLF.s
+218E cinit CODE >1736:/tmp/xcXcHBFLF.s
+2192 cinit CODE >1737:/tmp/xcXcHBFLF.s
+2194 cinit CODE >1738:/tmp/xcXcHBFLF.s
+2194 cinit CODE >1739:/tmp/xcXcHBFLF.s
+2196 cinit CODE >1740:/tmp/xcXcHBFLF.s
+2198 cinit CODE >1741:/tmp/xcXcHBFLF.s
+219A cinit CODE >1744:/tmp/xcXcHBFLF.s
+219E cinit CODE >1745:/tmp/xcXcHBFLF.s
+21A0 cinit CODE >1746:/tmp/xcXcHBFLF.s
+21A0 cinit CODE >1747:/tmp/xcXcHBFLF.s
+21A2 cinit CODE >1748:/tmp/xcXcHBFLF.s
+21A4 cinit CODE >1749:/tmp/xcXcHBFLF.s
+21A6 cinit CODE >1755:/tmp/xcXcHBFLF.s
+21A6 cinit CODE >1758:/tmp/xcXcHBFLF.s
+21A8 cinit CODE >1759:/tmp/xcXcHBFLF.s
+21AA cinit CODE >1760:/tmp/xcXcHBFLF.s
+21AC cinit CODE >1761:/tmp/xcXcHBFLF.s
+21AE cinit CODE >1762:/tmp/xcXcHBFLF.s
+21B0 cinit CODE >1763:/tmp/xcXcHBFLF.s
+$build/default/production/interrupt_handler.o
+8 intcode CODE >12:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+A intcode CODE >13:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+C intcode CODE >14:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+E intcode CODE >16:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+10 intcode CODE >17:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+12 intcode CODE >18:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+14 intcode CODE >20:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+16 intcode CODE >21:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+18 intcode CODE >22:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+1C intcode CODE >24:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+1E intcode CODE >29:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+20 intcode CODE >30:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+22 intcode CODE >31:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+24 intcode CODE >34:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+26 intcode CODE >35:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+28 intcode CODE >37:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+2A intcode CODE >38:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+2C intcode CODE >39:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+2E intcode CODE >40:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+30 intcode CODE >41:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/interrupt_handler.asm
+$build/default/production/config.o
+1F02 text0 CODE >18:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F04 text0 CODE >19:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F06 text0 CODE >21:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F08 text0 CODE >22:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F0A text0 CODE >23:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F0C text0 CODE >25:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F0E text0 CODE >26:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F10 text0 CODE >27:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F12 text0 CODE >35:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F14 text0 CODE >36:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F16 text0 CODE >38:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F18 text0 CODE >39:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F1A text0 CODE >40:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F1C text0 CODE >42:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F1E text0 CODE >43:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F20 text0 CODE >44:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F22 text0 CODE >49:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F24 text0 CODE >50:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F26 text0 CODE >52:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F28 text0 CODE >53:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F2A text0 CODE >54:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F2C text0 CODE >56:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F2E text0 CODE >57:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F30 text0 CODE >60:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F32 text0 CODE >61:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F34 text0 CODE >62:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F36 text0 CODE >64:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F38 text0 CODE >65:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F3A text0 CODE >67:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F3C text0 CODE >75:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F3E text0 CODE >76:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F40 text0 CODE >77:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F42 text0 CODE >79:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F44 text0 CODE >80:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F46 text0 CODE >81:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F48 text0 CODE >83:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F4A text0 CODE >84:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F4C text0 CODE >85:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F4E text0 CODE >96:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F50 text0 CODE >97:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F52 text0 CODE >98:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F54 text0 CODE >99:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F56 text0 CODE >100:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F58 text0 CODE >102:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F5A text0 CODE >103:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F5C text0 CODE >104:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F5E text0 CODE >107:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F60 text0 CODE >108:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F62 text0 CODE >109:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F64 text0 CODE >124:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F66 text0 CODE >125:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F68 text0 CODE >126:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F6A text0 CODE >128:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F6C text0 CODE >129:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F6E text0 CODE >130:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F70 text0 CODE >134:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F72 text0 CODE >135:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F74 text0 CODE >136:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F76 text0 CODE >139:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F78 text0 CODE >140:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F7A text0 CODE >141:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F7C text0 CODE >148:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F7E text0 CODE >149:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F80 text0 CODE >152:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F82 text0 CODE >153:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F84 text0 CODE >154:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F86 text0 CODE >160:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F88 text0 CODE >161:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F8A text0 CODE >166:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F8C text0 CODE >167:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F8E text0 CODE >168:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F90 text0 CODE >169:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F92 text0 CODE >170:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F94 text0 CODE >171:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F96 text0 CODE >173:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F98 text0 CODE >174:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F9A text0 CODE >175:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F9C text0 CODE >176:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1F9E text0 CODE >177:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FA0 text0 CODE >178:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FA2 text0 CODE >180:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FA4 text0 CODE >181:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FA6 text0 CODE >182:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FA8 text0 CODE >183:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FAA text0 CODE >188:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FAC text0 CODE >189:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FAE text0 CODE >190:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FB0 text0 CODE >197:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FB2 text0 CODE >198:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FB4 text0 CODE >199:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+1FB6 text0 CODE >202:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/config.asm
+$build/default/production/pass_variable_between_C_and_ASM.o
+24F0 text3 CODE >19:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24F2 text3 CODE >22:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24F4 text3 CODE >25:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24F6 text3 CODE >26:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24F8 text3 CODE >27:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24FA text3 CODE >30:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24FC text3 CODE >31:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+24FE text3 CODE >33:/home/mcpeixoto/Desktop/3D Airplane Animation/Futuro_Codigo_Final/pass_variable_between_C_and_ASM.asm
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+putch@byte 60 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__LdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__LdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/Futuro_Codigo_Final.production.o
+__Hspace_0 2518 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hspace_1 2E8 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hspace_2 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hspace_3 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hspace_4 60000C 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__HidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__HidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+i1_putch 24B0 0 CODE 0 text15 dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_311 6 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_312 8 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_313 A 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_314 C 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_315 E 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_316 10 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_317 12 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_318 14 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_319 16 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_320 18 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_321 1A 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_322 1C 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_323 1E 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_324 20 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_325 22 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_326 24 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_327 26 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_328 28 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_329 2A 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_330 2C 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_331 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_332 30 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_333 32 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_334 34 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_335 36 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_336 38 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_337 3A 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_338 3C 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_339 3E 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_340 40 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i_341 42 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_rec_buffer 100 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_add_to_receiv_buff 24F0 0 CODE 0 text9 dist/default/production/Futuro_Codigo_Final.production.o
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production/Futuro_Codigo_Final.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXKPfHBE.o
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_define_TCTEDS 1D2C 0 CODE 0 text6 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank0 0 0 ABS 0 udata_bank0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank1 0 0 ABS 0 udata_bank1 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank2 0 0 ABS 0 udata_bank2 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank3 0 0 ABS 0 udata_bank3 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank4 0 0 ABS 0 udata_bank4 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank5 0 0 ABS 0 udata_bank5 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank6 0 0 ABS 0 udata_bank6 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank7 0 0 ABS 0 udata_bank7 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank8 0 0 ABS 0 udata_bank8 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank9 0 0 ABS 0 udata_bank9 dist/default/production/Futuro_Codigo_Final.production.o
+_TCTEDS1 D5 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_TCTEDS2 1AC 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+_TCTEDS3 188 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+_TCTEDS4 164 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+main@j 9D 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+?_vfprintf 70 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13232 AC 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13234 CB 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13236 45 0 COMRAM 1 dataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13238 C8 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13240 C5 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13242 C2 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13244 BF 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13246 BC 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@F13248 1E6 0 BANK1 1 dataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__Lsmallconst 1000 0 SMALLCONST 0 smallconst dist/default/production/Futuro_Codigo_Final.production.o
+___sp 0 0 STACK 2 stack /tmp/xcXKPfHBE.o
+_main 1FB8 0 CODE 0 text0 dist/default/production/Futuro_Codigo_Final.production.o
+_prec D0 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+start 32 0 CODE 0 init /tmp/xcXKPfHBE.o
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__LidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__LidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_send_TCTEDS 18EC 0 CODE 0 text12 dist/default/production/Futuro_Codigo_Final.production.o
+__Hpowerup 32 0 CODE 0 powerup dist/default/production/Futuro_Codigo_Final.production.o
+_add_to_receiv_buff 24D6 0 CODE 0 text9 dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_vfpfcnvrt 235E 0 CODE 0 text3 dist/default/production/Futuro_Codigo_Final.production.o
+__HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__accesstop 60 0 ABS 0 - /tmp/xcXKPfHBE.o
+intlevel0 0 0 CODE 0 text /tmp/xcXKPfHBE.o
+intlevel1 0 0 CODE 0 text /tmp/xcXKPfHBE.o
+intlevel2 0 0 CODE 0 text /tmp/xcXKPfHBE.o
+intlevel3 0 0 CODE 0 text /tmp/xcXKPfHBE.o
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Futuro_Codigo_Final.production.o
+_var_global D4 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hifardata 0 0 CODE 0 ifardata dist/default/production/Futuro_Codigo_Final.production.o
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production/Futuro_Codigo_Final.production.o
+_vfpfcnvrt 22DC 0 CODE 0 text3 dist/default/production/Futuro_Codigo_Final.production.o
+__pidataCOMRAM 2500 0 CODE 0 idataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_ADRESL F5E 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXKPfHBE.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXKPfHBE.o
+__end_of_send_data 2112 0 CODE 0 text11 dist/default/production/Futuro_Codigo_Final.production.o
+__LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/Futuro_Codigo_Final.production.o
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/Futuro_Codigo_Final.production.o
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/Futuro_Codigo_Final.production.o
+?_printf 78 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hintcodelo 32 0 CODE 0 intcodelo dist/default/production/Futuro_Codigo_Final.production.o
+_send_data 206A 0 CODE 0 text11 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank10 0 0 ABS 0 udata_bank10 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank11 0 0 ABS 0 udata_bank11 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank12 0 0 ABS 0 udata_bank12 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_bank14 0 0 ABS 0 udata_bank14 dist/default/production/Futuro_Codigo_Final.production.o
+__LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_adc_buffer 200 0 BANK2 1 bssBANK2 dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@tmp 6A 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+send_error@i 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Lintcodelo 32 0 CODE 0 intcodelo dist/default/production/Futuro_Codigo_Final.production.o
+start_initialization 2112 0 CODE 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array1 83 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array2 89 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array3 6B 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array4 8C 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array5 8F 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array6 92 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array7 95 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array8 98 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_TCTEDS@array9 77 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Futuro_Codigo_Final.production.o
+___rparam_used 1 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+_RC1REG F98 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_memcpy 2402 0 CODE 0 text8 dist/default/production/Futuro_Codigo_Final.production.o
+__pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_TX1REG F99 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_printf 2488 0 CODE 0 text1 dist/default/production/Futuro_Codigo_Final.production.o
+isa$xinst 0 0 ABS 0 - /tmp/xcXKPfHBE.o
+fputc@fp 63 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank0 0 0 ABS 0 bank0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank1 0 0 ABS 0 bank1 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank2 0 0 ABS 0 bank2 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank3 0 0 ABS 0 bank3 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank4 0 0 ABS 0 bank4 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank5 0 0 ABS 0 bank5 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank6 0 0 ABS 0 bank6 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank7 0 0 ABS 0 bank7 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank8 0 0 ABS 0 bank8 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank9 0 0 ABS 0 bank9 dist/default/production/Futuro_Codigo_Final.production.o
+__Hcinit 0 0 ABS 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+__Hconst 0 0 CONST 0 const dist/default/production/Futuro_Codigo_Final.production.o
+__Hedata 0 0 ABS 0 edata dist/default/production/Futuro_Codigo_Final.production.o
+_sent_head 53 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Hidata 0 0 CODE 0 idata dist/default/production/Futuro_Codigo_Final.production.o
+__Hidloc 200100 0 IDLOC 5 idloc dist/default/production/Futuro_Codigo_Final.production.o
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production/Futuro_Codigo_Final.production.o
+__Hparam 0 0 COMRAM 1 rparam dist/default/production/Futuro_Codigo_Final.production.o
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production/Futuro_Codigo_Final.production.o
+__Hstack 0 0 STACK 2 stack dist/default/production/Futuro_Codigo_Final.production.o
+__Htext0 0 0 ABS 0 text0 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext1 0 0 ABS 0 text1 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext2 0 0 ABS 0 text2 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext3 0 0 ABS 0 text3 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext4 0 0 ABS 0 text4 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext5 0 0 ABS 0 text5 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext6 0 0 ABS 0 text6 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext7 0 0 ABS 0 text7 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext8 0 0 ABS 0 text8 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext9 0 0 ABS 0 text9 dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata 0 0 ABS 0 udata dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank10 0 0 ABS 0 bank10 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank11 0 0 ABS 0 bank11 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank12 0 0 ABS 0 bank12 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbank14 0 0 ABS 0 bank14 dist/default/production/Futuro_Codigo_Final.production.o
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Futuro_Codigo_Final.production.o
+__Hbigram 0 0 ABS 0 bigram dist/default/production/Futuro_Codigo_Final.production.o
+__Hbigsfr 0 0 ABS 0 bigsfr dist/default/production/Futuro_Codigo_Final.production.o
+__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xcXKPfHBE.o
+__Hcomram 0 0 ABS 0 comram dist/default/production/Futuro_Codigo_Final.production.o
+__Hconfig 30000C 0 CONFIG 4 config dist/default/production/Futuro_Codigo_Final.production.o
+send_data@channel 4 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_adc_result 57 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank0 0 0 ABS 0 bank0 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank1 0 0 ABS 0 bank1 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank2 0 0 ABS 0 bank2 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank3 0 0 ABS 0 bank3 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank4 0 0 ABS 0 bank4 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank5 0 0 ABS 0 bank5 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank6 0 0 ABS 0 bank6 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank7 0 0 ABS 0 bank7 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank8 0 0 ABS 0 bank8 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank9 0 0 ABS 0 bank9 dist/default/production/Futuro_Codigo_Final.production.o
+__Lcinit 0 0 ABS 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+__Lconst 0 0 CONST 0 const dist/default/production/Futuro_Codigo_Final.production.o
+__Ledata 0 0 ABS 0 edata dist/default/production/Futuro_Codigo_Final.production.o
+__Lidata 0 0 CODE 0 idata dist/default/production/Futuro_Codigo_Final.production.o
+__Lidloc 0 0 IDLOC 5 idloc dist/default/production/Futuro_Codigo_Final.production.o
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production/Futuro_Codigo_Final.production.o
+__Lparam 0 0 COMRAM 1 rparam dist/default/production/Futuro_Codigo_Final.production.o
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production/Futuro_Codigo_Final.production.o
+__Lstack 0 0 STACK 2 stack dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext0 0 0 ABS 0 text0 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext1 0 0 ABS 0 text1 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext2 0 0 ABS 0 text2 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext3 0 0 ABS 0 text3 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext4 0 0 ABS 0 text4 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext5 0 0 ABS 0 text5 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext6 0 0 ABS 0 text6 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext7 0 0 ABS 0 text7 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext8 0 0 ABS 0 text8 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext9 0 0 ABS 0 text9 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata 0 0 ABS 0 udata dist/default/production/Futuro_Codigo_Final.production.o
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production/Futuro_Codigo_Final.production.o
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@d1 60 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@s1 62 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Habs1 0 0 ABS 0 abs1 dist/default/production/Futuro_Codigo_Final.production.o
+__Hcode 0 0 ABS 0 code dist/default/production/Futuro_Codigo_Final.production.o
+__Hdata 0 0 ABS 0 data dist/default/production/Futuro_Codigo_Final.production.o
+__Hheap 0 0 HEAP 7 heap dist/default/production/Futuro_Codigo_Final.production.o
+__Hinit 36 0 CODE 0 init dist/default/production/Futuro_Codigo_Final.production.o
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production/Futuro_Codigo_Final.production.o
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production/Futuro_Codigo_Final.production.o
+__Htemp 0 0 COMRAM 1 temp dist/default/production/Futuro_Codigo_Final.production.o
+__Htext 0 0 ABS 0 text dist/default/production/Futuro_Codigo_Final.production.o
+__Labs1 0 0 ABS 0 abs1 dist/default/production/Futuro_Codigo_Final.production.o
+__Lcode 0 0 ABS 0 code dist/default/production/Futuro_Codigo_Final.production.o
+__Ldata 0 0 ABS 0 data dist/default/production/Futuro_Codigo_Final.production.o
+__Lheap 0 0 HEAP 7 heap dist/default/production/Futuro_Codigo_Final.production.o
+__Linit 32 0 CODE 0 init dist/default/production/Futuro_Codigo_Final.production.o
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production/Futuro_Codigo_Final.production.o
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production/Futuro_Codigo_Final.production.o
+__Ltemp 0 0 COMRAM 1 temp dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext 0 0 ABS 0 text dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@d 66 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@n 64 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+memcpy@s 68 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_identify_NCAP_cmd 1E40 0 CODE 0 text10 dist/default/production/Futuro_Codigo_Final.production.o
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Hintret 0 0 ABS 0 intret dist/default/production/Futuro_Codigo_Final.production.o
+__Hirdata 0 0 CODE 0 irdata dist/default/production/Futuro_Codigo_Final.production.o
+__S0 2518 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__S1 2E8 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__S3 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__S5 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+send_METATEDS@i 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_METATEDS@j 4 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+send_METATEDS@k 6 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_config 1F02 0 CODE 0 text0 build/default/production/config.o
+__HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank10 0 0 ABS 0 udata_bank10 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank11 0 0 ABS 0 udata_bank11 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank12 0 0 ABS 0 udata_bank12 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank14 0 0 ABS 0 udata_bank14 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production/Futuro_Codigo_Final.production.o
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production/Futuro_Codigo_Final.production.o
+__Lintentry 0 0 ABS 0 intentry dist/default/production/Futuro_Codigo_Final.production.o
+__Hramtop 1000 0 RAM 0 ramtop dist/default/production/Futuro_Codigo_Final.production.o
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production/Futuro_Codigo_Final.production.o
+define_METATEDS@F13225 B2 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_METATEDS@F13227 A0 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_METATEDS@F13229 B8 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__pdataBANK0 A0 0 BANK0 1 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__pdataBANK1 1E6 0 BANK1 1 dataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__activetblptr 1 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hstruct 0 0 COMRAM 1 struct dist/default/production/Futuro_Codigo_Final.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__LbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext10 0 0 ABS 0 text10 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext11 0 0 ABS 0 text11 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext12 0 0 ABS 0 text12 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext13 0 0 ABS 0 text13 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext14 0 0 ABS 0 text14 dist/default/production/Futuro_Codigo_Final.production.o
+__Htext15 0 0 ABS 0 text15 dist/default/production/Futuro_Codigo_Final.production.o
+vfpfcnvrt@fmt 6C 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_int_handler 8 0 CODE 0 intcode build/default/production/interrupt_handler.o
+_memcpy 23B0 0 CODE 0 text8 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext10 1D2C 0 CODE 0 text10 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext11 206A 0 CODE 0 text11 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext12 1046 0 CODE 0 text12 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext13 2402 0 CODE 0 text13 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext14 1E40 0 CODE 0 text14 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext15 24B0 0 CODE 0 text15 dist/default/production/Futuro_Codigo_Final.production.o
+_sent_buffer 264 0 BANK2 1 bssBANK2 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank10 0 0 ABS 0 bank10 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank11 0 0 ABS 0 bank11 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank12 0 0 ABS 0 bank12 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbank14 0 0 ABS 0 bank14 dist/default/production/Futuro_Codigo_Final.production.o
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Futuro_Codigo_Final.production.o
+__Lbigram 0 0 ABS 0 bigram dist/default/production/Futuro_Codigo_Final.production.o
+__Lbigsfr 0 0 ABS 0 bigsfr dist/default/production/Futuro_Codigo_Final.production.o
+__Lcomram 0 0 ABS 0 comram dist/default/production/Futuro_Codigo_Final.production.o
+__Lconfig 0 0 CONFIG 4 config dist/default/production/Futuro_Codigo_Final.production.o
+_printf 2460 0 CODE 0 text1 dist/default/production/Futuro_Codigo_Final.production.o
+__end_ofi1_putch 24D6 0 CODE 0 text15 dist/default/production/Futuro_Codigo_Final.production.o
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production/Futuro_Codigo_Final.production.o
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production/Futuro_Codigo_Final.production.o
+isa$std 1 0 ABS 0 - /tmp/xcXKPfHBE.o
+_send_error 2402 0 CODE 0 text13 dist/default/production/Futuro_Codigo_Final.production.o
+_identify_NCAP_cmd 1D2C 0 CODE 0 text10 dist/default/production/Futuro_Codigo_Final.production.o
+_pass_variable_between_C_and_ASM 24F0 0 CODE 0 text3 build/default/production/pass_variable_between_C_and_ASM.o
+stackhi 0 0 ABS 0 - /tmp/xcXKPfHBE.o
+stacklo 0 0 ABS 0 - /tmp/xcXKPfHBE.o
+_rec_head 55 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Lintcode 8 0 CODE 0 intcode dist/default/production/Futuro_Codigo_Final.production.o
+_get_char D3 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Lintret 0 0 ABS 0 intret dist/default/production/Futuro_Codigo_Final.production.o
+__Lirdata 0 0 CODE 0 irdata dist/default/production/Futuro_Codigo_Final.production.o
+_ADCON0bits F5B 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+_adc_head 51 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Lspace_0 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Lspace_1 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Lspace_2 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Lspace_3 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Lspace_4 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__pbssCOMRAM 51 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_send_TCTEDS 1046 0 CODE 0 text12 dist/default/production/Futuro_Codigo_Final.production.o
+_send_METATEDS 1E40 0 CODE 0 text14 dist/default/production/Futuro_Codigo_Final.production.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_PIR1bits EC6 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+_PIR3bits EC8 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+printf@ap 7A 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+end_of_initialization 21A6 0 CODE 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_define_METATEDS 22DC 0 CODE 0 text7 dist/default/production/Futuro_Codigo_Final.production.o
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production/Futuro_Codigo_Final.production.o
+__Hintentry 0 0 ABS 0 intentry dist/default/production/Futuro_Codigo_Final.production.o
+fputc@c 61 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+i1putch@byte 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+vfprintf@fmt 72 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/production/Futuro_Codigo_Final.production.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__HbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production/Futuro_Codigo_Final.production.o
+_define_TCTEDS 18EC 0 CODE 0 text6 dist/default/production/Futuro_Codigo_Final.production.o
+__Lramtop 1000 0 RAM 0 ramtop dist/default/production/Futuro_Codigo_Final.production.o
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production/Futuro_Codigo_Final.production.o
+__pcinit 2112 0 CODE 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+vfpfcnvrt@ap 6E 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+vfpfcnvrt@fp 6A 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext0 1FB8 0 CODE 0 text0 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext1 2460 0 CODE 0 text1 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext2 235E 0 CODE 0 text2 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext3 22DC 0 CODE 0 text3 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext4 21B4 0 CODE 0 text4 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext5 2488 0 CODE 0 text5 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext6 18EC 0 CODE 0 text6 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext7 224C 0 CODE 0 text7 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext8 23B0 0 CODE 0 text8 dist/default/production/Futuro_Codigo_Final.production.o
+__ptext9 24D6 0 CODE 0 text9 dist/default/production/Futuro_Codigo_Final.production.o
+__Lstruct 0 0 COMRAM 1 struct dist/default/production/Futuro_Codigo_Final.production.o
+vfprintf@ap 74 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+vfprintf@fp 70 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+vfprintf@cfmt 76 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext10 0 0 ABS 0 text10 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext11 0 0 ABS 0 text11 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext12 0 0 ABS 0 text12 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext13 0 0 ABS 0 text13 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext14 0 0 ABS 0 text14 dist/default/production/Futuro_Codigo_Final.production.o
+__Ltext15 0 0 ABS 0 text15 dist/default/production/Futuro_Codigo_Final.production.o
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcXKPfHBE.o
+__end_of_send_error 2432 0 CODE 0 text13 dist/default/production/Futuro_Codigo_Final.production.o
+_vfprintf 235E 0 CODE 0 text2 dist/default/production/Futuro_Codigo_Final.production.o
+__Lpowerup 32 0 CODE 0 powerup dist/default/production/Futuro_Codigo_Final.production.o
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank0 0 0 ABS 0 udata_bank0 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank1 0 0 ABS 0 udata_bank1 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank2 0 0 ABS 0 udata_bank2 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank3 0 0 ABS 0 udata_bank3 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank4 0 0 ABS 0 udata_bank4 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank5 0 0 ABS 0 udata_bank5 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank6 0 0 ABS 0 udata_bank6 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank7 0 0 ABS 0 udata_bank7 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank8 0 0 ABS 0 udata_bank8 dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_bank9 0 0 ABS 0 udata_bank9 dist/default/production/Futuro_Codigo_Final.production.o
+__psmallconst 1000 0 SMALLCONST 0 smallconst dist/default/production/Futuro_Codigo_Final.production.o
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_vfprintf 23B0 0 CODE 0 text2 dist/default/production/Futuro_Codigo_Final.production.o
+___heap_hi 0 0 ABS 0 - /tmp/xcXKPfHBE.o
+___heap_lo 0 0 ABS 0 - /tmp/xcXKPfHBE.o
+define_METATEDS@array1 77 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_METATEDS@array2 6B 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+define_METATEDS@array3 7D 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+___param_bank 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production/Futuro_Codigo_Final.production.o
+__end_of__initialization 21A6 0 CODE 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+main@result 9F 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production/Futuro_Codigo_Final.production.o
+_define_METATEDS 224C 0 CODE 0 text7 dist/default/production/Futuro_Codigo_Final.production.o
+__pidataBANK0 2432 0 CODE 0 idataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__pidataBANK1 250C 0 CODE 0 idataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production/Futuro_Codigo_Final.production.o
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_main 206A 0 CODE 0 text0 dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@channel 44 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+printf@fmt 78 0 BANK0 1 cstackBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_ADPCH F5A 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hudata_acs 0 0 ABS 0 udata_acs dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_fputc 224C 0 CODE 0 text4 dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_putch 24B0 0 CODE 0 text5 dist/default/production/Futuro_Codigo_Final.production.o
+__HRAM 0 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Hbss 0 0 RAM 1 bss dist/default/production/Futuro_Codigo_Final.production.o
+__Hram 0 0 ABS 0 ram dist/default/production/Futuro_Codigo_Final.production.o
+__Hsfr 0 0 ABS 0 sfr dist/default/production/Futuro_Codigo_Final.production.o
+__LRAM 1 0 ABS 0 - dist/default/production/Futuro_Codigo_Final.production.o
+__Lbss 0 0 RAM 1 bss dist/default/production/Futuro_Codigo_Final.production.o
+__Lram 0 0 ABS 0 ram dist/default/production/Futuro_Codigo_Final.production.o
+__Lsfr 0 0 ABS 0 sfr dist/default/production/Futuro_Codigo_Final.production.o
+_flags D2 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+_fputc 21B4 0 CODE 0 text4 dist/default/production/Futuro_Codigo_Final.production.o
+_putch 2488 0 CODE 0 text5 dist/default/production/Futuro_Codigo_Final.production.o
+_width CE 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__HdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__HdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__initialization 2112 0 CODE 0 cinit dist/default/production/Futuro_Codigo_Final.production.o
+send_TCTEDS@i 4 0 COMRAM 1 cstackCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__pbssBANK0 CE 0 BANK0 1 bssBANK0 dist/default/production/Futuro_Codigo_Final.production.o
+__pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+__pbssBANK2 200 0 BANK2 1 bssBANK2 dist/default/production/Futuro_Codigo_Final.production.o
+__pdataCOMRAM 45 0 COMRAM 1 dataCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+_METATED 1D0 0 BANK1 1 bssBANK1 dist/default/production/Futuro_Codigo_Final.production.o
+_comutar 58 0 COMRAM 1 bssCOMRAM dist/default/production/Futuro_Codigo_Final.production.o
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production/Futuro_Codigo_Final.production.o
+__Hsmallconst 1046 0 SMALLCONST 0 smallconst dist/default/production/Futuro_Codigo_Final.production.o
+__Ludata_acs 0 0 ABS 0 udata_acs dist/default/production/Futuro_Codigo_Final.production.o
+__Lifardata 0 0 CODE 0 ifardata dist/default/production/Futuro_Codigo_Final.production.o
+__end_of_send_METATEDS 1F02 0 CODE 0 text14 dist/default/production/Futuro_Codigo_Final.production.o
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/Futuro_Codigo_Final.production.o
+__Hintcode 32 0 CODE 0 intcode dist/default/production/Futuro_Codigo_Final.production.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+text12 0 1046 1046 14D2 1
+cstackCOMRAM 1 1 1 58 1
+cstackBANK0 1 60 60 99 1
+reset_vec 0 0 0 4 1
+bssBANK1 1 100 100 F2 1
+bssBANK2 1 200 200 E8 1
+intcode 0 8 8 2E 1
+smallconst 0 1000 1000 46 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES
