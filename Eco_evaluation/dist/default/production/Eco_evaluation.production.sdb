@@ -1,0 +1,210 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F47Q10 ]
+[d frameptr 4065 ]
+"1007 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+[v i1_vfpfcnvrt vfpfcnvrt `(v  1 s 1 i1_vfpfcnvrt ]
+"1520
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+[v i1_vfprintf vfprintf `(i  1 e 2 0 ]
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 /opt/microchip/xc8/v2.40/pic/sources/c99/common/float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 /opt/microchip/xc8/v2.40/pic/sources/c99/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+[v i1_fputc fputc `(i  1 e 2 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 /opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+[v _printf printf `(i  1 e 2 0 ]
+[v i1_printf printf `(i  1 e 2 0 ]
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/putchar.c
+[v _putchar putchar `(i  1 e 2 0 ]
+"10 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 /opt/microchip/xc8/v2.40/pic/sources/c99/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 /opt/microchip/xc8/v2.40/pic/sources/c99/common/Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"44 /home/mcpeixoto/Desktop/3D Airplane Animation/Eco_evaluation/main.c
+[v _main main `(v  1 e 1 0 ]
+"88
+[v _putch putch `(v  1 e 1 0 ]
+[v i1_putch putch `(v  1 e 1 0 ]
+"103
+[v _show_adc_result show_adc_result `(v  1 e 1 0 ]
+"150
+[v _getch getch `(v  1 e 1 0 ]
+[s S49 . 1 `uc 1 SSPIF 1 0 :1:0 
+`uc 1 BCLIF 1 0 :1:1 
+`uc 1 SSP2IF 1 0 :1:2 
+`uc 1 BCL2IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 TX2IF 1 0 :1:6 
+`uc 1 RC2IF 1 0 :1:7 
+]
+"15779 /home/mcpeixoto/.mchp_packs/Microchip/PIC18F-Q_DFP/1.14.237/xc8/pic/include/proc/pic18f47q10.h
+[s S58 . 1 `uc 1 SSP1IF 1 0 :1:0 
+`uc 1 BCL1IF 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S64 . 1 `S49 1 . 1 0 `S58 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES64  1 e 1 @3784 ]
+"24856
+[v _ADPCH ADPCH `VEuc  1 e 1 @3930 ]
+"29633
+[v _RC1REG RC1REG `VEuc  1 e 1 @3992 ]
+"29687
+[v _TX1REG TX1REG `VEuc  1 e 1 @3993 ]
+"99 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"100
+[v _flags flags `uc  1 s 1 flags ]
+"38 /home/mcpeixoto/Desktop/3D Airplane Animation/Eco_evaluation/main.c
+[v _var_global var_global `uc  1 e 1 0 ]
+"39
+[v _get_char get_char `uc  1 e 1 0 ]
+"40
+[v _comutar comutar `uc  1 e 1 0 ]
+"41
+[v _adc_result adc_result `uc  1 e 1 0 ]
+"44
+[v _main main `(v  1 e 1 0 ]
+{
+"53
+[v main@j j `i  1 a 2 0 ]
+"49
+[v main@result result `VEuc  1 a 1 2 ]
+"86
+} 0
+"5 /opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.39v  1 a 2 54 ]
+"5
+[v printf@fmt fmt `*.32Cuc  1 p 2 52 ]
+"13
+} 0
+"1520 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1523
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 50 ]
+[s S584 _IO_FILE 0 ]
+"1520
+[v vfprintf@fp fp `*.2S584  1 p 2 44 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 46 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 48 ]
+"1543
+} 0
+"1007
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[s S584 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.2S584  1 p 2 38 ]
+[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 40 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 42 ]
+"1517
+} 0
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 29 ]
+[u S562 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S565 _IO_FILE 11 `S562 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.2S565  1 p 2 31 ]
+"24
+} 0
+"88 /home/mcpeixoto/Desktop/3D Airplane Animation/Eco_evaluation/main.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 28 ]
+"100
+} 0
+"103
+[v _show_adc_result show_adc_result `(v  1 e 1 0 ]
+{
+"147
+} 0
+"5 /opt/microchip/xc8/v2.40/pic/sources/c99/common/printf.c
+[v i1_printf printf `(i  1 e 2 0 ]
+{
+"8
+[v i1printf@ap ap `[1]*.39v  1 a 2 26 ]
+"5
+[v i1printf@fmt fmt `*.32Cuc  1 p 2 24 ]
+"13
+} 0
+"1520 /opt/microchip/xc8/v2.40/pic/sources/c99/common/doprnt.c
+[v i1_vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1523
+[v i1vfprintf@cfmt cfmt `*.32uc  1 a 2 22 ]
+[s S584 _IO_FILE 0 ]
+"1520
+[v i1vfprintf@fp fp `*.2S584  1 p 2 16 ]
+[v i1vfprintf@fmt fmt `*.32Cuc  1 p 2 18 ]
+[v i1vfprintf@ap ap `*.39*.39v  1 p 2 20 ]
+"1543
+} 0
+"1007
+[v i1_vfpfcnvrt vfpfcnvrt `(v  1 s 1 i1_vfpfcnvrt ]
+{
+[s S584 _IO_FILE 0 ]
+[v i1vfpfcnvrt@fp fp `*.2S584  1 p 2 10 ]
+[v i1vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 12 ]
+[v i1vfpfcnvrt@ap ap `*.39*.39v  1 p 2 14 ]
+"1517
+} 0
+"4 /opt/microchip/xc8/v2.40/pic/sources/c99/common/putchar.c
+[v _putchar putchar `(i  1 e 2 0 ]
+{
+[v putchar@c c `i  1 p 2 10 ]
+"7
+} 0
+"8 /opt/microchip/xc8/v2.40/pic/sources/c99/common/nf_fputc.c
+[v i1_fputc fputc `(i  1 e 2 0 ]
+{
+[v i1fputc@c c `i  1 p 2 1 ]
+[u S562 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S565 _IO_FILE 11 `S562 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v i1fputc@fp fp `*.2S565  1 p 2 3 ]
+"24
+} 0
+"88 /home/mcpeixoto/Desktop/3D Airplane Animation/Eco_evaluation/main.c
+[v i1_putch putch `(v  1 e 1 0 ]
+{
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 0 ]
+"100
+} 0
+"150
+[v _getch getch `(v  1 e 1 0 ]
+{
+"155
+} 0

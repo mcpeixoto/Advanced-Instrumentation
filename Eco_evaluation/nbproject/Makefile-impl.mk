@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=avaliacao_eco
+PROJECTNAME=Eco_evaluation
 
 # Active Configuration
 DEFAULTCONF=default

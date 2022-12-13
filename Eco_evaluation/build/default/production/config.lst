@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                                           Tue Dec  6 14:34:00 2022
+                                                                                                           Tue Dec 13 13:52:35 2022
 
 
      1                           	processor	18F47Q10
@@ -46,71 +46,71 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
     40                           ; objects from the stack prior to returning from a function
     41   000000                     
     42                           	psect	text0
-    43   001100                     _config:
+    43   0010FA                     _config:
     44                           	callstack 0
     45                           
     46                           ;===============
     47                           ;CONFIGURE PORTA
     48                           ;===============
-    49   001100  010F               	banksel	3970
-    50   001102  6B82               	clrf	3970,b	; Set all LatchA bits to zero
-    51   001104  0E01               	movlw	1
-    52   001106  010F               	banksel	3975
-    53   001108  6F87               	movwf	3975,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
+    49   0010FA  010F               	banksel	3970
+    50   0010FC  6B82               	clrf	3970,b	; Set all LatchA bits to zero
+    51   0010FE  0E01               	movlw	1
+    52   001100  010F               	banksel	3975
+    53   001102  6F87               	movwf	3975,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
       +                          meter. All other are output pins
-    54   00110A  0E01               	movlw	1
-    55   00110C  010F               	banksel	3852
-    56   00110E  6F0C               	movwf	3852,b	;analog select. ((PORTA) and 0FFh), 0, a connects to potenciometer. The others are dig
+    54   001104  0E01               	movlw	1
+    55   001106  010F               	banksel	3852
+    56   001108  6F0C               	movwf	3852,b	;analog select. ((PORTA) and 0FFh), 0, a connects to potenciometer. The others are dig
       +                          ital pins
     57                           
     58                           ;===============
     59                           ;CONFIGURE PORTB
     60                           ;===============
-    61   001110  010F               	banksel	3971
-    62   001112  6B83               	clrf	3971,b	; Set all LatchB bits to zero
-    63   001114  0E07               	movlw	7
-    64   001116  010F               	banksel	3971
-    65   001118  6F83               	movwf	3971,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
+    61   00110A  010F               	banksel	3971
+    62   00110C  6B83               	clrf	3971,b	; Set all LatchB bits to zero
+    63   00110E  0E07               	movlw	7
+    64   001110  010F               	banksel	3971
+    65   001112  6F83               	movwf	3971,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
       +                          meter. All other are output pins
-    66   00111A  0E07               	movlw	7
-    67   00111C  010F               	banksel	3860
-    68   00111E  6F14               	movwf	3860,b	; analog select. ((PORTB) and 0FFh), 0, a, ((PORTB) and 0FFh), 1, a, ((PORTB) and 0FFh
+    66   001114  0E07               	movlw	7
+    67   001116  010F               	banksel	3860
+    68   001118  6F14               	movwf	3860,b	; analog select. ((PORTB) and 0FFh), 0, a, ((PORTB) and 0FFh), 1, a, ((PORTB) and 0FFh
       +                          ), 2, a connects to accelerometer. The others are digital pins
     69                           
     70                           ;===============
     71                           ;CONFIGURE PORTC
     72                           ;===============
-    73   001120  010F               	banksel	3972
-    74   001122  6B84               	clrf	3972,b	; Set all LatchD bits to zero
-    75   001124  010F               	banksel	3977
-    76   001126  6B89               	clrf	3977,b	;All pins are output
-    77   001128  8E89               	bsf	3977,7,c	;except ((PORTC) and 0FFh), 7, a, that will be used as RX - microchip specifies RX as 
+    73   00111A  010F               	banksel	3972
+    74   00111C  6B84               	clrf	3972,b	; Set all LatchD bits to zero
+    75   00111E  010F               	banksel	3977
+    76   001120  6B89               	clrf	3977,b	;All pins are output
+    77   001122  8E89               	bsf	3977,7,c	;except ((PORTC) and 0FFh), 7, a, that will be used as RX - microchip specifies RX as 
       +                          input pin
-    78   00112A  010F               	banksel	3868
-    79   00112C  6B1C               	clrf	3868,b	;All digital pins
-    80   00112E  010E               	banksel	3830
-    81   001130  0E09               	movlw	9	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RC4PPS ((STATUS) and 0FFh), 6, a PUT
+    78   001124  010F               	banksel	3868
+    79   001126  6B1C               	clrf	3868,b	;All digital pins
+    80   001128  010E               	banksel	3830
+    81   00112A  0E09               	movlw	9	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RC4PPS ((STATUS) and 0FFh), 6, a PUT
       +                           THE EUSART1 TX ((CWG1CON1) and 0FFh), 5, b PIN ((PORTC) and 0FFh), 4, a? HINT: look in the 17.2 sec
       +                          tion of the datasheet, table 17.2
-    82   001132  6FF6               	movwf	3830,b	;place the EUSART1 (TX/CK) in ((PORTC) and 0FFh), 4, a
-    83   001134  010E               	banksel	3760
-    84   001136  0E17               	movlw	23	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RX1PPS ((STATUS) and 0FFh), 6, a PU
+    82   00112C  6FF6               	movwf	3830,b	;place the EUSART1 (TX/CK) in ((PORTC) and 0FFh), 4, a
+    83   00112E  010E               	banksel	3760
+    84   001130  0E17               	movlw	23	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RX1PPS ((STATUS) and 0FFh), 6, a PU
       +                          T THE EUSART1 RX ((CWG1CON1) and 0FFh), 5, b PIN ((PORTC) and 0FFh), 7, a? HINT: look in the PPS cha
       +                          pter of the datasheet
-    85   001138  6FB0               	movwf	3760,b	;place the EUSART1 (RX) in ((PORTC) and 0FFh), 7, a
+    85   001132  6FB0               	movwf	3760,b	;place the EUSART1 (RX) in ((PORTC) and 0FFh), 7, a
     86                           
     87                           ;===============
     88                           ;CONFIGURE CLOCK
     89                           ;===============
-    90   00113A  010E               	banksel	3795
-    91   00113C  0E60               	movlw	96	;NOSC=0110 (internal high speed osc)
-    92   00113E  6FD3               	movwf	3795,b	;NDIV=0000 (divider=1, clk divided by 1)
-    93   001140  010E               	banksel	3801
-    94   001142  0E06               	movlw	6	; HFFRQ 0110 -> clk= 32 MHz
-    95   001144  6FD9               	movwf	3801,b
-    96   001146  010E               	banksel	3799
-    97   001148  0E40               	movlw	64	;internal clock @freq=OSCFRQ ativo
-    98   00114A  6FD7               	movwf	3799,b
+    90   001134  010E               	banksel	3795
+    91   001136  0E60               	movlw	96	;NOSC=0110 (internal high speed osc)
+    92   001138  6FD3               	movwf	3795,b	;NDIV=0000 (divider=1, clk divided by 1)
+    93   00113A  010E               	banksel	3801
+    94   00113C  0E06               	movlw	6	; HFFRQ 0110 -> clk= 32 MHz
+    95   00113E  6FD9               	movwf	3801,b
+    96   001140  010E               	banksel	3799
+    97   001142  0E40               	movlw	64	;internal clock @freq=OSCFRQ ativo
+    98   001144  6FD7               	movwf	3799,b
     99                           
    100                           ;===============
    101                           ;CONFIGURE USART
@@ -118,19 +118,19 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
    103                           ;BR=9600 @ CLK=32 MHz
    104                           ; Q: WHAT VALUE SHOULD WE PUT ((CWG1CON1) and 0FFh), 5, b SP1BRGL AND SP1BRG1H ((STATUS) and 0FFh), 
       +                          6, a GET A BAUD RATE OF 9600 BPS FOR A CLOCK SPEED OF 32 MHZ? HINT: CHECK SECTION 28.2
-   105   00114C  010F               	banksel	3994
-   106   00114E  0E33               	movlw	51
-   107   001150  6E9A               	movwf	3994,c
-   108   001152  0E00               	movlw	0
-   109   001154  6E9B               	movwf	3995,c
-   110   001156  010F               	banksel	3997
-   111   001158  0E20               	movlw	32	;8 data bits, TX enabled, ASYNC
-   112   00115A  6E9D               	movwf	3997,c
+   105   001146  010F               	banksel	3994
+   106   001148  0E33               	movlw	51
+   107   00114A  6E9A               	movwf	3994,c
+   108   00114C  0E00               	movlw	0
+   109   00114E  6E9B               	movwf	3995,c
+   110   001150  010F               	banksel	3997
+   111   001152  0E20               	movlw	32	;8 data bits, TX enabled, ASYNC
+   112   001154  6E9D               	movwf	3997,c
    113                           
    114                           ; Q: HERE YOU MUST ENABLE THE USART AND THE RECEIVER WITH REGISTER RC1STA
-   115   00115C  0EB0               	movlw	176
-   116   00115E  010F               	banksel	3996
-   117   001160  6E9C               	movwf	3996,c
+   115   001156  0EB0               	movlw	176
+   116   001158  010F               	banksel	3996
+   117   00115A  6E9C               	movwf	3996,c
    118                           
    119                           ;=============
    120                           ;CONFIGURE ADC
@@ -141,64 +141,64 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
    125                           ; 001001 ((PORTB) and 0FFh), 1, a/ ANB1
    126                           ; 001000 ((PORTB) and 0FFh), 0, a/ANB0
    127                           ; 000000 ((PORTA) and 0FFh), 0, a/ANA0
-   128   001162  010F               	banksel	3930
-   129   001164  0E08               	movlw	8	;set ((PORTA) and 0FFh), 0, a as ADC input
-   130   001166  6F5A               	movwf	3930,b
-   131   001168  010F               	banksel	3923
-   132   00116A  0E00               	movlw	0	;Vref set to vdd and vss
-   133   00116C  6F53               	movwf	3923,b
-   134   00116E  010F               	banksel	3922
-   135   001170  0E0F               	movlw	15	; Q: SET THE ADC CLOCK FREQUENCY ((STATUS) and 0FFh), 6, a 1 MHZ, KNOWING THAT FOSC = 32 M
+   128   00115C  010F               	banksel	3930
+   129   00115E  0E08               	movlw	8	;set ((PORTA) and 0FFh), 0, a as ADC input
+   130   001160  6F5A               	movwf	3930,b
+   131   001162  010F               	banksel	3923
+   132   001164  0E00               	movlw	0	;Vref set to vdd and vss
+   133   001166  6F53               	movwf	3923,b
+   134   001168  010F               	banksel	3922
+   135   00116A  0E0F               	movlw	15	; Q: SET THE ADC CLOCK FREQUENCY ((STATUS) and 0FFh), 6, a 1 MHZ, KNOWING THAT FOSC = 32 M
       +                          HZ
-   136   001172  6F52               	movwf	3922,b
-   137   001174  010F               	banksel	3931
-   138   001176  0E00               	movlw	0	;Q: SET THE ADC ((STATUS) and 0FFh), 6, a: results left-justified, clock=Fosc/div, non-cont
+   136   00116C  6F52               	movwf	3922,b
+   137   00116E  010F               	banksel	3931
+   138   001170  0E00               	movlw	0	;Q: SET THE ADC ((STATUS) and 0FFh), 6, a: results left-justified, clock=Fosc/div, non-cont
       +                          inuous operation
-   139   001178  6F5B               	movwf	3931,b
+   139   001172  6F5B               	movwf	3931,b
    140                           
    141                           ;================
    142                           ;CONFIGURE TIMER0
    143                           ;================
-   144   00117A  010F               	banksel	4052
-   145   00117C  6AD4               	clrf	4052,c
-   146   00117E  010F               	banksel	4053
-   147   001180  0E4C               	movlw	76
-   148   001182  6ED5               	movwf	4053,c
-   149   001184  010F               	banksel	4050
-   150   001186  6AD2               	clrf	4050,c	;clear the counter
+   144   001174  010F               	banksel	4052
+   145   001176  6AD4               	clrf	4052,c
+   146   001178  010F               	banksel	4053
+   147   00117A  0E4C               	movlw	76
+   148   00117C  6ED5               	movwf	4053,c
+   149   00117E  010F               	banksel	4050
+   150   001180  6AD2               	clrf	4050,c	;clear the counter
    151                           
    152                           ;=================
    153                           ;ENABLE INTERRUPTS
    154                           ;=================
-   155   001188  010E               	banksel	3781
-   156   00118A  9BC5               	bcf	3781,5,b	;clear timer interrupt flag
-   157   00118C  010E               	banksel	3782
-   158   00118E  91C6               	bcf	3782,0,b	;clear ADC interrupt flag
-   159   001190  010E               	banksel	3784
-   160   001192  9BC8               	bcf	3784,5,b	;clear RX1 interrupt flag
-   161   001194  010E               	banksel	3773
-   162   001196  8BBD               	bsf	3773,5,b	; Q: enable timer int
-   163   001198  010E               	banksel	3774
-   164   00119A  81BE               	bsf	3774,0,b	; Q: enable adc int
-   165   00119C  010E               	banksel	3776
-   166   00119E  8BC0               	bsf	3776,5,b	; Q: enable RX1 int
-   167   0011A0  010F               	banksel	4052
-   168   0011A2  8ED4               	bsf	4052,7,c	;start timer 0
-   169   0011A4  010F               	banksel	3931
-   170   0011A6  8F5B               	bsf	3931,7,b	;ENABLE ADC
+   155   001182  010E               	banksel	3781
+   156   001184  9BC5               	bcf	3781,5,b	;clear timer interrupt flag
+   157   001186  010E               	banksel	3782
+   158   001188  91C6               	bcf	3782,0,b	;clear ADC interrupt flag
+   159   00118A  010E               	banksel	3784
+   160   00118C  9BC8               	bcf	3784,5,b	;clear RX1 interrupt flag
+   161   00118E  010E               	banksel	3773
+   162   001190  8BBD               	bsf	3773,5,b	; Q: enable timer int
+   163   001192  010E               	banksel	3774
+   164   001194  81BE               	bsf	3774,0,b	; Q: enable adc int
+   165   001196  010E               	banksel	3776
+   166   001198  8BC0               	bsf	3776,5,b	; Q: enable RX1 int
+   167   00119A  010F               	banksel	4052
+   168   00119C  8ED4               	bsf	4052,7,c	;start timer 0
+   169   00119E  010F               	banksel	3931
+   170   0011A0  8F5B               	bsf	3931,7,b	;ENABLE ADC
    171                           
    172                           ; Q: HERE YOU MUST ENABLE PERIPHERAL INTERRUPTIONS AND GLOBAL INTERRUPTIONS
-   173   0011A8  010F               	banksel	4082
-   174   0011AA  8EF2               	bsf	4082,7,c
-   175   0011AC  8CF2               	bsf	4082,6,c
+   173   0011A2  010F               	banksel	4082
+   174   0011A4  8EF2               	bsf	4082,7,c
+   175   0011A6  8CF2               	bsf	4082,6,c
    176                           
    177                           ;=================
    178                           ;INITIALIZE COMMUTING VARIABLE
    179                           ;=================
-   180   0011AE  0100               	banksel	_comutar
-   181   0011B0  0E00               	movlw	0
-   182   0011B2  6F22               	movwf	_comutar,b
-   183   0011B4  0012               	return	
+   180   0011A8  0100               	banksel	_comutar
+   181   0011AA  0E00               	movlw	0
+   182   0011AC  6F41               	movwf	_comutar,b
+   183   0011AE  0012               	return	
    184                           
    185                           	psect	config
    186                           
@@ -382,7 +382,7 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                               Tue Dec  6 14:34:00 2022
+Symbol Table                                                                                               Tue Dec 13 13:52:35 2022
 
                            LATA 000F82                             LATB 000F83                             LATC 000F84  
                            PIE0 000EBD                             PIE1 000EBE                             PIE3 000EC0  
@@ -394,5 +394,5 @@ Symbol Table                                                                    
                          T0CON1 000FD5                           RC1STA 000F9C                           RC4PPS 000EF6  
                          INTCON 000FF2                           OSCFRQ 000ED9                           RX1PPS 000EB0  
                          TX1STA 000F9D                          SP1BRGH 000F9B                          SP1BRGL 000F9A  
-                        OSCCON1 000ED3                          _config 1100                          isa$std 000001  
-                       _comutar 0022                        isa$xinst 000000  
+                        OSCCON1 000ED3                          _config 10FA                          isa$std 000001  
+                       _comutar 0041                        isa$xinst 000000  

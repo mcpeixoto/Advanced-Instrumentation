@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                                           Tue Dec  6 14:34:00 2022
+                                                                                                           Tue Dec 13 13:52:35 2022
 
 
      1                           	processor	18F47Q10
@@ -45,27 +45,27 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
     39                           ; objects from the stack prior to returning from a function
     40   000000                     
     41                           	psect	text3
-    42   0015E4                     _pass_variable_between_C_and_ASM:
+    42   0015BA                     _pass_variable_between_C_and_ASM:
     43                           	callstack 0
     44                           
     45                           ;the argument (3) is stored in W when we call the function.
-    46   0015E4  0F05               	addlw	5	;Now we add "5" to W.
+    46   0015BA  0F05               	addlw	5	;Now we add "5" to W.
     47                           
     48                           ;now we are going to add a value to the global variable var_global, and we will need to use the W re
       +                          gister. Since the function returns the value of W, we must save it.
-    49   0015E6  6E03               	movwf	3,c	;store W in a variable
+    49   0015BC  6E03               	movwf	3,c	;store W in a variable
     50                           
     51                           ;add 1 to the global variable
-    52   0015E8  0100               	banksel	_var_global
-    53   0015EA  0E01               	movlw	1
-    54   0015EC  2795               	addwf	_var_global,f,b	;the "1" in this instruction tells the compiler to save the result of the ADD
+    52   0015BE  0100               	banksel	_var_global
+    53   0015C0  0E01               	movlw	1
+    54   0015C2  2743               	addwf	_var_global,f,b	;the "1" in this instruction tells the compiler to save the result of the ADD
       +                           to _var_global. If it was "0" it would be saved in "W".
     55                           
     56                           ;now we need to recover the W to return the result of adding (3) with (5).
-    57   0015EE  0B00               	andlw	0	;set W as 0
-    58   0015F0  2403               	addwf	3,w,c	;put the variable value back into W for the return. Here it is "0" so that the ADD is s
+    57   0015C4  0B00               	andlw	0	;set W as 0
+    58   0015C6  2403               	addwf	3,w,c	;put the variable value back into W for the return. Here it is "0" so that the ADD is s
       +                          aved into W.
-    59   0015F2  0012               	return		;when the function returns, the _var_global value is already updated and it will return the
+    59   0015C8  0012               	return		;when the function returns, the _var_global value is already updated and it will return the
       +                           W value back to C for it to put in "result"
     60                           tosu	equ	0xFFF
     61                           tosh	equ	0xFFE
@@ -107,7 +107,7 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                               Tue Dec  6 14:34:00 2022
+Symbol Table                                                                                               Tue Dec 13 13:52:35 2022
 
-                         isa$std 000001  _pass_variable_between_C_and_ASM 15E4                       _var_global 0095  
+                         isa$std 000001  _pass_variable_between_C_and_ASM 15BA                       _var_global 0043  
                        isa$xinst 000000  

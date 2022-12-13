@@ -21545,6 +21545,7 @@ void main(void) {
 # 78 "main.c"
         if(get_char != 0)
         {
+            get_char = get_char + 1;
             putch(get_char);
             get_char = 0;
         }
@@ -21568,7 +21569,7 @@ void putch(char byte)
 
 
 void show_adc_result(void){
-# 111 "main.c"
+# 112 "main.c"
     if (comutar == 0){
         printf("X:");
         putchar(adc_result);
@@ -21606,12 +21607,6 @@ void show_adc_result(void){
     return;
 }
 
-
-void envia_bit(void){
-    adc_result=42;
-    putchar(adc_result);
-    return;
-}
 
 void getch(void)
 {

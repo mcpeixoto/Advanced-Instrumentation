@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                                           Tue Dec  6 14:33:59 2022
+                                                                                                           Tue Dec 13 13:52:36 2022
 
 
      1                           	processor	18F47Q10
@@ -57,11 +57,11 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
     49   00000E  010E               	banksel	3782
     50   000010  B1C6               	btfsc	3782,0,b	;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, sk
       +                          ip.
-    51   000012  D011               	goto	_adc_int_handler
+    51   000012  D00F               	goto	_adc_int_handler
     52   000014  010E               	banksel	3784
     53   000016  BBC8               	btfsc	3784,5,b	;Q: check if the EUSART1 RX flag is set. If so, go to the C function _getch. If not,
       +                           skip.
-    54   000018  ECFA  F00A         	call	_getch
+    54   000018  ECE5  F00A         	call	_getch
     55   00001C  0010               	retfie	
     56   00001E                     _timer0_int_handler:
     57   00001E  010F               	banksel	3930
@@ -73,68 +73,67 @@ Microchip MPLAB XC8 Assembler V2.40 build 20220703182018
     63   00002A  7A8C               	btg	3980,5,c	;TOGGLE LED ON PORTA,5
     64   00002C  010E               	banksel	3781
     65   00002E  9BC5               	bcf	3781,5,b	;clear timer_int flag
-    66   000030  ECE9  F00A         	call	_envia_bit	;
-    67   000034  0010               	retfie		;return from interruption
-    68   000036                     _adc_int_handler:
-    69   000036  010F               	banksel	3935
-    70   000038  CF5F F021          	movff	3935,_adc_result	;put the highest 8 bits of the conversion result in 0
-    71                           
-    72                           ;here I am just changing the value of the byte read by the ADC to a value we know for debug purposes
-    73                           ;MOVLW 0b11111111
-    74                           ;MOVWF 0
-    75                           ; Sends data to computer
-    76                           ;BANKSEL TX1REG
-    77                           ;MOVFF 0, TX1REG ;Q: put the 8 MSB of the ADC conversion in the UART TX.
-    78   00003C  010E               	banksel	3782
-    79   00003E  91C6               	bcf	3782,0,b	;clear the ADC interrupt flag
-    80                           
-    81                           ;call _show_adc_result
-    82   000040  0010               	retfie		;return from interruption
-    83                           tosu	equ	0xFFF
-    84                           tosh	equ	0xFFE
-    85                           tosl	equ	0xFFD
-    86                           stkptr	equ	0xFFC
-    87                           pclatu	equ	0xFFB
-    88                           pclath	equ	0xFFA
-    89                           pcl	equ	0xFF9
-    90                           tblptru	equ	0xFF8
-    91                           tblptrh	equ	0xFF7
-    92                           tblptrl	equ	0xFF6
-    93                           tablat	equ	0xFF5
-    94                           prodh	equ	0xFF4
-    95                           prodl	equ	0xFF3
-    96                           indf0	equ	0xFEF
-    97                           postinc0	equ	0xFEE
-    98                           postdec0	equ	0xFED
-    99                           preinc0	equ	0xFEC
-   100                           plusw0	equ	0xFEB
-   101                           fsr0h	equ	0xFEA
-   102                           fsr0l	equ	0xFE9
-   103                           wreg	equ	0xFE8
-   104                           indf1	equ	0xFE7
-   105                           postinc1	equ	0xFE6
-   106                           postdec1	equ	0xFE5
-   107                           preinc1	equ	0xFE4
-   108                           plusw1	equ	0xFE3
-   109                           fsr1h	equ	0xFE2
-   110                           fsr1l	equ	0xFE1
-   111                           bsr	equ	0xFE0
-   112                           indf2	equ	0xFDF
-   113                           postinc2	equ	0xFDE
-   114                           postdec2	equ	0xFDD
-   115                           preinc2	equ	0xFDC
-   116                           plusw2	equ	0xFDB
-   117                           fsr2h	equ	0xFDA
-   118                           fsr2l	equ	0xFD9
-   119                           status	equ	0xFD8
+    66   000030  0010               	retfie		;return from interruption
+    67   000032                     _adc_int_handler:
+    68   000032  010F               	banksel	3935
+    69   000034  CF5F F040          	movff	3935,_adc_result	;put the highest 8 bits of the conversion result in 0
+    70                           
+    71                           ;here I am just changing the value of the byte read by the ADC to a value we know for debug purposes
+    72                           ;MOVLW 0b11111111
+    73                           ;MOVWF 0
+    74                           ; Sends data to computer
+    75                           ;BANKSEL TX1REG
+    76                           ;MOVFF 0, TX1REG ;Q: put the 8 MSB of the ADC conversion in the UART TX.
+    77   000038  010E               	banksel	3782
+    78   00003A  91C6               	bcf	3782,0,b	;clear the ADC interrupt flag
+    79                           
+    80                           ;call _show_adc_result
+    81   00003C  0010               	retfie		;return from interruption
+    82                           tosu	equ	0xFFF
+    83                           tosh	equ	0xFFE
+    84                           tosl	equ	0xFFD
+    85                           stkptr	equ	0xFFC
+    86                           pclatu	equ	0xFFB
+    87                           pclath	equ	0xFFA
+    88                           pcl	equ	0xFF9
+    89                           tblptru	equ	0xFF8
+    90                           tblptrh	equ	0xFF7
+    91                           tblptrl	equ	0xFF6
+    92                           tablat	equ	0xFF5
+    93                           prodh	equ	0xFF4
+    94                           prodl	equ	0xFF3
+    95                           indf0	equ	0xFEF
+    96                           postinc0	equ	0xFEE
+    97                           postdec0	equ	0xFED
+    98                           preinc0	equ	0xFEC
+    99                           plusw0	equ	0xFEB
+   100                           fsr0h	equ	0xFEA
+   101                           fsr0l	equ	0xFE9
+   102                           wreg	equ	0xFE8
+   103                           indf1	equ	0xFE7
+   104                           postinc1	equ	0xFE6
+   105                           postdec1	equ	0xFE5
+   106                           preinc1	equ	0xFE4
+   107                           plusw1	equ	0xFE3
+   108                           fsr1h	equ	0xFE2
+   109                           fsr1l	equ	0xFE1
+   110                           bsr	equ	0xFE0
+   111                           indf2	equ	0xFDF
+   112                           postinc2	equ	0xFDE
+   113                           postdec2	equ	0xFDD
+   114                           preinc2	equ	0xFDC
+   115                           plusw2	equ	0xFDB
+   116                           fsr2h	equ	0xFDA
+   117                           fsr2l	equ	0xFD9
+   118                           status	equ	0xFD8
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                               Tue Dec  6 14:33:59 2022
+Symbol Table                                                                                               Tue Dec 13 13:52:36 2022
 
                            PIR0 000EC5                             PIR1 000EC6                             PIR3 000EC8  
                           ADPCH 000F5A                            PORTA 000F8C                           ADCON0 000F5B  
-                         ADRESH 000F5F                           _getch 15F4                          isa$std 000001  
-                    _adc_result 0021                         _comutar 0022                 _show_adc_result 1036  
-            _timer0_int_handler 001E                       _envia_bit 15D2                 _adc_int_handler 0036  
-                   _int_handler 0008                        isa$xinst 000000  
+                         ADRESH 000F5F                           _getch 15CA                          isa$std 000001  
+                    _adc_result 0040                         _comutar 0041                 _show_adc_result 1036  
+            _timer0_int_handler 001E                 _adc_int_handler 0032                     _int_handler 0008  
+                      isa$xinst 000000  

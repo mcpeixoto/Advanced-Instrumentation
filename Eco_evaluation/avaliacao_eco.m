@@ -1,3 +1,4 @@
+% sudo chown mcpeixoto /dev/ttyACM0
 % Reset everything
 clear; clc;
 
@@ -7,4 +8,4 @@ s = serialport("/dev/ttyACM0", 9600);
 
 enviado = 1
 write(s, enviado, "char");
-recebido = read(s,5,"uint8")
+recebido = read(s,1,"uint8")

@@ -1811,194 +1811,178 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 79:         {
 {
 "80
-[; ;main.c: 80:             putch(get_char);
-[e ( _putch (1 _get_char ]
+[; ;main.c: 80:             get_char = get_char + 1;
+[e = _get_char -> + -> _get_char `i -> 1 `i `uc ]
 "81
-[; ;main.c: 81:             get_char = 0;
-[e = _get_char -> -> 0 `i `uc ]
+[; ;main.c: 81:             putch(get_char);
+[e ( _putch (1 _get_char ]
 "82
-[; ;main.c: 82:         }
+[; ;main.c: 82:             get_char = 0;
+[e = _get_char -> -> 0 `i `uc ]
+"83
+[; ;main.c: 83:         }
 }
 [e :U 1741 ]
-"84
-[; ;main.c: 84:     }
+"85
+[; ;main.c: 85:     }
 }
 [e :U 1737 ]
 [e $U 1738  ]
 [e :U 1739 ]
-"85
-[; ;main.c: 85: }
+"86
+[; ;main.c: 86: }
 [e :UE 1736 ]
 }
-"87
-[; ;main.c: 87: void putch(char byte)
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
 "88
-[; ;main.c: 88: {
+[; ;main.c: 88: void putch(char byte)
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
+"89
+[; ;main.c: 89: {
 {
 [e :U _putch ]
-"87
-[; ;main.c: 87: void putch(char byte)
-[v _byte `uc ~T0 @X0 1 r1 ]
 "88
-[; ;main.c: 88: {
-[f ]
+[; ;main.c: 88: void putch(char byte)
+[v _byte `uc ~T0 @X0 1 r1 ]
 "89
-[; ;main.c: 89:     while (PIR3bits.TX1IF == 0) {
+[; ;main.c: 89: {
+[f ]
+"90
+[; ;main.c: 90:     while (PIR3bits.TX1IF == 0) {
 [e $U 1743  ]
 [e :U 1744 ]
 {
-"91
-[; ;main.c: 91:     }
+"92
+[; ;main.c: 92:     }
 }
 [e :U 1743 ]
-"89
-[; ;main.c: 89:     while (PIR3bits.TX1IF == 0) {
+"90
+[; ;main.c: 90:     while (PIR3bits.TX1IF == 0) {
 [e $ == -> . . _PIR3bits 1 3 `i -> 0 `i 1744  ]
 [e :U 1745 ]
-"93
-[; ;main.c: 93:     TX1REG = byte;
+"94
+[; ;main.c: 94:     TX1REG = byte;
 [e = _TX1REG -> _byte `uc ]
-"96
-[; ;main.c: 96:     while (PIR3bits.TX1IF == 0) {
+"97
+[; ;main.c: 97:     while (PIR3bits.TX1IF == 0) {
 [e $U 1746  ]
 [e :U 1747 ]
 {
-"98
-[; ;main.c: 98:     }
+"99
+[; ;main.c: 99:     }
 }
 [e :U 1746 ]
-"96
-[; ;main.c: 96:     while (PIR3bits.TX1IF == 0) {
+"97
+[; ;main.c: 97:     while (PIR3bits.TX1IF == 0) {
 [e $ == -> . . _PIR3bits 1 3 `i -> 0 `i 1747  ]
 [e :U 1748 ]
-"99
-[; ;main.c: 99: }
+"100
+[; ;main.c: 100: }
 [e :UE 1742 ]
 }
-"102
-[; ;main.c: 102: void show_adc_result(void){
+"103
+[; ;main.c: 103: void show_adc_result(void){
 [v _show_adc_result `(v ~T0 @X0 1 ef ]
 {
 [e :U _show_adc_result ]
 [f ]
-"111
-[; ;main.c: 111:     if (comutar == 0){
+"112
+[; ;main.c: 112:     if (comutar == 0){
 [e $ ! == -> _comutar `i -> 0 `i 1750  ]
 {
-"112
-[; ;main.c: 112:         printf("X:");
-[e ( _printf :s 5C ]
 "113
-[; ;main.c: 113:         putchar(adc_result);
-[e ( _putchar (1 -> _adc_result `i ]
+[; ;main.c: 113:         printf("X:");
+[e ( _printf :s 5C ]
 "114
-[; ;main.c: 114:         printf("\n");
+[; ;main.c: 114:         putchar(adc_result);
+[e ( _putchar (1 -> _adc_result `i ]
+"115
+[; ;main.c: 115:         printf("\n");
 [e ( _printf :s 6C ]
-"117
-[; ;main.c: 117:         ADPCH = 0b00001001;
-[e = _ADPCH -> -> 9 `i `uc ]
 "118
-[; ;main.c: 118:     }
+[; ;main.c: 118:         ADPCH = 0b00001001;
+[e = _ADPCH -> -> 9 `i `uc ]
+"119
+[; ;main.c: 119:     }
 }
 [e :U 1750 ]
-"119
-[; ;main.c: 119:     if (comutar == 1){
+"120
+[; ;main.c: 120:     if (comutar == 1){
 [e $ ! == -> _comutar `i -> 1 `i 1751  ]
 {
-"120
-[; ;main.c: 120:         printf("Y:");
-[e ( _printf :s 7C ]
 "121
-[; ;main.c: 121:         putchar(adc_result);
-[e ( _putchar (1 -> _adc_result `i ]
+[; ;main.c: 121:         printf("Y:");
+[e ( _printf :s 7C ]
 "122
-[; ;main.c: 122:         printf("\n");
+[; ;main.c: 122:         putchar(adc_result);
+[e ( _putchar (1 -> _adc_result `i ]
+"123
+[; ;main.c: 123:         printf("\n");
 [e ( _printf :s 8C ]
-"125
-[; ;main.c: 125:         ADPCH = 0b00001010;
-[e = _ADPCH -> -> 10 `i `uc ]
 "126
-[; ;main.c: 126:     }
+[; ;main.c: 126:         ADPCH = 0b00001010;
+[e = _ADPCH -> -> 10 `i `uc ]
+"127
+[; ;main.c: 127:     }
 }
 [e :U 1751 ]
-"127
-[; ;main.c: 127:     if (comutar == 2){
+"128
+[; ;main.c: 128:     if (comutar == 2){
 [e $ ! == -> _comutar `i -> 2 `i 1752  ]
 {
-"128
-[; ;main.c: 128:         printf("Z:");
-[e ( _printf :s 9C ]
 "129
-[; ;main.c: 129:         putchar(adc_result);
-[e ( _putchar (1 -> _adc_result `i ]
+[; ;main.c: 129:         printf("Z:");
+[e ( _printf :s 9C ]
 "130
-[; ;main.c: 130:         printf("\n");
+[; ;main.c: 130:         putchar(adc_result);
+[e ( _putchar (1 -> _adc_result `i ]
+"131
+[; ;main.c: 131:         printf("\n");
 [e ( _printf :s 10C ]
-"133
-[; ;main.c: 133:         ADPCH = 0b00001000;
-[e = _ADPCH -> -> 8 `i `uc ]
 "134
-[; ;main.c: 134:     }
+[; ;main.c: 134:         ADPCH = 0b00001000;
+[e = _ADPCH -> -> 8 `i `uc ]
+"135
+[; ;main.c: 135:     }
 }
 [e :U 1752 ]
-"138
-[; ;main.c: 138:     comutar += 1;
+"139
+[; ;main.c: 139:     comutar += 1;
 [e =+ _comutar -> -> 1 `i `uc ]
-"140
-[; ;main.c: 140:     if (comutar == 3){
+"141
+[; ;main.c: 141:     if (comutar == 3){
 [e $ ! == -> _comutar `i -> 3 `i 1753  ]
 {
-"141
-[; ;main.c: 141:         comutar = 0;
-[e = _comutar -> -> 0 `i `uc ]
 "142
-[; ;main.c: 142:     }
+[; ;main.c: 142:         comutar = 0;
+[e = _comutar -> -> 0 `i `uc ]
+"143
+[; ;main.c: 143:     }
 }
 [e :U 1753 ]
-"145
-[; ;main.c: 145:     return;
-[e $UE 1749  ]
 "146
-[; ;main.c: 146: }
+[; ;main.c: 146:     return;
+[e $UE 1749  ]
+"147
+[; ;main.c: 147: }
 [e :UE 1749 ]
 }
-"149
-[; ;main.c: 149: void envia_bit(void){
-[v _envia_bit `(v ~T0 @X0 1 ef ]
-{
-[e :U _envia_bit ]
-[f ]
 "150
-[; ;main.c: 150:     adc_result=42;
-[e = _adc_result -> -> 42 `i `uc ]
-"151
-[; ;main.c: 151:     putchar(adc_result);
-[e ( _putchar (1 -> _adc_result `i ]
-"152
-[; ;main.c: 152:     return;
-[e $UE 1754  ]
-"153
-[; ;main.c: 153: }
-[e :UE 1754 ]
-}
-"155
-[; ;main.c: 155: void getch(void)
+[; ;main.c: 150: void getch(void)
 [v _getch `(v ~T0 @X0 1 ef ]
-"156
-[; ;main.c: 156: {
+"151
+[; ;main.c: 151: {
 {
 [e :U _getch ]
 [f ]
-"157
-[; ;main.c: 157:     get_char = RC1REG;
+"152
+[; ;main.c: 152:     get_char = RC1REG;
 [e = _get_char -> _RC1REG `uc ]
-"159
-[; ;main.c: 159:     return;
-[e $UE 1755  ]
-"160
-[; ;main.c: 160: }
-[e :UE 1755 ]
+"154
+[; ;main.c: 154:     return;
+[e $UE 1754  ]
+"155
+[; ;main.c: 155: }
+[e :UE 1754 ]
 }
 [p f _printf 8388608 ]
 [a 9C 90 58 0 ]
