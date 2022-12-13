@@ -28,15 +28,6 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     
 
 _timer0_int_handler:
-
-    BANKSEL ADPCH
-    MOVLW 0b00001000   ;set RA0 as ADC input
-    MOVWF ADPCH,1
-    // Pag 562
-    // This initiates a new conversion
-    BANKSEL ADCON0
-    BSF ADCON0, 0
-    
     BANKSEL PORTA
     BTG PORTA,5  ;TOGGLE LED ON PORTA,5
     BANKSEL PIR0

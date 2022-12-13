@@ -34,13 +34,13 @@
 #define _XTAL_FREQ 32000000   //the clock frequency defined in config() must be provided here for the delay function
 
 //declaration of global variables and functions
-void send_data(uint8_t);
+void send_data(uint8_t channel);
 void send_error(void);
 void define_METATEDS(void);
 void define_TCTEDS(void);
 void identify_NCAP_cmd(void);
 void send_METATEDS(void);
-void send_TCTEDS(uint8_t);
+void send_TCTEDS(uint8_t channel);
 void add_to_receiv_buff(void);
 void config(void);
 void __interrupt() int_handler(void); //the interrupt handler routine must be declared as __interrupt(). When an INT happens, this function is called
@@ -80,7 +80,6 @@ void main(void) {
     int j = 0;
     //If the main ends, the microcontroller resets. So, a while(1) is desirable to keep it looping
     while(1){
-        putch(5);
         identify_NCAP_cmd(); // IDEA: maybe move this to main
     } 
 }
@@ -325,7 +324,7 @@ void send_METATEDS(void) {
 }
 
 
-void send_TCTEDS(uint8_t channel) {
+void send_TCTEDS(uint8_t channel) { 
     // We will have 4 channels
     // 3 axis for the accelerometer and 1 for the potentiometer
     
