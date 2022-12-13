@@ -73,7 +73,6 @@ void main(void) {
     config();
     define_METATEDS();
     define_TCTEDS();
-
     
     //We give this function an input argument (3) and it adds 5 to that value and adds 1 to the global variable var_global
     volatile unsigned char result = pass_variable_between_C_and_ASM(3); 
@@ -181,6 +180,26 @@ void identify_NCAP_cmd(void){
             }
         }
     }
+    // If the class is to read information (Transducer Operating State)
+    else if (rec_buffer[2] == 0x03) {
+        // If statement for CMD function
+        // 0x01 - Read
+        if (rec_buffer[4] == 0x01) {
+            // Get lenght of data to be sent command dependant
+            length = rec_buffer[4];
+            lenght = lenght << 8;
+            lenght = lenght | rec_buffer[5];
+
+            // Get channel
+            channel = rec_buffer[0];
+            channel = channel << 8;
+            channel = channel | rec_buffer[1];
+
+            // Ignoring offset TODO
+            send_data(channel, length);
+            return;
+            }
+        }
 
     // Send error msg
     send_error();
