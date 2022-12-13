@@ -34,13 +34,13 @@
 #define _XTAL_FREQ 32000000   //the clock frequency defined in config() must be provided here for the delay function
 
 //declaration of global variables and functions
-void send_data(uint8_t);
+void send_data(uint8_t channel);
 void send_error(void);
 void define_METATEDS(void);
 void define_TCTEDS(void);
 void identify_NCAP_cmd(void);
 void send_METATEDS(void);
-void send_TCTEDS(uint8_t);
+void send_TCTEDS(uint8_t channel);
 void add_to_receiv_buff(void);
 void config(void);
 void __interrupt() int_handler(void); //the interrupt handler routine must be declared as __interrupt(). When an INT happens, this function is called
@@ -73,6 +73,7 @@ void main(void) {
     config();
     define_METATEDS();
     define_TCTEDS();
+
     
     //We give this function an input argument (3) and it adds 5 to that value and adds 1 to the global variable var_global
     volatile unsigned char result = pass_variable_between_C_and_ASM(3); 
@@ -80,8 +81,7 @@ void main(void) {
     int j = 0;
     //If the main ends, the microcontroller resets. So, a while(1) is desirable to keep it looping
     while(1){
-        putch(5);
-        identify_NCAP_cmd(); // IDEA: maybe move this to main
+        identify_NCAP_cmd();
     } 
 }
 
@@ -113,7 +113,7 @@ void add_to_receiv_buff(void){
 void identify_NCAP_cmd(void){
     // First let's check if we have a valid command
     // First check if we have the base 6 hex values
-    if (rec_head < 5){
+    if (rec_head < 6){
         return;
     }
 
@@ -181,21 +181,6 @@ void identify_NCAP_cmd(void){
             }
         }
     }
-    
-    // If the class is to read information (Transducer Operating State)
-    else if (rec_buffer[2] == 3) {
-        // If statement for CMD function
-        // 0x01 - Read
-        if (rec_buffer[4] == 1) {
-            // We only support length 1 when reading info
-            if (rec_buffer[4] == 0 && rec_buffer[5] == 1) {
-                    // We can ignore MSB of channel (rec_buffer[0])
-                    if (rec_buffer[0] == 0) {
-                        send_data(rec_buffer[1]);
-                    }
-                }
-            }
-        }
 
     // Send error msg
     send_error();
@@ -216,6 +201,27 @@ void define_METATEDS(void) {
 
     return;
 }
+
+
+void send_METATEDS(void) {
+
+    putch(1);
+    putch(0);
+    putch(22);
+    for (int i = 0; i < 6; i++) {
+        putch(METATED.TEDSID[i]);
+    }
+    for (int j = 0; j < 12; j++) {
+        putch(METATED.UUID[j]);
+    }
+    for (int k = 0; k < 4; k++) {
+        putch(METATED.MAXCHAN[k]);
+    }
+    // Reset head
+    rec_head = 0;
+    return;
+}
+
 
 void define_TCTEDS(void) {
     //  TCTEDS1 - TEDS DO TRANSDUCER CHANNEL 1 - Accelerometer X axis
@@ -307,25 +313,7 @@ void define_TCTEDS(void) {
 }
 
 
-void send_METATEDS(void) {
-
-    putch(1);
-    putch(0);
-    putch(22);
-    for (int i = 0; i < 6; i++) {
-        putch(METATED.TEDSID[i]);
-    }
-    for (int j = 0; j < 12; j++) {
-        putch(METATED.UUID[j]);
-    }
-    for (int k = 0; k < 4; k++) {
-        putch(METATED.MAXCHAN[k]);
-    }
-    return;
-}
-
-
-void send_TCTEDS(uint8_t channel) {
+void send_TCTEDS(uint8_t channel) { 
     // We will have 4 channels
     // 3 axis for the accelerometer and 1 for the potentiometer
     
@@ -450,6 +438,9 @@ void send_TCTEDS(uint8_t channel) {
         send_error();
     }
 
+    // Reset head
+    rec_head = 0;
+
     return;
 }
 
@@ -512,7 +503,8 @@ void send_data(uint8_t channel) {
     // Now send data
     putch(ADRESL);
     
-
+    // Reset head
+    rec_head = 0;
     
     return;
 }
@@ -524,5 +516,7 @@ void send_error() {
     for (int i = 0; i < 6; i++) {
             putch(0);
         }
+    // Reset head
+    rec_head = 0;
     return;
 }

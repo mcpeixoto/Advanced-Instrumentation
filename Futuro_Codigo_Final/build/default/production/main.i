@@ -21595,13 +21595,13 @@ typedef struct TRANSDUCERCHANNEL_TEDS_TEMPLATE {
 
 
 
-void send_data(uint8_t);
+void send_data(uint8_t channel);
 void send_error(void);
 void define_METATEDS(void);
 void define_TCTEDS(void);
 void identify_NCAP_cmd(void);
 void send_METATEDS(void);
-void send_TCTEDS(uint8_t);
+void send_TCTEDS(uint8_t channel);
 void add_to_receiv_buff(void);
 void config(void);
 void __attribute__((picinterrupt(("")))) int_handler(void);
@@ -21610,7 +21610,6 @@ extern unsigned char pass_variable_between_C_and_ASM(unsigned char a);
 void putch(char);
 char var_global = 0;
 char get_char;
-char comutar = 0;
 char adc_result;
 
 
@@ -21637,41 +21636,13 @@ void main(void) {
     define_TCTEDS();
 
 
+
     volatile unsigned char result = pass_variable_between_C_and_ASM(3);
-
-
 
     int j = 0;
 
     while(1){
-        putch(j);
-
-        _delay((unsigned long)((50)*(32000000/4000.0)));
-
-        if (0){
-            printf("Global variable = ");
-            putch(var_global);
-            printf("\n");
-            printf("Output of function = ");
-            putch(result);
-            printf("\n");
-            j = 0;
-        }
-
-        j=j+1;
-# 109 "main.c"
-        if(get_char != 0)
-        {
-            printf("Received: ");
-            putch(get_char);
-            printf("\n");
-            printf("Transmitted: ");
-            get_char = get_char+1;
-            putch(get_char);
-            printf("\n");
-            get_char = 0;
-        }
-
+        identify_NCAP_cmd();
     }
 }
 
@@ -21691,20 +21662,22 @@ void putch(char byte)
 
 
 void add_to_receiv_buff(void){
+
+    RC1STAbits.OERR = 0;
+
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
 
-    identify_NCAP_cmd();
     return;
 }
 
 void identify_NCAP_cmd(void){
 
 
-    if (rec_head < 5){
+    if (rec_head < 6){
         return;
     }
-# 197 "main.c"
+# 163 "main.c"
     if (rec_buffer[2] == 1) {
 
         if (rec_buffer[3] == 2) {
@@ -21728,21 +21701,6 @@ void identify_NCAP_cmd(void){
     }
 
 
-    else if (rec_buffer[2] == 3) {
-
-
-        if (rec_buffer[4] == 1) {
-
-            if (rec_buffer[4] == 0 && rec_buffer[5] == 1) {
-
-                    if (rec_buffer[0] == 0) {
-                        send_data(rec_buffer[1]);
-                    }
-                }
-            }
-        }
-
-
     send_error();
 
 
@@ -21762,6 +21720,27 @@ void define_METATEDS(void) {
     return;
 }
 
+
+void send_METATEDS(void) {
+
+    putch(1);
+    putch(0);
+    putch(22);
+    for (int i = 0; i < 6; i++) {
+        putch(METATED.TEDSID[i]);
+    }
+    for (int j = 0; j < 12; j++) {
+        putch(METATED.UUID[j]);
+    }
+    for (int k = 0; k < 4; k++) {
+        putch(METATED.MAXCHAN[k]);
+    }
+
+    rec_head = 0;
+    return;
+}
+
+
 void define_TCTEDS(void) {
 
 
@@ -21780,7 +21759,7 @@ void define_TCTEDS(void) {
 
     uint8_t array2[] = {11, 1, 0};
     memcpy(TCTEDS1.CHANNEL_TYPE, array2, 3);
-# 281 "main.c"
+# 253 "main.c"
     uint8_t array3[] = {12, 10, 0, 128, 128, 130, 128, 124, 128, 128, 128, 128};
     memcpy(TCTEDS1.UNITS, array3, 12);
 
@@ -21840,24 +21819,6 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS4.DATA_MODEL_LENGTH, TCTEDS1.DATA_MODEL_LENGTH, 3);
     memcpy(TCTEDS4.MODEL_SIG_BITS, TCTEDS1.MODEL_SIG_BITS, 3);
 
-    return;
-}
-
-
-void send_METATEDS(void) {
-
-    putch(1);
-    putch(0);
-    putch(22);
-    for (int i = 0; i < 6; i++) {
-        putch(METATED.TEDSID[i]);
-    }
-    for (int j = 0; j < 12; j++) {
-        putch(METATED.UUID[j]);
-    }
-    for (int k = 0; k < 4; k++) {
-        putch(METATED.MAXCHAN[k]);
-    }
     return;
 }
 
@@ -21987,6 +21948,9 @@ void send_TCTEDS(uint8_t channel) {
         send_error();
     }
 
+
+    rec_head = 0;
+
     return;
 }
 
@@ -21994,7 +21958,7 @@ void send_TCTEDS(uint8_t channel) {
 
 
 void send_data(uint8_t channel) {
-# 508 "main.c"
+# 465 "main.c"
     if (channel == 1) {
         ADPCH = 0b00001000;
 
@@ -22017,6 +21981,14 @@ void send_data(uint8_t channel) {
     }
 
 
+    putch(01);
+
+
+    putch(0);
+
+    putch(1);
+
+
     ADCON0bits.ADGO = 1;
 
     while (PIR1bits.ADIF == 0){
@@ -22026,18 +21998,10 @@ void send_data(uint8_t channel) {
     PIR1bits.ADIF = 0;
 
 
-
-
-    putch(01);
-
-
-    putch(0);
-
-    putch(1);
-
     putch(ADRESL);
 
 
+    rec_head = 0;
 
     return;
 }
@@ -22049,5 +22013,7 @@ void send_error() {
     for (int i = 0; i < 6; i++) {
             putch(0);
         }
+
+    rec_head = 0;
     return;
 }

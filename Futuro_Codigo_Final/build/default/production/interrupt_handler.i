@@ -24191,7 +24191,7 @@ ENDM
 # 2 "interrupt_handler.asm" 2
 
 
-GLOBAL _int_handler, _comutar, _add_to_receiv_buff ;declare global functions
+GLOBAL _int_handler, _add_to_receiv_buff ;declare global functions
 
 PSECT intcode
 
@@ -24207,6 +24207,9 @@ _int_handler: ;when an interrupt happens, this function is called. It is your jo
     BTFSC PIR1, 0 ;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, skip.
     goto _adc_int_handler
 
+    ; Clear bit 1 of RC1STA register BUG FIX RECEIVING
+    BCF RC1STA, 1
+
     BANKSEL PIR3
     BTFSC PIR3, 5 ;Q: check if the EUSART1 RX flag is set. If so, go to the C function _getch. If not, skip.
     call _add_to_receiv_buff
@@ -24215,15 +24218,6 @@ _int_handler: ;when an interrupt happens, this function is called. It is your jo
 
 
 _timer0_int_handler:
-
-    BANKSEL ADPCH
-    MOVLW 0b00001000 ;set ((PORTA) and 0FFh), 0, a as ADC input
-    MOVWF ADPCH,1
-
-
-    BANKSEL ADCON0
-    BSF ADCON0, 0
-
     BANKSEL PORTA
     BTG PORTA,5 ;TOGGLE LED ON PORTA,5
     BANKSEL PIR0

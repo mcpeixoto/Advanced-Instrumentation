@@ -29,6 +29,7 @@ write(stim, [0 0 1 2 0 2 1 0], "uint8");
 suc = read(stim,3, "uint8");
 if (suc(1) ==0)
     display("Erro nas metateds")
+    suc
     flag=0;
 else
     teds = read(stim,suc(3), "uint8");
