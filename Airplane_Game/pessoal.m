@@ -102,6 +102,20 @@ while(ishandle(fig))
   tnew = toc;
   
   %{
+    Pedir valores; retirar valores para x,y e z e v (pot)
+    xx = x- (x_medio)
+    yy = y - (y_medio)
+    zz = z - (z_medio)
+    Normalizar os valores
+    xx = xx/(xx^2 + yy^2 + zz^2)^(1/2)
+    yy = yy/(xx^2 + yy^2 + zz^2)^(1/2)
+    zz = zz/(xx^2 + yy^2 + zz^2)^(1/2)
+    rot = rot*angle2scm(xx, yy, zz)
+
+    # Velocidades é preciso testa as gamas de valores!!!
+    v = v*100 (? fator por testar)
+  %}
+  %{
   %Check for user inputs:
   if fig.UserData.e
       rot = rot*angle2dcm(0.05,0,0);
