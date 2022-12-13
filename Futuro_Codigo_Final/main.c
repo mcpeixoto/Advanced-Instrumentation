@@ -142,7 +142,7 @@ void add_to_receiv_buff(void){
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
     
-    identify_NCAP_cmd();
+    identify_NCAP_cmd(); // IDEA: maybe move this to main
     return;
 }
 
