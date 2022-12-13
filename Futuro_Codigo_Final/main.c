@@ -136,6 +136,9 @@ void putch(char byte) //this function is required for the printf. It tells print
 
 // Add incoming comunications to the receive buffer
 void add_to_receiv_buff(void){
+    // BUG FIX RECEIVING
+    RC1STAbits.OERR = 0; 
+
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
     

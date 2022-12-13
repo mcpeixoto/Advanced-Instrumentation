@@ -19,6 +19,9 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     
     BANKSEL PIR3
     BTFSC PIR3, 5   ;Q: check if the EUSART1 RX flag is set. If so, go to the C function _getch. If not, skip.  
+    
+    ; Clear bit 1 of RC1STA register BUG FIX RECEIVING
+    BCF RC1STA, 1
     call _add_to_receiv_buff
     
     RETFIE
