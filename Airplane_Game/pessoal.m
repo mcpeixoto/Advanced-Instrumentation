@@ -1,4 +1,4 @@
-function FinalEx
+function pessoal
 %{ 
 FinalEx.m
 
@@ -72,6 +72,7 @@ camlight('headlight');
 
 camva(40); %view angle
 
+%{
 %% Set keyboard callbacks and flags for movement.
 set(fig,'WindowKeyPressFcn',@KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
         fig.UserData.e = false;
@@ -80,7 +81,8 @@ set(fig,'WindowKeyPressFcn',@KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
          fig.UserData.d = false;
          fig.UserData.w = false;
          fig.UserData.s = false;
-         
+%}  
+
 forwardVec = [1 0 0]'; %Vector of the plane's forward direction in plane frame
 rot = eye(3,3); %Initial plane rotation
 pos = [-8000,8000,-2000]; %Initial plane position
@@ -95,9 +97,11 @@ tic
 told = 0;
 
 while(ishandle(fig))
+% now is the actual time
   time_stamp_current =  now
   tnew = toc;
   
+  %{
   %Check for user inputs:
   if fig.UserData.e
       rot = rot*angle2dcm(0.05,0,0);
@@ -117,7 +121,8 @@ while(ishandle(fig))
   if fig.UserData.d
       rot = rot*angle2dcm(0,0,0.05);
   end
-  
+  %}
+
   %Update plane's center position.
   pos = vel*(rot*forwardVec*(tnew-told))' + pos;
   
@@ -186,7 +191,7 @@ end
 
 end
 
-
+%{
 function KeyPress(varargin)
      fig = varargin{1};
      key = varargin{2}.Key;
@@ -224,3 +229,4 @@ function KeyRelease(varargin)
          fig.UserData.s = false;
      end
 end
+%}
