@@ -1,6 +1,6 @@
 #include <xc.inc>
 
-GLOBAL _config, _comutar ;define the function to link it with the C definition
+GLOBAL _config ;define the function to link it with the C definition
 
     
 PSECT text0,local,class=CODE,reloc=2
@@ -189,14 +189,6 @@ _config:
     BSF INTCON, 7
     BSF INTCON, 6
     
-    
-    ;=================
-    ;INITIALIZE COMMUTING VARIABLE
-    ;=================
-
-    BANKSEL _comutar
-    MOVLW 0b00000000 // Initilize at 0
-    MOVWF _comutar,1
     
     
     RETURN

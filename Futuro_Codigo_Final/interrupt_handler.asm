@@ -1,7 +1,7 @@
 #include <xc.inc>
 
     
-GLOBAL _int_handler, _comutar, _add_to_receiv_buff    ;declare global functions
+GLOBAL _int_handler, _add_to_receiv_buff    ;declare global functions
     
 PSECT intcode
 
@@ -16,14 +16,14 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     BANKSEL PIR1
     BTFSC PIR1, 0   ;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, skip.
     goto _adc_int_handler
+
+    ; Clear bit 1 of RC1STA register BUG FIX RECEIVING
+    BCF RC1STA, 1
     
     BANKSEL PIR3
     BTFSC PIR3, 5   ;Q: check if the EUSART1 RX flag is set. If so, go to the C function _getch. If not, skip.  
-    
-    ; Clear bit 1 of RC1STA register BUG FIX RECEIVING
-    BCF RC1STA, 1
     call _add_to_receiv_buff
-    
+
     RETFIE
     
 

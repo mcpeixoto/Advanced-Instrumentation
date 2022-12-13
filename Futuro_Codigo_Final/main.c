@@ -49,7 +49,6 @@ extern unsigned char pass_variable_between_C_and_ASM(unsigned char a);
 void putch(char); //function used to send data via UART. The printf uses this function too.
 char var_global = 0;  
 char get_char;
-char comutar = 0;
 char adc_result;
 
 // Create the structs for the Meta TEDS and for the TransducerChannels TEDS for 4 channels
@@ -77,46 +76,12 @@ void main(void) {
     
     //We give this function an input argument (3) and it adds 5 to that value and adds 1 to the global variable var_global
     volatile unsigned char result = pass_variable_between_C_and_ASM(3); 
-    
-    
-    
+        
     int j = 0;
     //If the main ends, the microcontroller resets. So, a while(1) is desirable to keep it looping
     while(1){
-
-        __delay_ms(50);
-        /*print the results every 2 seconds*/
-        if (0){
-            printf("Global variable = ");  //we use printf to print strings
-            putch(var_global);  //and we can use putch to directly put a 8bit variable in the UART TX
-            printf("\n");
-            printf("Output of function = ");
-            putch(result);
-            printf("\n");
-            j = 0;
-        }
-        
-        j=j+1;
-
-    
-        //PORTAbits.RA5 = !PORTAbits.RA5;  //this is how we modify bits in C.
-
-        //When we receive a char from the UART RX, the interrupt calls function getch, where the received byte is stored in variable get_char.
-        //Here, if we receive a value different than 0, we add 1 and return the updated value via UART.
-       
-        
-        if(get_char != 0)
-        {
-            printf("Received: ");
-            putch(get_char);
-            printf("\n");
-            printf("Transmitted: ");
-            get_char = get_char+1;
-            putch(get_char);
-            printf("\n");
-            get_char = 0;
-        }
-            
+        putch(5);
+        identify_NCAP_cmd(); // IDEA: maybe move this to main
     } 
 }
 
@@ -142,7 +107,6 @@ void add_to_receiv_buff(void){
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
     
-    identify_NCAP_cmd(); // IDEA: maybe move this to main
     return;
 }
 
@@ -528,6 +492,14 @@ void send_data(uint8_t channel) {
         return;
     }
     
+    // Success/Fail Flag
+    putch(01); // Success
+    // Length  
+    // MSB
+    putch(0);
+    // LSB
+    putch(1);
+
     // Start new conversion
     ADCON0bits.ADGO = 1;
     // Ensure ADC conversion is over 
@@ -537,16 +509,7 @@ void send_data(uint8_t channel) {
     // Reset ADC flag
     PIR1bits.ADIF = 0;
      
-
     // Now send data
-    // Success/Fail Flag
-    putch(01); // Success
-    // Length  
-    // MSB
-    putch(0);
-    // LSB
-    putch(1);
-    // Data
     putch(ADRESL);
     
 
