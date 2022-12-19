@@ -42,6 +42,7 @@ void identify_NCAP_cmd(void);
 void send_METATEDS(void);
 void send_TCTEDS(uint8_t channel);
 void add_to_receiv_buff(void);
+void add_to_receiv_buff(void);
 void config(void);
 void __interrupt() int_handler(void); //the interrupt handler routine must be declared as __interrupt(). When an INT happens, this function is called
 extern unsigned char pass_variable_between_C_and_ASM(unsigned char a);
@@ -112,7 +113,7 @@ void add_to_receiv_buff(void){
 
 // This function is called at each timer interrupt 
 // and will reset the buffer when 50 interrupts happen
-def reset_receiv_buff(void){
+void reset_receiv_buff(void){
     if (reset_rec_head == 50){
         rec_head = 0;
         reset_rec_head = 0;
