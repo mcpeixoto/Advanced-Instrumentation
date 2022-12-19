@@ -69,12 +69,20 @@ int sent_head = 0;
 char adc_buffer[100];
 int adc_head = 0;
 
+// Fill everything with 0
+void clear_buffers(void){
+    memset(rec_buffer, 0, sizeof(rec_buffer));
+    memset(sent_buffer, 0, sizeof(sent_buffer));
+    memset(adc_buffer, 0, sizeof(adc_buffer));
+}
+
 
 void main(void) {
     
     config();
     define_METATEDS();
     define_TCTEDS();
+    clear_buffers();
     
     //We give this function an input argument (3) and it adds 5 to that value and adds 1 to the global variable var_global
     volatile unsigned char result = pass_variable_between_C_and_ASM(3); 
