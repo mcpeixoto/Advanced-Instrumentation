@@ -107,16 +107,25 @@ void add_to_receiv_buff(void){
 
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
+
+    // Resets receiving buffer watchdog
+    reset_rec_head = 0;
     
     return;
 }
 
 // This function is called at each timer interrupt 
-// and will reset the buffer when 50 interrupts happen
+// and will reset the buffer after x interrupts 
+// without receiving data. Works like a watchdog for the buffer.
+// to define x, we define out waiting time as 1s
+// Since we have a delta t of 2ms, x = 500
 void reset_receiv_buff(void){
-    if (reset_rec_head == 50){
+    // If we have received data, but not enough to identify a command, 
+    // reset the buffer
+    if (reset_rec_head == 500){
         rec_head = 0;
         reset_rec_head = 0;
+        send_error()
     }
     reset_rec_head += 1;
     return;
