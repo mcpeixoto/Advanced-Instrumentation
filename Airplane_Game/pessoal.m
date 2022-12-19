@@ -23,6 +23,10 @@ Matt Sheen, mws262@cornell.edu
 
 close all
 
+%% Set up teds and metateds
+%{
+Saber tudo das teds e metateds que é preciso para o programa
+%}
 fig = figure;
 
 fig.UserData.firstPerson = false; %do we start in 1st person view, or not?
