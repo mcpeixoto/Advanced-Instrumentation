@@ -1,7 +1,7 @@
 #include <xc.inc>
 
     
-GLOBAL _int_handler, _add_to_receiv_buff    ;declare global functions
+GLOBAL _int_handler, _add_to_receiv_buff, _reset_receiv_buff    ;declare global functions
     
 PSECT intcode
 
@@ -32,6 +32,11 @@ _timer0_int_handler:
     BTG PORTA,5  ;TOGGLE LED ON PORTA,5
     BANKSEL PIR0
     BCF PIR0,5 ;clear timer_int flag
+
+    ; Call reset receive buffer function 
+    call _reset_receiv_buff
+
+
     RETFIE  ;return from interruption
     
     

@@ -61,6 +61,7 @@ struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS4;
 // Declare receive and send buffers
 char rec_buffer[100];
 int rec_head = 0;
+int reset_rec_head = 0;
 char sent_buffer[100];
 int sent_head = 0;
 
@@ -108,6 +109,18 @@ void add_to_receiv_buff(void){
     
     return;
 }
+
+// This function is called at each timer interrupt 
+// and will reset the buffer when 50 interrupts happen
+def reset_receiv_buff(void){
+    if (reset_rec_head == 50){
+        rec_head = 0;
+        reset_rec_head = 0;
+    }
+    reset_rec_head += 1;
+    return;
+}
+
 
 void identify_NCAP_cmd(void){
     // First let's check if we have a valid command
