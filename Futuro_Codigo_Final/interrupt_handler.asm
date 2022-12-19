@@ -13,9 +13,9 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     BTFSC PIR0, 5 ; Q:check if the timer0 interrupt flag is set. If so, go to timer0_int_handler. If not, skip.
     goto _timer0_int_handler
     
-    BANKSEL PIR1
-    BTFSC PIR1, 0   ;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, skip.
-    goto _adc_int_handler
+    ;BANKSEL PIR1
+    ;BTFSC PIR1, 0   ;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, skip.
+    ;goto _adc_int_handler
 
     ; Clear bit 1 of RC1STA register BUG FIX RECEIVING
     BCF RC1STA, 1
@@ -35,7 +35,6 @@ _timer0_int_handler:
 
     ; Call reset receive buffer function 
     call _reset_receiv_buff
-
 
     RETFIE  ;return from interruption
     

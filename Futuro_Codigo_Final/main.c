@@ -107,6 +107,7 @@ void add_to_receiv_buff(void){
 
     rec_buffer[rec_head] = RC1REG;
     rec_head += 1;
+    RC1REG = 0;
 
     // Resets receiving buffer watchdog
     reset_rec_head = 0;
@@ -117,8 +118,8 @@ void add_to_receiv_buff(void){
 // This function is called at each timer interrupt 
 // and will reset the buffer after x interrupts 
 // without receiving data. Works like a watchdog for the buffer.
-// to define x, we define out waiting time as 1s
-// Since we have a delta t of 2ms, x = 500
+// to define x, we define out waiting time as 0.25s
+// Since we have a delta t of 2ms, x = 125
 void reset_receiv_buff(void){
     // If we have not received data, do nothing
     if (rec_head == 0){
@@ -126,7 +127,7 @@ void reset_receiv_buff(void){
     }
     // If we have received data, but not enough to identify a command, 
     // reset the buffer
-    if (reset_rec_head == 500){
+    if (reset_rec_head == 125){
         // Reset buffer and watchdog
         rec_head = 0;
         reset_rec_head = 0;
@@ -162,7 +163,7 @@ void identify_NCAP_cmd(void){
     // does not matter
     // Destination Transducer - São os canais!
     
-    // CMD Class Slide 31, tab 15
+    // CMD Class Slide 31, tab 15   
     // 01 - Comunando comum do TIM  e Trandutores (Para pedir informações)
     // 03 - Tranducer operating state (Quando queremos ler dados porque o transdutor vai estar ativo)
     
