@@ -181,25 +181,20 @@ void identify_NCAP_cmd(void){
         }
     }
     // If the class is to read information (Transducer Operating State)
-    else if (rec_buffer[2] == 0x03) {
+    else if (rec_buffer[2] == 3) {
         // If statement for CMD function
         // 0x01 - Read
-        if (rec_buffer[4] == 0x01) {
-            // Get lenght of data to be sent command dependant
-            length = rec_buffer[4];
-            lenght = lenght << 8;
-            lenght = lenght | rec_buffer[5];
-
-            // Get channel
-            channel = rec_buffer[0];
-            channel = channel << 8;
-            channel = channel | rec_buffer[1];
-
-            // Ignoring offset TODO
-            send_data(channel, length);
-            return;
+        if (rec_buffer[4] == 1) {
+            // We only support length 1 when reading info
+            if (rec_buffer[4] == 0 && rec_buffer[5] == 1) {
+                    // We can ignore MSB of channel (rec_buffer[0])
+                    if (rec_buffer[0] == 0) {
+                        send_data(rec_buffer[1]);
+                    }
+                }
             }
         }
+
 
     // Send error msg
     send_error();
