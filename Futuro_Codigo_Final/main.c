@@ -42,7 +42,6 @@ void identify_NCAP_cmd(void);
 void send_METATEDS(void);
 void send_TCTEDS(uint8_t channel);
 void add_to_receiv_buff(void);
-void add_to_receiv_buff(void);
 void config(void);
 void __interrupt() int_handler(void); //the interrupt handler routine must be declared as __interrupt(). When an INT happens, this function is called
 extern unsigned char pass_variable_between_C_and_ASM(unsigned char a);
@@ -225,7 +224,7 @@ void identify_NCAP_cmd(void){
         // 0x01 - Read
         if (rec_buffer[4] == 1) {
             // We only support length 1 when reading info
-            if (rec_buffer[4] == 0 && rec_buffer[5] == 1) {
+            if (rec_buffer[5] == 0 && rec_buffer[6] == 1) {
                     // We can ignore MSB of channel (rec_buffer[0])
                     if (rec_buffer[0] == 0) {
                         send_data(rec_buffer[1]);
