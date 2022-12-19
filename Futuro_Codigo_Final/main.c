@@ -83,6 +83,7 @@ void main(void) {
     define_METATEDS();
     define_TCTEDS();
     clear_buffers();
+    RC1REG = 0; // Clear the receive register
     
     //We give this function an input argument (3) and it adds 5 to that value and adds 1 to the global variable var_global
     volatile unsigned char result = pass_variable_between_C_and_ASM(3); 
