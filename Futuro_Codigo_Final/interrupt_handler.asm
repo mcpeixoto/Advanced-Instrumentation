@@ -33,7 +33,7 @@ _timer0_int_handler:
     BANKSEL PIR0
     BCF PIR0,5 ;clear timer_int flag
 
-    ; Call reset receive buffer function 
+    ; Call reset receive buffer function / watchdog
     call _reset_receiv_buff
 
     RETFIE  ;return from interruption
