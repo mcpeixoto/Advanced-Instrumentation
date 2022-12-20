@@ -306,19 +306,19 @@ void send_METATEDS(void) {
     }
     return;
 }
-void echo (void){           // fun��o teste que cospe valores recebidos pela NCAP
-    putch (get_char());
-    putch (get_char());
-    putch (get_char());
-    putch (get_char());
-    putch (get_char());
-    test = get_char();      // o tamanhp do que vem para a frente depende do sexto byte 
-    putch (test);
-    for(int i =0; i < test; i++){
-        putch (get_char());
-    }
-    return;
-}
+//void echo (void){           // fun��o teste que cospe valores recebidos pela NCAP
+  //  putch (get_char());
+    //putch (get_char());
+   // putch (get_char());
+   // putch (get_char());
+   // putch (get_char());
+   // test = get_char();      // o tamanhp do que vem para a frente depende do sexto byte 
+   // putch (test);
+   // for(int i =0; i < test; i++){
+    //    putch (get_char());
+   // }
+   // return;
+//}
 
 void send_TCTEDS(uint8_t channel) {
     
