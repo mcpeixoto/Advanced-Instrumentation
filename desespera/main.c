@@ -422,10 +422,61 @@ void send_TCTEDS(uint8_t channel) {
     return;
 }
 
-void send_values(uint8_t canal){        // fun��od de teste 
-    if (canal == 1){
-        putch(0);
-        putch(1);
+void send_values(uint8_t channel){        // fun��od de teste 
+       // We will have 4 channels
+    // 3 axis for the accelerometer and 1 for the potentiometer
+    // Success/Fail Flag 01
+    // Length (MSB) 00
+    // Length (LSB) 01 (I have requested the sensor to read 1 value, which needs 1 byte)
+    // Data XX
+
+    // ADPCH
+    // 001010 RB2/ ANB2 // Z
+    // 001001 RB1/ ANB1 // Y
+    // 001000 RB0/ANB0 // X
+    // 000000 RA0/ANA0 // potenciometro
+    
+    // Read X axis
+    if (channel == 1) {
+        ADPCH = 0b00001000;
         
+    // Read Y axis
+    } else if (channel == 2) {
+        ADPCH = 0b00001001;
+        
+    // Read Z axis
+    } else if (channel == 3) {
+        ADPCH = 0b00001010;
+        
+    // Read Potentiometer
+    } else if (channel == 4) {
+        ADPCH = 0b00000000;
+        
+    } else {
+        // send error message
+        send_error();
+        return;
     }
+    
+    // Success/Fail Flag
+    putch(01); // Success
+    // Length  
+    // MSB
+    putch(0);
+    // LSB
+    putch(1);
+
+    // Start new conversion
+    ADCON0bits.ADGO = 1;
+    // Ensure ADC conversion is over 
+    while (PIR1bits.ADIF == 0){
+        ;
+    }
+    // Reset ADC flag
+    PIR1bits.ADIF = 0;
+     
+    // Now send data
+    putch(ADRESL);
+    
+    return;
 }
