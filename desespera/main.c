@@ -46,6 +46,7 @@ void send_TCTEDS(uint8_t);
 uint8_t get_char (void);
 void fail (void);
 void write_success(void);
+void send_values (uint8_t);
 void enviar_valor(uint8_t canal);
 char pos;
 char var_global;
@@ -149,7 +150,7 @@ void Identify_NCAP_cmd(void) {
         if (info[2] == 3){             // verifica que � um transducer 
             
             if (info[3] == 1){         // ler do transdutor do canal info[1]
-                enviar_valor(info[1]); 
+                send_values(info[1]); 
                 return;
             }
             
@@ -179,36 +180,36 @@ void write_success(void){   // codigo de sucesso
     }
     return;
 }
- void enviar_valor(uint8_t canal){
-      
-      putch(1);
-      putch(0);      // mensagem de sucesso
-      putch(1);
+ //void enviar_valor(uint8_t canal){
+ //     
+ //     putch(1);
+ //     putch(0);      // mensagem de sucesso
+//      putch(1);
       
  
-      if(canal==1) {
-        ADPCH = 0B00000001 ;        // O input do ADC � o pin RA1 para o valor do x
-        ADCON0bits.ADGO = 1 ;       // fazer uma convers�o
-        while(PIR1bits.ADIF == 0){
+//      if(canal==1) {
+//        ADPCH = 0B00000001 ;        // O input do ADC � o pin RA1 para o valor do x
+//        ADCON0bits.ADGO = 1 ;       // fazer uma convers�o
+//        while(PIR1bits.ADIF == 0){
             ;
-        }
-        putch(ADRESL);              // mandar valor 
-        PIR1bits.ADIF = 0;          // reset da flag do ADC
-      }
-      if(canal==2) {
-        ADPCH = 0B00000010 ;        // O input do ADC � o pin RA2 para o valor do y
-        ADCON0bits.ADGO = 1 ;       // fazer uma convers�o
-        while(PIR1bits.ADIF == 0){
-            ;
-        }
-        putch(ADRESL);              // mandar valor
-        PIR1bits.ADIF = 0;          // reset da flag do AD
-      }
-      if(canal==3) {
-        putch(DAC1CON1);            // se quiser ler do transducer 3 escrever o valor do DAC 
-      }
+//        }
+//        putch(ADRESL);              // mandar valor 
+//        PIR1bits.ADIF = 0;          // reset da flag do ADC
+//      }
+//      if(canal==2) {
+//        ADPCH = 0B00000010 ;        // O input do ADC � o pin RA2 para o valor do y
+//        ADCON0bits.ADGO = 1 ;       // fazer uma convers�o
+//        while(PIR1bits.ADIF == 0){
+//            ;
+//        }
+//        putch(ADRESL);              // mandar valor
+//        PIR1bits.ADIF = 0;          // reset da flag do AD
+//      }
+//      if(canal==3) {
+ //       putch(DAC1CON1);            // se quiser ler do transducer 3 escrever o valor do DAC 
+//      }
       
- }
+// }
 
 
 
@@ -454,7 +455,7 @@ void send_values(uint8_t channel){        // fun��od de teste
         
     } else {
         // send error message
-        send_error();
+        fail();
         return;
     }
     
