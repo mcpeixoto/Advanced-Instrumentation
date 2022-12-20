@@ -56,7 +56,7 @@ end
 
 % Read channel 1
 write(stim, [0 1 3 1 0 1 0], "uint8");
-suc = read(stim,3, "uint8");
+suc = read(stim,3, "uint8")
 if (suc(1) ==0)
     display("Erro ao ler sensor 1")
     flag=0;

@@ -460,7 +460,7 @@ void send_values(uint8_t channel){        // fun��od de teste
     }
     
     // Success/Fail Flag
-    putch(01); // Success
+    putch(1); // Success
     // Length  
     // MSB
     putch(0);

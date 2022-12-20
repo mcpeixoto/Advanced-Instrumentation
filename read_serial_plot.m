@@ -6,9 +6,8 @@ clear; clc;
 % serialportlist("available")
 
 % Opening serial conection
-s = serialport("/dev/ttyACM0", 9600);
+stim = serialport("/dev/ttyACM0", 9600);
 
-data = read(s,1,"uint8");
 
 
 % Closing serial conection
@@ -16,7 +15,6 @@ data = read(s,1,"uint8");
 
 
 % data is an array of characters
-data = char(data)
 
 % Create X, Y, Z dynamic arrays
 X = [];
@@ -41,40 +39,24 @@ title("Acceleration vs Time");
 % Z:O
 
 while true
-    data = read(s,1,"string");
-
-    % If data is: :
-    % : , . or new line, ignore it
-    % If data is X, Y or Z then read the next batch of data
-    % and store it in the corresponding array
-    if data == ":" | data == "," | data == "." | data == "\n" | data == '' | data == ' '
-        continue;
-    elseif data == "X"
-        % Read the ":"
-        read(s,1,"string");
-        % Read the next batch of data
-        X = [X, read(s,1,"uint8")];
-    elseif data == "Y"
-        % Read the ":"
-        read(s,1,"string");
-        % Read the next batch of data
-        Y = [Y, read(s,1,"uint8")];
-    elseif data == "Z"
-        % Read the ":"
-        read(s,1,"string");
-        % Read the next batch of data
-        Z = [Z, read(s,1,"uint8")];
-    else 
-        % Comunicate error
-        disp("Error: Unknown data");
-        % Show data
-        disp(data);
-    end
-
+    write(stim, [0 1 3 1 0 1 0], "uint8");
+    suc = read(stim,3, "uint8");
+    teds = read(stim,suc(3), "uint8");
+    X = [X, teds];
+    
+    write(stim, [0 2 3 1 0 1 0], "uint8");
+    suc = read(stim,3, "uint8");
+    teds = read(stim,suc(3), "uint8");
+    Y = [Y, teds];
+    
+    write(stim, [0 3 3 1 0 1 0], "uint8");
+    suc = read(stim,3, "uint8");
+    teds = read(stim,suc(3), "uint8");
+    Z = [Z, teds];
 
     
     % Plot the data
-    %ylim([100 150])
+    %ylim([100 150])1
     plot(X, "r");
     plot(Y, "g");
     plot(Z, "b");
