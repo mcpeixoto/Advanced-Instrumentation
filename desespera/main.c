@@ -473,11 +473,13 @@ void send_values(uint8_t channel){        // fun��od de teste
     while (PIR1bits.ADIF == 0){
         ;
     }
+     putch(ADRESH);
     // Reset ADC flag
     PIR1bits.ADIF = 0;
      
     // Now send data
-    putch(ADRESL);
+    //putch(ADRESL);
+    //putch(channel);
     
     return;
 }

@@ -37,7 +37,6 @@ title("Acceleration vs Time");
 % X:O
 % Y:P
 % Z:O
-
 while true
     write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
@@ -54,7 +53,6 @@ while true
     teds = read(stim,suc(3), "uint8");
     Z = [Z, teds];
 
-    
     % Plot the data
     %ylim([100 150])1
     plot(X, "r");
