@@ -73,9 +73,7 @@ void main(void) {
 
     
     while (1) {
-        if (PIR3bits.TX1IF ==1){
-            Identify_NCAP_cmd(); 
-        }
+        ;
         }
     
 }
