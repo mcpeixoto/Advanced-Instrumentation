@@ -64,4 +64,4 @@ else
     teds = read(stim,suc(3), "uint8");
     display(teds);
     flag=1;
-end
+endstim = serialport("/dev/ttyACM0", 9600);

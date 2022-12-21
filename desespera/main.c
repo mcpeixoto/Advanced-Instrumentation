@@ -246,7 +246,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS1.TEDSID, array11, 6);
     uint8_t array21[] = {11, 1, 0};
     memcpy(TCTEDS1.CHANNEL_TYPE, array21, 3);
-    uint8_t array31[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    uint8_t array31[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
     memcpy(TCTEDS1.UNITS, array31, 12);
     uint8_t array41[] = {13, 1, 0};
     memcpy(TCTEDS1.LOW_RANGE_LIMIT, array41, 3);
@@ -268,7 +268,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS2.TEDSID, array12, 6);
     uint8_t array22[] = {11, 1, 0};
     memcpy(TCTEDS2.CHANNEL_TYPE, array22, 3);
-    uint8_t array32[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    uint8_t array32[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
     memcpy(TCTEDS2.UNITS, array32, 12);
     uint8_t array42[] = {13, 1, 0};
     memcpy(TCTEDS2.LOW_RANGE_LIMIT, array42, 3);
@@ -288,7 +288,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS3.TEDSID, array13, 6);
     uint8_t array23[] = {11, 1, 0};
     memcpy(TCTEDS3.CHANNEL_TYPE, array23, 3);
-    uint8_t array33[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    uint8_t array33[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
     memcpy(TCTEDS3.UNITS, array33, 12);
     uint8_t array43[] = {13, 1, 0};
     memcpy(TCTEDS3.LOW_RANGE_LIMIT, array43, 3);
