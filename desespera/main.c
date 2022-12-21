@@ -17,7 +17,7 @@ void send_METATEDS(void);
 void send_TCTEDS(uint8_t);
 uint8_t get_char (void);
 void send_error(void);
-void send_success(void);
+void send_success(int length);
 void send_values (uint8_t);
 uint8_t info_ind = 0;   // indice do proximo array
 uint8_t info[6];        // array que vai receber primeiros 6 bits da NCAP
@@ -124,17 +124,17 @@ void Identify_NCAP_cmd(void) {
              if ((info[3] == 2) && (info[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
                 
                 LATAbits.LATA4 = value[1];
-                send_success();    // enviar a NCAP mensagem de sucesso
+                send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }
             if ((info[3] == 2) && (info[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
                 LATAbits.LATA5 = value[1];
-                send_success();    // enviar a NCAP mensagem de sucesso
+                send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }
             if ((info[3] == 2) && (info[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
                 LATAbits.LATA6 = value[1];
-                send_success();    // enviar a NCAP mensagem de sucesso
+                send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }  
         }
@@ -151,29 +151,23 @@ void Identify_NCAP_cmd(void) {
 //////////////////////////////////////////////////////////////////////////
 
 // Send success msg
-void send_success(void){
+void send_success(int length){
     putch(1);
-    for(int i = 0; i<2;i++){
     putch(0);
-    }
+    putch(length);
     return;
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////
-///////////////////////////// SEND FUNC //////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-void send_error(void){      // codigo de erro 
+// Send error msg
+void send_error(void){
     for(int i = 0; i<3;i++){
         putch(0);
     }
     return;
 }
-void send_values(uint8_t channel){        // fun��od de teste 
-       // We will have 4 channels
-    // 3 axis for the accelerometer and 1 for the potentiometer
+void send_values(uint8_t channel){
+    // We will have 6 channels
+    // 3 axis for the accelerometer and 3 for the potentiometer
     // Success/send_error Flag 01
     // Length (MSB) 00
     // Length (LSB) 01 (I have requested the sensor to read 1 value, which needs 1 byte)
@@ -207,27 +201,23 @@ void send_values(uint8_t channel){        // fun��od de teste
         return;
     }
     
-    // Success/send_error Flag
-    putch(1); // Success
-    // Length  
-    // MSB
-    putch(0);
-    // LSB
-    putch(1);
+    // Success Flag
+    send_success();
+    putch(1); // Length
 
     // Start new conversion
     ADCON0bits.ADGO = 1;
+
     // Ensure ADC conversion is over 
     while (PIR1bits.ADIF == 0){
         ;
     }
-     putch(ADRESH);
+
+    // Now send data
+    putch(ADRESH);
+
     // Reset ADC flag
     PIR1bits.ADIF = 0;
-     
-    // Now send data
-    //putch(ADRESL);
-    //putch(channel);
     
     return;
 }
