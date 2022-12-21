@@ -169,7 +169,7 @@ while(ishandle(fig))
     # Velocidades é preciso testa as gamas de valores!!!
     v = v*100 (? fator por testar)
   %}
-  %pause(0.2)
+  pause(0.2)
    write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
@@ -177,7 +177,8 @@ while(ishandle(fig))
     if (x<0)
         x =0;
     end
-    
+    rot = rot*angle2dcm(0, 0, x);
+    pause(0.2)
     write(stim, [0 2 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
@@ -185,7 +186,8 @@ while(ishandle(fig))
     if (y<0)
         y =0;
     end
-    
+    rot = rot*angle2dcm(0, y, 0);
+    pause(0.2)
     write(stim, [0 3 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
@@ -193,10 +195,10 @@ while(ishandle(fig))
     if (z<0)
         z =0;
     end
-
+    rot = rot*angle2dcm(z, 0, 0);
     %norma = sqrt(x^2 + y^2 + z^2);
 
-  rot = rot*angle2dcm(z, y, x);
+  %rot = rot*angle2dcm(z, y, x);
   %{
   %Check for user inputs:
   if fig.UserData.e

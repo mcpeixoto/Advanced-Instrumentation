@@ -9,15 +9,11 @@ clc; clear;
 stim = serialport("/dev/ttyACM0", 9600);
 
 
-write(stim, [0 1 3 1 0 1 0], "uint8");
-suc = read(stim,3, "uint8")
-if (suc(1) ==0)
-    display("Erro ao ler sensor 1")
-    flag=0;
-else
-    teds = read(stim,suc(3), "uint8");
-    display(teds);
-    flag=1;
-end
+Tvw = [0 4 3 2 0 2 0 1];
+suc = [];
+teds = [];
 
 
+write(stim,Tvw, "uint8");
+suc = read(stim,3, "uint8");
+display(suc);

@@ -62,6 +62,9 @@ struct METATEDS_TEMPLATE METATED;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS1;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS2;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS3;
+struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS4;
+struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS5;
+struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS6;
 
 
 void main(void) {
@@ -138,7 +141,7 @@ void Identify_NCAP_cmd(void) {
         return;
     }
     
-    if( info[1] <= 3 ){ // depende de quantos canais temos, neste caso temos 3 canais 
+    if( info[1] <= 6 ){ // depende de quantos canais temos, neste caso temos 3 canais 
         
         if ( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
             //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
@@ -154,11 +157,22 @@ void Identify_NCAP_cmd(void) {
                 return;
             }
             
-            if ((info[3] == 2) && (info[1] == 3)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                DAC1CON1 = value[1];
+             if ((info[3] == 2) && (info[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                
+                LATAbits.LATA4 = value[1];
                 write_success();    // enviar a NCAP mensagem de sucesso
                 return;
-            } 
+            }
+            if ((info[3] == 2) && (info[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                LATAbits.LATA5 = value[1];
+                write_success();    // enviar a NCAP mensagem de sucesso
+                return;
+            }
+            if ((info[3] == 2) && (info[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                LATAbits.LATA6 = value[1];
+                write_success();    // enviar a NCAP mensagem de sucesso
+                return;
+            }  
         }
     }
     // se n�o foi nenhuma das anteriores d� erro
@@ -268,11 +282,11 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS2.MODEL_SIG_BITS, array82, 3);
 
     
-    //TCTEDS3 - TEDS DO TRANSDUCER CHANNEL 3 - ACTUATOR
+    //TCTEDS3 - TEDS DO TRANSDUCER CHANNEL 3 - Sensor
     
     uint8_t array13[] = {3, 4, 0, 3, 0, 1};
     memcpy(TCTEDS3.TEDSID, array13, 6);
-    uint8_t array23[] = {11, 1, 1};
+    uint8_t array23[] = {11, 1, 0};
     memcpy(TCTEDS3.CHANNEL_TYPE, array23, 3);
     uint8_t array33[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
     memcpy(TCTEDS3.UNITS, array33, 12);
@@ -286,6 +300,67 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS3.DATA_MODEL_LENGTH, array73, 3);
     uint8_t array83[] = {42, 1, 8};
     memcpy(TCTEDS3.MODEL_SIG_BITS, array83, 3);
+    
+    
+    //TCTEDS4 - TEDS DO TRANSDUCER CHANNEL 4 - led
+    
+    uint8_t array14[] = {3, 4, 0, 3, 0, 1};
+    memcpy(TCTEDS4.TEDSID, array14, 6);
+    uint8_t array24[] = {11, 1, 1};
+    memcpy(TCTEDS4.CHANNEL_TYPE, array24, 3);
+    uint8_t array34[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    memcpy(TCTEDS4.UNITS, array34, 12);
+    uint8_t array44[] = {13, 1, 0};
+    memcpy(TCTEDS4.LOW_RANGE_LIMIT, array44, 3);
+    uint8_t array54[] = {14, 1, 255};
+    memcpy(TCTEDS4.HIGH_RANGE_LIMIT, array54, 3);
+    uint8_t array64[] = {40, 1, 0};
+    memcpy(TCTEDS4.DATA_MODEL, array64, 3);
+    uint8_t array74[] = {41, 1, 1};
+    memcpy(TCTEDS4.DATA_MODEL_LENGTH, array74, 3);
+    uint8_t array84[] = {42, 1, 8};
+    memcpy(TCTEDS4.MODEL_SIG_BITS, array84, 3);
+    
+    
+    //TCTEDS5 - TEDS DO TRANSDUCER CHANNEL 5 - led
+    
+    uint8_t array15[] = {3, 4, 0, 3, 0, 1};
+    memcpy(TCTEDS5.TEDSID, array15, 6);
+    uint8_t array25[] = {11, 1, 1};
+    memcpy(TCTEDS5.CHANNEL_TYPE, array25, 3);
+    uint8_t array35[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    memcpy(TCTEDS5.UNITS, array35, 12);
+    uint8_t array45[] = {13, 1, 0};
+    memcpy(TCTEDS5.LOW_RANGE_LIMIT, array45, 3);
+    uint8_t array55[] = {14, 1, 255};
+    memcpy(TCTEDS5.HIGH_RANGE_LIMIT, array55, 3);
+    uint8_t array65[] = {40, 1, 0};
+    memcpy(TCTEDS5.DATA_MODEL, array65, 3);
+    uint8_t array75[] = {41, 1, 1};
+    memcpy(TCTEDS5.DATA_MODEL_LENGTH, array75, 3);
+    uint8_t array85[] = {42, 1, 8};
+    memcpy(TCTEDS5.MODEL_SIG_BITS, array85, 3);
+    
+    
+    //TCTEDS6 - TEDS DO TRANSDUCER CHANNEL 6 - led
+    
+    uint8_t array16[] = {3, 4, 0, 3, 0, 1};
+    memcpy(TCTEDS6.TEDSID, array16, 6);
+    uint8_t array26[] = {11, 1, 1};
+    memcpy(TCTEDS6.CHANNEL_TYPE, array26, 3);
+    uint8_t array36[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    memcpy(TCTEDS6.UNITS, array36, 12);
+    uint8_t array46[] = {13, 1, 0};
+    memcpy(TCTEDS6.LOW_RANGE_LIMIT, array46, 3);
+    uint8_t array56[] = {14, 1, 255};
+    memcpy(TCTEDS6.HIGH_RANGE_LIMIT, array56, 3);
+    uint8_t array66[] = {40, 1, 0};
+    memcpy(TCTEDS6.DATA_MODEL, array66, 3);
+    uint8_t array76[] = {41, 1, 1};
+    memcpy(TCTEDS6.DATA_MODEL_LENGTH, array76, 3);
+    uint8_t array86[] = {42, 1, 8};
+    memcpy(TCTEDS6.MODEL_SIG_BITS, array86, 3);
+    
     
     return;
 }
