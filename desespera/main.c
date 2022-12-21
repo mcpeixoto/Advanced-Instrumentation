@@ -35,12 +35,9 @@ struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS6;
 
 
 void main(void) {
-
-
-    config();
-
-    define_METATEDS();
-    define_TCTEDS();
+    config();           // Configure the PIC
+    define_METATEDS();  // Define the Meta TEDS
+    define_TCTEDS();    // Define the TransducerChannels TEDS for 3 channels
 
     
     while (1) {
@@ -176,65 +173,84 @@ void define_METATEDS(void) {
 }
 
 void define_TCTEDS(void) {
-    //TCTEDS1 - TEDS DO TRANSDUCER CHANNEL 1 - SENSOR
-    uint8_t array11[] = {3, 4, 0, 3, 0, 1};
-    memcpy(TCTEDS1.TEDSID, array11, 6);
-    uint8_t array21[] = {11, 1, 0};
-    memcpy(TCTEDS1.CHANNEL_TYPE, array21, 3);
-    uint8_t array31[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
-    memcpy(TCTEDS1.UNITS, array31, 12);
-    uint8_t array41[] = {13, 1, 0};
-    memcpy(TCTEDS1.LOW_RANGE_LIMIT, array41, 3);
-    uint8_t array51[] = {14, 1, 255};
-    memcpy(TCTEDS1.HIGH_RANGE_LIMIT, array51, 3);
-    uint8_t array61[] = {40, 1, 0};
-    memcpy(TCTEDS1.DATA_MODEL, array61, 3);
-    uint8_t array71[] = {41, 1, 1};
-    memcpy(TCTEDS1.DATA_MODEL_LENGTH, array71, 3);
-    uint8_t array81[] = {42, 1, 8};
-    memcpy(TCTEDS1.MODEL_SIG_BITS, array81, 3);
+    ///////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////// Configuring Accelerometer ////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////
 
-    
-    
-    ///TCTEDS2 - TEDS DO TRANSDUCER CHANNEL 2 - SENSOR
-    
-    
-    uint8_t array12[] = {3, 4, 0, 3, 0, 1};
-    memcpy(TCTEDS2.TEDSID, array12, 6);
-    uint8_t array22[] = {11, 1, 0};
-    memcpy(TCTEDS2.CHANNEL_TYPE, array22, 3);
-    uint8_t array32[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
-    memcpy(TCTEDS2.UNITS, array32, 12);
-    uint8_t array42[] = {13, 1, 0};
-    memcpy(TCTEDS2.LOW_RANGE_LIMIT, array42, 3);
-    uint8_t array52[] = {14, 1, 255};
-    memcpy(TCTEDS2.HIGH_RANGE_LIMIT, array52, 3);
-    uint8_t array62[] = {40, 1, 0};
-    memcpy(TCTEDS2.DATA_MODEL, array62, 3);
-    uint8_t array72[] = {41, 1, 1};
-    memcpy(TCTEDS2.DATA_MODEL_LENGTH, array72, 3);
-    uint8_t array82[] = {42, 1, 8};
-    memcpy(TCTEDS2.MODEL_SIG_BITS, array82, 3);
+    //  TCTEDS1 - TEDS DO TRANSDUCER CHANNEL 1 - Accelerometer X axis
+    // TEDSID = {type, length, family, class, version, tuple length} // “TEDS Identification Header" - Slide 9
+    // In our case, 
+    // T type field     -> 3 (type for TEDS), 
+    // L length field   -> 4 (Value field has 4 octets)
+    // V value field    ->  family = 0, class = 1 (slide 10), version = 0 (slide 11, prototype), tuple length = 1 (All data blocks within a TED will have Length fields of 1 byte/1 octet, so this value is 1.)
+    // Also see slide 24
+    uint8_t array1[] = {3, 4, 0, 3, 0, 1};
+    memcpy(TCTEDS1.TEDSID, array1, 6);
 
+    // TransducerChannel TEDS Channel Type - Slide 24
+    // TLV structure:
+    // 11: Channel type data block identifier (Table 48)
+    // 01: 1 byte in the value field (Table 48)
+    // 00: Sensor (Table 50)
+    uint8_t array2[] = {11, 1, 0};
+    memcpy(TCTEDS1.CHANNEL_TYPE, array2, 3);
+
+    // TransducerChannel Units - Slide 25
+    // TLV streucture:
+    // 12: Units data block identifier (Table 48)
+    // 10: 10 bytes in the value field (Table 48)
+    // then the value itself
+    // for this case we want to send the value "m/s^2":
+    // exponent for m is 1 so we want (2*1) + 128 = 130 in the m field (4)
+    // exponent for s is -2 so we want (2*-2) + 128 = 124 in the s field (6)
+    uint8_t array3[] = {12, 10, 0, 128, 128, 130, 128, 124, 128, 128, 128, 128};
+    memcpy(TCTEDS1.UNITS, array3, 12);
+
+    // TransducerChannel TEDS High/Low range limits - Slide 26 TODO
+    uint8_t array4[] = {13, 1, 0};
+    memcpy(TCTEDS1.LOW_RANGE_LIMIT, array4, 3);
+    uint8_t array5[] = {14, 1, 255};
+    memcpy(TCTEDS1.HIGH_RANGE_LIMIT, array5, 3);
     
-    //TCTEDS3 - TEDS DO TRANSDUCER CHANNEL 3 - Sensor
-    
-    uint8_t array13[] = {3, 4, 0, 3, 0, 1};
-    memcpy(TCTEDS3.TEDSID, array13, 6);
-    uint8_t array23[] = {11, 1, 0};
-    memcpy(TCTEDS3.CHANNEL_TYPE, array23, 3);
-    uint8_t array33[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
-    memcpy(TCTEDS3.UNITS, array33, 12);
-    uint8_t array43[] = {13, 1, 0};
-    memcpy(TCTEDS3.LOW_RANGE_LIMIT, array43, 3);
-    uint8_t array53[] = {14, 1, 255};
-    memcpy(TCTEDS3.HIGH_RANGE_LIMIT, array53, 3);
-    uint8_t array63[] = {40, 1, 0};
-    memcpy(TCTEDS3.DATA_MODEL, array63, 3);
-    uint8_t array73[] = {41, 1, 1};
-    memcpy(TCTEDS3.DATA_MODEL_LENGTH, array73, 3);
-    uint8_t array83[] = {42, 1, 8};
-    memcpy(TCTEDS3.MODEL_SIG_BITS, array83, 3);
+    // TransducerChannel TEDS Data model - Slide 26
+    // we will work with with UInt8, so the data field is 00
+    uint8_t array6[] = {40, 1, 0};
+    memcpy(TCTEDS1.DATA_MODEL, array6, 3);
+
+    // TransducerChannel TEDS Data model length
+    // The sensor will only return one byte of data at a time
+    uint8_t array7[] = {41, 1, 1};
+    memcpy(TCTEDS1.DATA_MODEL_LENGTH, array7, 1);
+
+    // TransducerChannel TEDS Data model significant bits:
+    // Since my sensor sends 1 full byte of data, I used 8 significant bits.
+    uint8_t array8[] = {42, 1, 8};
+    memcpy(TCTEDS1.MODEL_SIG_BITS, array8, 3);
+
+    // The Y and Z axis will be the same as the X axis, so we will just copy the values from the X axis
+    // Y
+    memcpy(TCTEDS2.TEDSID, TCTEDS1.TEDSID, 6);
+    memcpy(TCTEDS2.CHANNEL_TYPE, TCTEDS1.CHANNEL_TYPE, 3);
+    memcpy(TCTEDS2.UNITS, TCTEDS1.UNITS, 12);
+    memcpy(TCTEDS2.LOW_RANGE_LIMIT, TCTEDS1.LOW_RANGE_LIMIT, 3);
+    memcpy(TCTEDS2.HIGH_RANGE_LIMIT, TCTEDS1.HIGH_RANGE_LIMIT, 3);
+    memcpy(TCTEDS2.DATA_MODEL, TCTEDS1.DATA_MODEL, 3);
+    memcpy(TCTEDS2.DATA_MODEL_LENGTH, TCTEDS1.DATA_MODEL_LENGTH, 3);
+    memcpy(TCTEDS2.MODEL_SIG_BITS, TCTEDS1.MODEL_SIG_BITS, 3);
+
+    // Z
+    memcpy(TCTEDS3.TEDSID, TCTEDS1.TEDSID, 6);
+    memcpy(TCTEDS3.CHANNEL_TYPE, TCTEDS1.CHANNEL_TYPE, 3);
+    memcpy(TCTEDS3.UNITS, TCTEDS1.UNITS, 12);
+    memcpy(TCTEDS3.LOW_RANGE_LIMIT, TCTEDS1.LOW_RANGE_LIMIT, 3);
+    memcpy(TCTEDS3.HIGH_RANGE_LIMIT, TCTEDS1.HIGH_RANGE_LIMIT, 3);
+    memcpy(TCTEDS3.DATA_MODEL, TCTEDS1.DATA_MODEL, 3);
+    memcpy(TCTEDS3.DATA_MODEL_LENGTH, TCTEDS1.DATA_MODEL_LENGTH, 3);
+    memcpy(TCTEDS3.MODEL_SIG_BITS, TCTEDS1.MODEL_SIG_BITS, 3);
+
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////// CONFIGURING LEDS ////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
     
     
     //TCTEDS4 - TEDS DO TRANSDUCER CHANNEL 4 - led
@@ -258,43 +274,26 @@ void define_TCTEDS(void) {
     
     
     //TCTEDS5 - TEDS DO TRANSDUCER CHANNEL 5 - led
-    
-    uint8_t array15[] = {3, 4, 0, 3, 0, 1};
-    memcpy(TCTEDS5.TEDSID, array15, 6);
-    uint8_t array25[] = {11, 1, 1};
-    memcpy(TCTEDS5.CHANNEL_TYPE, array25, 3);
-    uint8_t array35[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
-    memcpy(TCTEDS5.UNITS, array35, 12);
-    uint8_t array45[] = {13, 1, 0};
-    memcpy(TCTEDS5.LOW_RANGE_LIMIT, array45, 3);
-    uint8_t array55[] = {14, 1, 255};
-    memcpy(TCTEDS5.HIGH_RANGE_LIMIT, array55, 3);
-    uint8_t array65[] = {40, 1, 0};
-    memcpy(TCTEDS5.DATA_MODEL, array65, 3);
-    uint8_t array75[] = {41, 1, 1};
-    memcpy(TCTEDS5.DATA_MODEL_LENGTH, array75, 3);
-    uint8_t array85[] = {42, 1, 8};
-    memcpy(TCTEDS5.MODEL_SIG_BITS, array85, 3);
+    memccpy(TCTEDS5.TEDSID, TCTEDS4.TEDSID, 6);
+    memccpy(TCTEDS5.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
+    memccpy(TCTEDS5.UNITS, TCTEDS4.UNITS, 12);
+    memccpy(TCTEDS5.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
+    memccpy(TCTEDS5.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
+    memccpy(TCTEDS5.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
+    memccpy(TCTEDS5.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
+    memccpy(TCTEDS5.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
+
     
     
     //TCTEDS6 - TEDS DO TRANSDUCER CHANNEL 6 - led
-    
-    uint8_t array16[] = {3, 4, 0, 3, 0, 1};
-    memcpy(TCTEDS6.TEDSID, array16, 6);
-    uint8_t array26[] = {11, 1, 1};
-    memcpy(TCTEDS6.CHANNEL_TYPE, array26, 3);
-    uint8_t array36[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
-    memcpy(TCTEDS6.UNITS, array36, 12);
-    uint8_t array46[] = {13, 1, 0};
-    memcpy(TCTEDS6.LOW_RANGE_LIMIT, array46, 3);
-    uint8_t array56[] = {14, 1, 255};
-    memcpy(TCTEDS6.HIGH_RANGE_LIMIT, array56, 3);
-    uint8_t array66[] = {40, 1, 0};
-    memcpy(TCTEDS6.DATA_MODEL, array66, 3);
-    uint8_t array76[] = {41, 1, 1};
-    memcpy(TCTEDS6.DATA_MODEL_LENGTH, array76, 3);
-    uint8_t array86[] = {42, 1, 8};
-    memcpy(TCTEDS6.MODEL_SIG_BITS, array86, 3);
+    memccpy(TCTEDS6.TEDSID, TCTEDS4.TEDSID, 6);
+    memccpy(TCTEDS6.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
+    memccpy(TCTEDS6.UNITS, TCTEDS4.UNITS, 12);
+    memccpy(TCTEDS6.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
+    memccpy(TCTEDS6.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
+    memccpy(TCTEDS6.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
+    memccpy(TCTEDS6.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
+    memccpy(TCTEDS6.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
     
     
     return;
