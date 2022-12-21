@@ -177,8 +177,7 @@ void send_values(uint8_t channel){
     // 001010 RB2/ ANB2 // Z
     // 001001 RB1/ ANB1 // Y
     // 001000 RB0/ANB0 // X
-    // 000000 RA0/ANA0 // potenciometro
-    
+
     // Read X axis
     if (channel == 1) {
         ADPCH = 0b00001000;
@@ -190,10 +189,6 @@ void send_values(uint8_t channel){
     // Read Z axis
     } else if (channel == 3) {
         ADPCH = 0b00001010;
-        
-    // Read Potentiometer
-    } else if (channel == 4) {
-        ADPCH = 0b00000000;
         
     } else {
         // send error message
