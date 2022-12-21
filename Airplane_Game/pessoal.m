@@ -37,6 +37,9 @@ fig.Children.Visible = 'off';
 fig.Children.Clipping = 'off';
 fig.Children.Projection = 'perspective';
 
+% Add button that says hi
+uicontrol('Style', 'pushbutton', 'String', 'Say Hi', 'Position', [20 20 100 20], 'Callback', @SayHi);
+
 % Add the sky
 skymap = [linspace(1,0.4,100)', linspace(1,0.4,100)', linspace(1,0.99,100)'];
 
@@ -73,13 +76,13 @@ camva(40);              % View angle
 
 if testing == 1
     % Set keyboard callbacks and flags for movement.
-    set(fig,'WindowKeyPressFcn',@KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
-            fig.UserData.e = false;
-             fig.UserData.q = false;
-             fig.UserData.a = false;
-             fig.UserData.d = false;
-             fig.UserData.w = false;
-             fig.UserData.s = false;
+    set(fig,'WindowKeyPressFcn', @KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
+    fig.UserData.e = false;
+    fig.UserData.q = false;
+    fig.UserData.a = false;
+    fig.UserData.d = false;
+    fig.UserData.w = false;
+    fig.UserData.s = false;
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,6 +94,7 @@ rot = eye(3,3);         % Initial plane rotation
 pos = [-8000,8000,-2000];   % Initial plane position
 vel = 500;              % Velocity
 
+
 hold off    % Release the hold so we can move the plane around
 axis([-10000 10000 -10000 10000 -10000 10000])  % Set the axis limits
 
@@ -100,7 +104,7 @@ told = 0;
 
 while(ishandle(fig))
     % now is the actual time
-    time_stamp_current =  now
+    time_stamp_current =  now;
     tnew = toc;
     
     %{
@@ -193,11 +197,8 @@ while(ishandle(fig))
 
     % Display fps counter on the figure name (window tab) using time_stamp_current
     elapsed = now - time_stamp_current;
-    elapsed = elapsed * (10*10^9)
+    elapsed = elapsed * (10*10^9);
     fig.Name = sprintf('FPS: %0.2f | Hz: %0.2f',1/elapsed,1/elapsed);
-
-
-    
     
     %Camera updates:
     if fig.UserData.firstPerson %First person view -- follow the plane from slightly behind.
@@ -214,7 +215,11 @@ while(ishandle(fig))
     cam = campos;
     %Also keep the camera from going into the ground (could be done a
     %smarter way to also not look through the ground).
-    nearestGroundZ = interp2(groundSurf.XData,groundSurf.YData,groundSurf.ZData,cam(1),cam(2));
+    nearestGroundZ = interp2(groundSurf.XDatsrc,~)
+    % Show "TESTING" in the figure title bar.
+    src.Name = 'TESTING';
+    % Get the current position of the plane.
+    pos = src.UserData.p1.Vertices(1,:);a,groundSurf.YData,groundSurf.ZData,cam(1),cam(2));
     if cam(3)<nearestGroundZ
         campos([cam(1),cam(2),nearestGroundZ]);
     end
@@ -288,4 +293,8 @@ function [x_medio, y_medio, z_medio] = get_avg_data(stim, n)
     
         j = j+1;
     end
+end
+
+function SayHi(src, ~)
+    disp("Hi");
 end
