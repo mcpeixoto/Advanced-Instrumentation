@@ -1,42 +1,19 @@
 function pessoal
-%{ 
-FinalEx.m
-
-WASDQE for steering. V to switch to 1st person view. More below.
+close all; clear; clc;
 
 
-Combine stuff from all the previous examples to make:
-1. Import a plane as a patch object.
-2. Translate/rotate this through space as per user input. User changes
-heading, constant velocity dynamics. Use Ws,AD, QE for pitch,roll,yaw
-3. Put in horizon and ground with textures. If the plane COM tries to
-penetrate, simply project it back up.
-4. Have camera follow the plane in 2 ways, press v to switch between.
-
-
-NOTE: I wouldn't start here if you want to understand each step. Start with
-the other examples and see how this is built.
-
-
-Matt Sheen, mws262@cornell.edu
-%}
-
-close all
-
-%% Set up teds and metateds
-%{
-Saber tudo das teds e metateds que é preciso para o programa
-%}
-clear; clc;
+% Start serial port
 stim = serialport("/dev/ttyACM0", 9600);
+
+
+% Initialize variables
 x_medio = 0;
 y_medio = 0;
-
 z_medio = 0;
 
-
 j=0;
-% Ciclo de lixo
+
+% First values of x,y and z are discarted. PIC is starting up
 while (j<50)
     write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
@@ -53,7 +30,8 @@ while (j<50)
     teds = read(stim,suc(3), "uint8");
     j= j+1;
 end
-% Centrar
+
+% Get the average of the first 100 values of x,y and z
 while (j<100)
     write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
@@ -76,21 +54,26 @@ x_medio = x_medio/50;
 y_medio = y_medio/50;
 z_medio = z_medio/50;
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% SIMULATOR CONFIGURATION FIGURE %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 fig = figure;
 
-fig.UserData.firstPerson = false; %do we start in 1st person view, or not?
-resetPositionOnBounds = true; %keeps the plane in the region with the matlab logo ground.
+% Configure figure
+fig.UserData.firstPerson = false;   % do we start in 1st person view, or not?
+resetPositionOnBounds = true;       % keeps the plane in the region with the matlab logo ground.
+hold on                             % hold on so we can add multiple objects to the figure
+fig.Position = [600 600 1500 1200]; % make the figure a bit bigger
 
-hold on
-fig.Position = [600 600 1500 1200];
-%Disable axis viewing, don't allow axes to clip the plane, turn on
-%perspective mode.
+% Disable axis viewing, don't allow axes to clip the plane, turn on perspective mode.
 fig.Children.Visible = 'off';
 fig.Children.Clipping = 'off';
 fig.Children.Projection = 'perspective';
 
-%% Add the sky - Fancy environment folder ex
-skymap = [linspace(1,0.4,100)',linspace(1,0.4,100)',linspace(1,0.99,100)'];
+% Add the sky
+skymap = [linspace(1,0.4,100)', linspace(1,0.4,100)', linspace(1,0.99,100)'];
 
 [skyX,skyY,skyZ] = sphere(50);
 sky = surf(500000*skyX,500000*skyY,500000*skyZ,'LineStyle','none','FaceColor','interp');
@@ -109,45 +92,45 @@ material('metal')
 %% Add the ground + textures - Fancy environments folder Ex
 texture = imread('texture.jpg');
 
-
 ground = 10000*membrane(1,40)-10000;
 groundSurf = surf(linspace(-10000,10000,size(ground,1)),linspace(-10000,10000,size(ground,2)),ground,'LineStyle','none','AmbientStrength',0.3,'DiffuseStrength',0.8,'SpecularStrength',0,'SpecularExponent',10,'SpecularColorReflectance',1);
 groundSurf.FaceColor = 'texturemap';
 groundSurf.CData = texture;
 
-%add some extra flat ground going off to (basically) infinity.
+% Add some extra flat ground going off to (basically) infinity.
 flatground = surf(linspace(-500000,500000,size(ground,1)),linspace(-500000,500000,size(ground,2)),-10001*ones(size(ground)));
 flatground.FaceColor = 'texturemap';
 flatground.CData = texture;
 flatground.AlphaData = 0.8;
 
-camlight('headlight');
+camlight('headlight');  % Add a camera light, and tone down the specular highlighting
+camva(40);              % View angle
 
-camva(40); %view angle
+% Set keyboard callbacks and flags for movement.
+%set(fig,'WindowKeyPressFcn',@KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
+%        fig.UserData.e = false;
+%         fig.UserData.q = false;
+%         fig.UserData.a = false;
+%         fig.UserData.d = false;
+%         fig.UserData.w = false;
+%         fig.UserData.s = false;
 
-%{
-%% Set keyboard callbacks and flags for movement.
-set(fig,'WindowKeyPressFcn',@KeyPress,'WindowKeyReleaseFcn', @KeyRelease);
-        fig.UserData.e = false;
-         fig.UserData.q = false;
-         fig.UserData.a = false;
-         fig.UserData.d = false;
-         fig.UserData.w = false;
-         fig.UserData.s = false;
-%}  
 
-forwardVec = [1 0 0]'; %Vector of the plane's forward direction in plane frame
-rot = eye(3,3); %Initial plane rotation
-pos = [-8000,8000,-2000]; %Initial plane position
-vel = 500; %Velocity
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% INITIAL AIRPLANE CONFIGURATION %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-hold off
-axis([-10000 10000 -10000 10000 -10000 10000])
+forwardVec = [1 0 0]';  % Vector of the plane's forward direction in plane frame
+rot = eye(3,3);         % Initial plane rotation
+pos = [-8000,8000,-2000];   % Initial plane position
+vel = 500;              % Velocity
 
+hold off    % Release the hold so we can move the plane around
+axis([-10000 10000 -10000 10000 -10000 10000])  % Set the axis limits
 
 %% Animation loop:
-tic
-told = 0;
+tic % start the timer
+told = 0; 
 
 while(ishandle(fig))
 % now is the actual time
@@ -283,7 +266,7 @@ end
 
 end
 
-%{
+
 function KeyPress(varargin)
      fig = varargin{1};
      key = varargin{2}.Key;
@@ -321,4 +304,3 @@ function KeyRelease(varargin)
          fig.UserData.s = false;
      end
 end
-%}
