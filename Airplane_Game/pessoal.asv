@@ -173,26 +173,25 @@ while(ishandle(fig))
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     x = teds - x_medio;
-    x = fix(x/20);
+    x = fix(x,10);
     
    
     write(stim, [0 2 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     y = teds - y_medio;
-    y = fix(y/20);
+    y = fix(y,10);
     
     write(stim, [0 3 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     z = teds - z_medio;
-    z = fix(z/20);
-    x=x*pi/6.5;
-    y=y*pi/6.5;
-    z=-1*z*pi/6.5;
+    z = fix(z,10);
+    x=x*180/130;
+    y=y*180/130;
+    z=z*180/130;
 
     rot = rot*angle2dcm(z, y, x);
-    pause(0.1)
   %{
   %Check for user inputs:
   if fig.UserData.e
