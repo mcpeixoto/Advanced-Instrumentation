@@ -166,7 +166,7 @@ void define_METATEDS(void) {
     memcpy(METATED.TEDSID, array1, 6);
     uint8_t array2[] = {4, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
     memcpy(METATED.UUID, array2, 12);
-    uint8_t array3[] = {13, 2, 0, 3}; // 2 sensores e 1 atuador
+    uint8_t array3[] = {13, 2, 0, 6};   // We have 6 channels. 3 sensors and 3 actuators
     memcpy(METATED.MAXCHAN, array3, 4);
 
     return;
