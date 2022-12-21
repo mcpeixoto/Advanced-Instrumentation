@@ -16,7 +16,7 @@ void Identify_NCAP_cmd(void);
 void send_METATEDS(void);
 void send_TCTEDS(uint8_t);
 uint8_t get_char (void);
-void fail(void);
+void send_error(void);
 void write_success(void);
 void send_values (uint8_t);
 uint8_t info_ind = 0;   // indice do proximo array
@@ -140,12 +140,12 @@ void Identify_NCAP_cmd(void) {
         }
     }
     // se n�o foi nenhuma das anteriores d� erro
-    fail();
+    send_error();
     
     return;
     
 }
-void fail (void){      // codigo de erro 
+void send_error(void){      // codigo de erro 
     for(int i = 0; i<3;i++){
         putch(0);
     }
@@ -316,25 +316,14 @@ void send_METATEDS(void) {
     }
     return;
 }
-//void echo (void){           // fun��o teste que cospe valores recebidos pela NCAP
-  //  putch (get_char());
-    //putch (get_char());
-   // putch (get_char());
-   // putch (get_char());
-   // putch (get_char());
-   // test = get_char();      // o tamanhp do que vem para a frente depende do sexto byte 
-   // putch (test);
-   // for(int i =0; i < test; i++){
-    //    putch (get_char());
-   // }
-   // return;
-//}
+
 
 void send_TCTEDS(uint8_t channel) {
+    // We have 6 channels
+    // 3 axis for the accelerometer and 3 for the 3 LEDs
     
-    //channel1 TEDS
-    
-    if (channel == 1) {         // enviar TED do canal 1 
+    // Channel 1 - Accelerometer X
+    if (channel == 1) { 
         putch(1);
         putch(0);
         putch(36);
@@ -363,11 +352,7 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS1.MODEL_SIG_BITS[i]);
         }
-    } 
-    
-    //channel2 TEDS
-    
-        if (channel == 2) {         // enviar TED do canal 2
+    } else if (channel == 2) { // Channel 2 - Accelerometer Y
         putch(1);
         putch(0);
         putch(36);
@@ -396,10 +381,7 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS2.MODEL_SIG_BITS[i]);
         }
-    } 
-    //channel3 TEDS
-    
-     if (channel == 3) {            // enviar TED do canal 3
+    } else if (channel == 3) { // Channel 3 - Accelerometer Z
         putch(1);
         putch(0);
         putch(36);
@@ -428,14 +410,104 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS3.MODEL_SIG_BITS[i]);
         }
-    } 
+    } else if (channel == 4) { // Channel 4 - LED 1
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS4.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS4.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.MODEL_SIG_BITS[i]);
+        }
+    } else if (channel == 5) { // Channel 5 - LED 2
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS5.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS5.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.MODEL_SIG_BITS[i]);
+        }
+    } else if (channel == 6) { // Channel 6 - LED 3
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS6.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS6.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.MODEL_SIG_BITS[i]);
+        }
+    } else {
+        // Send error
+        send_error();
+        }
     return;
 }
 
 void send_values(uint8_t channel){        // fun��od de teste 
        // We will have 4 channels
     // 3 axis for the accelerometer and 1 for the potentiometer
-    // Success/Fail Flag 01
+    // Success/send_error Flag 01
     // Length (MSB) 00
     // Length (LSB) 01 (I have requested the sensor to read 1 value, which needs 1 byte)
     // Data XX
@@ -464,11 +536,11 @@ void send_values(uint8_t channel){        // fun��od de teste
         
     } else {
         // send error message
-        fail();
+        send_error();
         return;
     }
     
-    // Success/Fail Flag
+    // Success/send_error Flag
     putch(1); // Success
     // Length  
     // MSB
