@@ -279,7 +279,7 @@ function [x_medio, y_medio, z_medio] = get_avg_data(stim, n)
         write(stim, [0 1 3 1 0 1 0], "uint8");
         suc = read(stim,3, "uint8");
         teds = read(stim,suc(3), "uint8");
-        x_medio = x_medio +teds;
+        x_medio = x_medio + teds;
         
         write(stim, [0 2 3 1 0 1 0], "uint8");
         suc = read(stim,3, "uint8");
