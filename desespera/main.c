@@ -161,31 +161,35 @@ void Identify_NCAP_cmd(void) {
     }
     
 
-    
-    if (main_buffer[2] == 3){             // verifica que � um transducer 
-        
-        if (main_buffer[3] == 1){         // ler do transdutor do canal main_buffer[1]
+    // Check if we were asked to read/ write information from/to sensors
+    // Check if we have the correct CMD class (Transducer)
+    if (main_buffer[2] == 3){ 
+        // Check CMD function (Read)
+        if (main_buffer[3] == 1){
             send_values(main_buffer[1]); 
             return;
         }
         
-        if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-        
-            LATAbits.LATA4 = aux_buffer[1];
-            send_success(0);    // enviar a NCAP mensagem de sucesso
-            return;
+        // Check CMD function (Write)
+        if ((main_buffer[3] == 2)){
+            // Check channel (3 in total for each LED)
+            if (main_buffer[0] == 0 && main_buffer[1] == 4){
+                LATAbits.LATA4 = aux_buffer[1];
+                send_success(0);
+                return;
+            }
+            if (main_buffer[0] == 0 && main_buffer[1] == 5){
+                LATAbits.LATA5 = aux_buffer[1];
+                send_success(0);
+                return;
+            }
+            if (main_buffer[0] == 0 && main_buffer[1] == 6){
+                LATAbits.LATA6 = aux_buffer[1];
+                send_success(0);
+                return;
+            }
+            
         }
-
-        if ((main_buffer[3] == 2) && (main_buffer[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-            LATAbits.LATA5 = aux_buffer[1];
-            send_success(0);    // enviar a NCAP mensagem de sucesso
-            return;
-        }
-        if ((main_buffer[3] == 2) && (main_buffer[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-            LATAbits.LATA6 = aux_buffer[1];
-            send_success(0);    // enviar a NCAP mensagem de sucesso
-            return;
-        }  
     }
 
     // Error if we get here
