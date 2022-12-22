@@ -215,28 +215,26 @@ while(ishandle(fig))
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     x = teds - x_medio
-    x = round(x/20);
+    x = round(x/10);
 
     write(stim, [0 2 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     y = teds - y_medio;
-    y = round(y/20);
+    y = round(y/10);
 
     write(stim, [0 3 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     z = teds - z_medio;
-    z = round(z/20);
+    z = round(z/10);
 
 
 
-    x = -1*x*pi/6.4; 
-    y = -1*y*pi/6.4;
-    z = -1*z*pi/6.4;
-    z=0;
-    y=0;
-    x=0;
+    x = x*pi/13; 
+    y = y*pi/13;
+    z = z*pi/13;
+    
     rot = rot*angle2dcm(z, y, x);
   %{
   %Check for user inputs:
@@ -292,7 +290,9 @@ while(ishandle(fig))
   p1.Vertices = (rot*vert')' + repmat(pos,[size(vert,1),1]);
 
   % Display fps counter on the figure name (window tab) using time_stamp_current
-  elapsed = now - time_stamp_current;
+  elapsed = now - time_stamp_current;z=0;
+   
+    x=0 y=0;;
   elapsed = elapsed * (10*10^9)
   fig.Name = sprintf('FPS: %0.2f | Hz: %0.2f',1/elapsed,1/elapsed);
 

@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define QUEUE_CAP (5)
+#define QUEUE_CAP (3)
 typedef struct queue {
     uint8_t is_active: 1;      // (1b) This is a flag to indicate if has any data
 
