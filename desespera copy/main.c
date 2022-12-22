@@ -31,6 +31,10 @@
 #include <string.h>
 #include "TEDS_definition.h"
 
+#define QUEUE_IMPLEMENTATION
+#define __QMA
+#include "media_movel.h"
+
 #define _XTAL_FREQ 32000000   //the clock frequency defined in config() must be provided here for the delay function
 
 //declaration of global variables and functions
@@ -71,7 +75,10 @@ void main(void) {
 
 
     config();
-
+    init_queue(&Q_X);
+    init_queue(&Q_Y);
+    init_queue(&Q_Z);
+    
     define_METATEDS();
     define_TCTEDS();
 
@@ -602,19 +609,19 @@ void send_values(uint8_t channel){        // fun��od de teste
     // 001001 RB1/ ANB1 // Y
     // 001000 RB0/ANB0 // X
     // 000000 RA0/ANA0 // potenciometro
-    
+    Queue*q=NULL;
     // Read X axis
     if (channel == 1) {
         ADPCH = 0b00001000;
-        
+        q=&Q_X;
     // Read Y axis
     } else if (channel == 2) {
         ADPCH = 0b00001001;
-        
+        q=&Q_Y;
     // Read Z axis
     } else if (channel == 3) {
         ADPCH = 0b00001010;
-        
+        q=&Q_Z;
     // Read Potentiometer
     } else if (channel == 4) {
         ADPCH = 0b00000000;
@@ -639,7 +646,7 @@ void send_values(uint8_t channel){        // fun��od de teste
     while (PIR1bits.ADIF == 0){
         ;
     }
-     putch(ADRESH);
+     putch(get_next_value(q,ADRESH));
     // Reset ADC flag
     PIR1bits.ADIF = 0;
      

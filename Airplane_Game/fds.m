@@ -93,7 +93,7 @@ while (j<100)
     write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
-    x_medio = x_medio +teds;
+    x_medio = x_medio + teds;
 
     write(stim, [0 2 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
@@ -195,6 +195,7 @@ while(ishandle(fig))
   time_stamp_current =  now
   tnew = toc;
 
+
   %{
     Pedir valores; retirar valores para x,y e z e v (pot)
     xx = x- (x_medio)
@@ -209,32 +210,33 @@ while(ishandle(fig))
     # Velocidades é preciso testa as gamas de valores!!!
     v = v*100 (? fator por testar)
   %}
-  pause(0.2)
-   write(stim, [0 1 3 1 0 1 0], "uint8");
+  %pause(0.2)
+     write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     x = teds - x_medio
-    x = fix(x/20);
+    x = round(x/20);
 
     write(stim, [0 2 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     y = teds - y_medio;
-    y = fix(y/20);
+    y = round(y/20);
 
     write(stim, [0 3 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
     z = teds - z_medio;
-    z = fix(z/20);
+    z = round(z/20);
 
 
 
-    x = x*pi/6.4; 
-    y = y*pi/6.4;
-    z = -1*pi/6.4;
-
-
+    x = -1*x*pi/6.4; 
+    y = -1*y*pi/6.4;
+    z = -1*z*pi/6.4;
+    z=0;
+    y=0;
+    x=0;
     rot = rot*angle2dcm(z, y, x);
   %{
   %Check for user inputs:
