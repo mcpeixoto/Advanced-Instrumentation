@@ -8,6 +8,7 @@
 #define _XTAL_FREQ 32000000
 
 // Declaration of global variables and functions
+char var_global;
 void config(void);
 void __interrupt() int_handler(void); 
 void define_METATEDS(void);
@@ -199,7 +200,7 @@ void Identify_NCAP_cmd(void) {
 //////////////////////////////////////////////////////////////////////////
 
 // Send success msg
-void send_success(int length){
+void send_success(length){
     putch(1);
     putch(0);
     putch(length);
@@ -245,8 +246,7 @@ void send_values(uint8_t channel){
     }
     
     // Success Flag
-    send_success();
-    putch(1); // Length
+    send_success(1);
 
     // Start new conversion
     ADCON0bits.ADGO = 1;
@@ -587,26 +587,26 @@ void define_TCTEDS(void) {
     
     
     //TCTEDS5 - TEDS DO TRANSDUCER CHANNEL 5 - led
-    memccpy(TCTEDS5.TEDSID, TCTEDS4.TEDSID, 6);
-    memccpy(TCTEDS5.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
-    memccpy(TCTEDS5.UNITS, TCTEDS4.UNITS, 12);
-    memccpy(TCTEDS5.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
-    memccpy(TCTEDS5.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
-    memccpy(TCTEDS5.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
-    memccpy(TCTEDS5.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
-    memccpy(TCTEDS5.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
+    memcpy(TCTEDS5.TEDSID, TCTEDS4.TEDSID, 6);
+    memcpy(TCTEDS5.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
+    memcpy(TCTEDS5.UNITS, TCTEDS4.UNITS, 12);
+    memcpy(TCTEDS5.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
+    memcpy(TCTEDS5.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
+    memcpy(TCTEDS5.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
+    memcpy(TCTEDS5.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
+    memcpy(TCTEDS5.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
 
     
     
     //TCTEDS6 - TEDS DO TRANSDUCER CHANNEL 6 - led
-    memccpy(TCTEDS6.TEDSID, TCTEDS4.TEDSID, 6);
-    memccpy(TCTEDS6.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
-    memccpy(TCTEDS6.UNITS, TCTEDS4.UNITS, 12);
-    memccpy(TCTEDS6.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
-    memccpy(TCTEDS6.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
-    memccpy(TCTEDS6.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
-    memccpy(TCTEDS6.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
-    memccpy(TCTEDS6.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
+    memcpy(TCTEDS6.TEDSID, TCTEDS4.TEDSID, 6);
+    memcpy(TCTEDS6.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
+    memcpy(TCTEDS6.UNITS, TCTEDS4.UNITS, 12);
+    memcpy(TCTEDS6.LOW_RANGE_LIMIT, TCTEDS4.LOW_RANGE_LIMIT, 3);
+    memcpy(TCTEDS6.HIGH_RANGE_LIMIT, TCTEDS4.HIGH_RANGE_LIMIT, 3);
+    memcpy(TCTEDS6.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
+    memcpy(TCTEDS6.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
+    memcpy(TCTEDS6.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
     
     
     return;
