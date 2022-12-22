@@ -31,8 +31,45 @@ clear; clc;
 stim = serialport("/dev/ttyACM0", 9600);
 x_medio = 0;
 y_medio = 0;
-
 z_medio = 0;
+% dança de led
+write(stim, [0 4 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2);
+write(stim, [0 5 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+write(stim, [0 5 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8")
+write(stim, [0 4 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8")
+pause(0.2)
+write(stim, [0 4 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2);
+write(stim, [0 5 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+write(stim, [0 6 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+write(stim, [0 5 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 4 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 6 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+write(stim, [0 4 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2);
+write(stim, [0 5 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+write(stim, [0 6 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2)
+
 
 
 j=0;
@@ -72,6 +109,13 @@ end
 x_medio = x_medio/50;
 y_medio = y_medio/50;
 z_medio = z_medio/50;
+% desliga leds
+write(stim, [0 5 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 4 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 6 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
 
 fig = figure;
 
@@ -184,15 +228,14 @@ while(ishandle(fig))
     z = teds - z_medio;
     z = fix(z/20);
 
-    %norma = sqrt(x^2 + y^2 + z^2);
-    norma = 1;
 
-    x = x*pi/6.4;
+
+    x = x*pi/6.4; 
     y = y*pi/6.4;
     z = -1*pi/6.4;
 
 
-    rot = rot*angle2dcm(x/norma, y/norma, z/norma);
+    rot = rot*angle2dcm(z, y, x);
   %{
   %Check for user inputs:
   if fig.UserData.e

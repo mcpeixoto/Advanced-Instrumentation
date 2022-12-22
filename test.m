@@ -9,7 +9,7 @@ clc; clear;
 stim = serialport("/dev/ttyACM0", 9600);
 
 
-Tvw = [0 4 3 2 0 2 0 1];
+Tvw = [0 5 3 2 0 2 0 1];
 suc = [];
 teds = [];
 

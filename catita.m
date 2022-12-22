@@ -24,7 +24,7 @@ while (i<8)
     display("Canal");
     display(i);
     write(stim, [0 i 1 2 0 2 3 0], "uint8");
-suc = read(stim,3, "uint8");
+    suc = read(stim,3, "uint8");
 if (suc(1) ==0)
     display("Erro ao ler Ted canal");
     display(i);
@@ -53,15 +53,28 @@ else
     display(teds);
     flag=1;
 end
+i = i+1;
+end
 
 % Vamos escrever nos leds
 display("Escrever nos leds 1 a 1");
 i=4;
 while (i<8)
     write(stim, [0 i 3 2 0 2 0 1], "uint8");
+    suc = read(stim,3, "uint8");
     pause(0.2)
+    i=i+1;
 end
+i=4;
 while (i<8)
     write(stim, [0 i 3 2 0 2 0 0], "uint8");
+    suc = read(stim,3, "uint8");
     pause(0.2)
+    i= i+1;
 end
+
+write(stim, [0 5 3 2 0 2 0 1], "uint8");
+pause(1)
+write(stim, [0 4 3 2 0 2 0 1], "uint8");
+pause(1)
+write(stim, [0 6 3 2 0 2 0 1], "uint8");

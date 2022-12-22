@@ -429,6 +429,36 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS1.MODEL_SIG_BITS[i]);
         }
+        }
+        if (channel == 4) {            // enviar TED do canal 3
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS4.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS4.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.MODEL_SIG_BITS[i]);
+        }
     } 
     
     //channel2 TEDS
@@ -495,6 +525,67 @@ void send_TCTEDS(uint8_t channel) {
             putch(TCTEDS3.MODEL_SIG_BITS[i]);
         }
     } 
+    if (channel == 5) {            // enviar TED do canal 3
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS5.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS5.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS5.MODEL_SIG_BITS[i]);
+        }
+    }
+    if (channel == 6) {            // enviar TED do canal 3
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS6.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS6.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS6.MODEL_SIG_BITS[i]);
+        }}
+    
+    
     return;
 }
 
