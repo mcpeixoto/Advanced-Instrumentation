@@ -28,8 +28,8 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     
 
 _timer0_int_handler:
-    BANKSEL PORTA
-    BTG PORTA,5  ;TOGGLE LED ON PORTA,5
+   // BANKSEL PORTA
+    //BTG PORTA,5  ;TOGGLE LED ON PORTA,5
     BANKSEL PIR0
     BCF PIR0,5 ;clear timer_int flag
 
