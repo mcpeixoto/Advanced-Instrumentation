@@ -19,10 +19,10 @@ uint8_t get_char (void);
 void send_error(void);
 void send_success(int length);
 void send_values (uint8_t);
-uint8_t info_ind = 0;   // indice do proximo array
-uint8_t info[6];        // array que vai receber primeiros 6 bits da NCAP
-uint8_t value_ind= 0;   // indice do proximo array
-uint8_t value[256];     // array que recebe offset e valores da NCAP
+uint8_t main_buffer_idx = 0;   // indice do proximo array
+uint8_t main_buffer[6];        // array que vai receber primeiros 6 bits da NCAP
+uint8_t aux_buffer_idx= 0;   // indice do proximo array
+uint8_t aux_buffer[256];     // array que recebe offset e valores da NCAP
 
 //create the structs for the Meta TEDS and for the TransducerChannels TEDS for 3 channels
 struct METATEDS_TEMPLATE METATED;
@@ -81,59 +81,60 @@ uint8_t get_char (void){
 }   
 
 void Identify_NCAP_cmd(void) {
+    // This function will be called everytime there is an interrupt from the EUSART
     
-    // GUARDAR OS BYTES EM ARRAYS DIFERENTES
-    PIR3bits.TX1IF = 0;
-    while (info_ind < 6){
-        info[info_ind] = get_char();   // preenchemos o array info com os 6 bytes da instru��o
-        info_ind += 1;
+    // Start to store the values
+    PIR3bits.TX1IF = 0; // TODO: Try to wait for this value to be zero in the get_char function
+    while (main_buffer_idx < 6){
+        main_buffer[main_buffer_idx] = get_char();   // preenchemos o array info com os 6 bytes da instru��o
+        main_buffer_idx += 1;
     }
-    info_ind = 0;
-    while (value_ind < info[5] ){
-        value[value_ind] = get_char();   // preenchemos o array value dependendo do tamanho (LSB) desse valor
-        value_ind += 1;
+    main_buffer_idx = 0;
+    while (aux_buffer_idx < main_buffer[5] ){
+        aux_buffer[aux_buffer_idx] = get_char();   // preenchemos o array value dependendo do tamanho (LSB) desse valor
+        aux_buffer_idx += 1;
     }
-    value_ind = 0;
+    aux_buffer_idx = 0;
     
     // A SEQUIR VAMOS DESCODIFICAR OS BYTES E ENVIAR O QUE FOR NECESS�RIO
     
     
-    if( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 1)){ // TESTA SE NCAP PEDE METATED
+    if( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2) && (aux_buffer[0] == 1)){ // TESTA SE NCAP PEDE METATED
         //common command -> 1; read Teds seg ; len -> 2; Meta TEDS -> 01 ;
     
         send_METATEDS(); 
         return;
     }
     
-    if( info[1] <= 6 ){ // depende de quantos canais temos, neste caso temos 3 canais 
+    if( main_buffer[1] <= 6 ){ // depende de quantos canais temos, neste caso temos 3 canais 
         
-        if ( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
+        if ( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2) && (aux_buffer[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
             //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
             
-            send_TCTEDS(info[1]); // ENVIA A TCTED DO CANAL PEDIDO  
+            send_TCTEDS(main_buffer[1]); // ENVIA A TCTED DO CANAL PEDIDO  
             return;
         }
         
-        if (info[2] == 3){             // verifica que � um transducer 
+        if (main_buffer[2] == 3){             // verifica que � um transducer 
             
-            if (info[3] == 1){         // ler do transdutor do canal info[1]
-                send_values(info[1]); 
+            if (main_buffer[3] == 1){         // ler do transdutor do canal main_buffer[1]
+                send_values(main_buffer[1]); 
                 return;
             }
             
-             if ((info[3] == 2) && (info[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+             if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
                 
-                LATAbits.LATA4 = value[1];
+                LATAbits.LATA4 = aux_buffer[1];
                 send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }
-            if ((info[3] == 2) && (info[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                LATAbits.LATA5 = value[1];
+            if ((main_buffer[3] == 2) && (main_buffer[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                LATAbits.LATA5 = aux_buffer[1];
                 send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }
-            if ((info[3] == 2) && (info[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                LATAbits.LATA6 = value[1];
+            if ((main_buffer[3] == 2) && (main_buffer[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                LATAbits.LATA6 = aux_buffer[1];
                 send_success(0);    // enviar a NCAP mensagem de sucesso
                 return;
             }  
