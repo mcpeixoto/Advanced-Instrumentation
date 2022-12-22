@@ -83,64 +83,111 @@ uint8_t get_char (void){
 void Identify_NCAP_cmd(void) {
     // This function will be called everytime there is an interrupt from the EUSART
     
-    // Start to store the values
+    //// Start to store the values ////
+
+    // Minimum amount of bytes
     PIR3bits.TX1IF = 0; // TODO: Try to wait for this value to be zero in the get_char function
     while (main_buffer_idx < 6){
-        main_buffer[main_buffer_idx] = get_char();   // preenchemos o array info com os 6 bytes da instru��o
+        main_buffer[main_buffer_idx] = get_char();   
         main_buffer_idx += 1;
     }
-    main_buffer_idx = 0;
+    
     while (aux_buffer_idx < main_buffer[5] ){
         aux_buffer[aux_buffer_idx] = get_char();   // preenchemos o array value dependendo do tamanho (LSB) desse valor
         aux_buffer_idx += 1;
     }
+
+    // Reset the indexes
     aux_buffer_idx = 0;
+    main_buffer_idx = 0;
+
     
-    // A SEQUIR VAMOS DESCODIFICAR OS BYTES E ENVIAR O QUE FOR NECESS�RIO
+    // Check if we have a valid command
+    // (Slide 30)
+    // 2 hex - Destination Transducer MSB
+    // 2 hex - Destination Transducer LSB
+    // 2 hex - CMD Class (Slide 31 - 1 e 3)
+    // 2 hex - CMD function (Slide 32)
+    // 2 hex - Length MSB MSB
+    // 2 hex - Length MSB LSB
+    // 2 hex - Length defined from above, MSB Command-dependent octets
+    // 2 hex - Length defined from above, LSB Command-dependent octets
     
     
-    if( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2) && (aux_buffer[0] == 1)){ // TESTA SE NCAP PEDE METATED
-        //common command -> 1; read Teds seg ; len -> 2; Meta TEDS -> 01 ;
+    // Notes:
+    // When quering for Meta TEDS data, Destination Transducer data 
+    // does not matter
+    // Destination Transducer - São os canais!
     
-        send_METATEDS(); 
-        return;
+    // CMD Class Slide 31, tab 15   
+    // 01 - Comunando comum do TIM  e Trandutores (Para pedir informações)
+    // 03 - Tranducer operating state (Quando queremos ler dados porque o transdutor vai estar ativo)
+    
+    //CMD Functions 
+    // Classe de Metateds Slide 32, tab 16 (1))
+    // 02 - Ler TEDS
+    // 03 - Escrever TEDS ?
+    // Classe de Transducer operating state Slide 38 (3)
+    // 01 - Read
+    
+    // Command dependant Slide 33, tab 17
+    // 01 - METATEDS
+    // 03 - Transdutores
+    
+    // This function needs to respond with:
+    // 2 hex - Success/Fail Flag 
+    // 2 hex - Length (MSB)
+    // 2 hex - Length (LSB)
+    // x hex - Data (x = Length)
+
+    /////////////////////////////////////////////////////
+    /////////////////////// START ///////////////////////
+    /////////////////////////////////////////////////////
+
+    // Check if we were asked information about the Meta TEDS or Transducer TEDS
+    // This will check if we have the correct CMD class, CMD function, length is 2 and offset is ignored
+    if( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2)){ 
+        // If  command-dependant octets are 1, we have a Meta TEDS request
+        if (aux_buffer[0] == 1){
+            send_METATEDS(); 
+            return;
+        }
+        // If  command-dependant octets are 3, we have a Transducer TEDS request
+        if (aux_buffer[0] == 3){
+            send_TCTEDS(main_buffer[1]);
+            return;
+        }
     }
     
-    if( main_buffer[1] <= 6 ){ // depende de quantos canais temos, neste caso temos 3 canais 
+
+    
+    if (main_buffer[2] == 3){             // verifica que � um transducer 
         
-        if ( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2) && (aux_buffer[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
-            //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
-            
-            send_TCTEDS(main_buffer[1]); // ENVIA A TCTED DO CANAL PEDIDO  
+        if (main_buffer[3] == 1){         // ler do transdutor do canal main_buffer[1]
+            send_values(main_buffer[1]); 
             return;
         }
         
-        if (main_buffer[2] == 3){             // verifica que � um transducer 
-            
-            if (main_buffer[3] == 1){         // ler do transdutor do canal main_buffer[1]
-                send_values(main_buffer[1]); 
-                return;
-            }
-            
-             if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                
-                LATAbits.LATA4 = aux_buffer[1];
-                send_success(0);    // enviar a NCAP mensagem de sucesso
-                return;
-            }
-            if ((main_buffer[3] == 2) && (main_buffer[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                LATAbits.LATA5 = aux_buffer[1];
-                send_success(0);    // enviar a NCAP mensagem de sucesso
-                return;
-            }
-            if ((main_buffer[3] == 2) && (main_buffer[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-                LATAbits.LATA6 = aux_buffer[1];
-                send_success(0);    // enviar a NCAP mensagem de sucesso
-                return;
-            }  
+        if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+        
+            LATAbits.LATA4 = aux_buffer[1];
+            send_success(0);    // enviar a NCAP mensagem de sucesso
+            return;
         }
+
+        if ((main_buffer[3] == 2) && (main_buffer[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+            LATAbits.LATA5 = aux_buffer[1];
+            send_success(0);    // enviar a NCAP mensagem de sucesso
+            return;
+        }
+        if ((main_buffer[3] == 2) && (main_buffer[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+            LATAbits.LATA6 = aux_buffer[1];
+            send_success(0);    // enviar a NCAP mensagem de sucesso
+            return;
+        }  
     }
-    // se n�o foi nenhuma das anteriores d� erro
+
+    // Error if we get here
     send_error();
     
     return;
@@ -164,6 +211,11 @@ void send_error(void){
     for(int i = 0; i<3;i++){
         putch(0);
     }
+
+    // Reset buffers indexes
+    main_buffer_idx = 0;
+    aux_buffer_idx = 0;
+
     return;
 }
 void send_values(uint8_t channel){
