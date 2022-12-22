@@ -160,12 +160,6 @@ void Identify_NCAP_cmd(void) {
     }
     
 
-    if ( (main_buffer[2] == 1) && (main_buffer[3] == 2) &&  (main_buffer[5] == 2) && (aux_buffer[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
-        //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
-        
-        send_TCTEDS(main_buffer[1]); // ENVIA A TCTED DO CANAL PEDIDO  
-        return;
-    }
     
     if (main_buffer[2] == 3){             // verifica que � um transducer 
         
@@ -174,12 +168,13 @@ void Identify_NCAP_cmd(void) {
             return;
         }
         
-            if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
-            
+        if ((main_buffer[3] == 2) && (main_buffer[1] == 4)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+        
             LATAbits.LATA4 = aux_buffer[1];
             send_success(0);    // enviar a NCAP mensagem de sucesso
             return;
         }
+
         if ((main_buffer[3] == 2) && (main_buffer[1] == 5)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
             LATAbits.LATA5 = aux_buffer[1];
             send_success(0);    // enviar a NCAP mensagem de sucesso
@@ -216,11 +211,6 @@ void send_error(void){
     for(int i = 0; i<3;i++){
         putch(0);
     }
-
-    // Reset buffers indexes
-    main_buffer_idx = 0;
-    aux_buffer_idx = 0;
-    
     return;
 }
 void send_values(uint8_t channel){
