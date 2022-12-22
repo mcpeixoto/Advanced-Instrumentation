@@ -235,7 +235,8 @@ while(ishandle(fig))
     y = y*pi/13;
     z = z*pi/13;
     
-    rot = rot*angle2dcm(z, y, x);
+    %rot = rot*angle2dcm(z, y, x);
+    rot =angle2dcm(z, y, x);
   %{
   %Check for user inputs:
   if fig.UserData.e
@@ -290,9 +291,8 @@ while(ishandle(fig))
   p1.Vertices = (rot*vert')' + repmat(pos,[size(vert,1),1]);
 
   % Display fps counter on the figure name (window tab) using time_stamp_current
-  elapsed = now - time_stamp_current;z=0;
-   
-    x=0 y=0;;
+  elapsed = now - time_stamp_current;
+  
   elapsed = elapsed * (10*10^9)
   fig.Name = sprintf('FPS: %0.2f | Hz: %0.2f',1/elapsed,1/elapsed);
 

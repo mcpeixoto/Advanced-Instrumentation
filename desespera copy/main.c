@@ -69,7 +69,7 @@ struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS3;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS4;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS5;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS6;
-
+struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS7;
 
 void main(void) {
 
@@ -148,7 +148,7 @@ void Identify_NCAP_cmd(void) {
         return;
     }
     
-    if( info[1] <= 6 ){ // depende de quantos canais temos, neste caso temos 3 canais 
+    if( info[1] <= 7 ){ // depende de quantos canais temos, neste caso temos 3 canais 
         
         if ( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
             //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
@@ -177,6 +177,11 @@ void Identify_NCAP_cmd(void) {
             }
             if ((info[3] == 2) && (info[1] == 6)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
                 LATAbits.LATA6 = value[1];
+                write_success();    // enviar a NCAP mensagem de sucesso
+                return;
+            }  
+             if ((info[3] == 2) && (info[1] == 7)){ //escrever no transdutor do canal 3 (unico permitido psrs escrita) 
+                LATAbits.LATA7 = value[1];
                 write_success();    // enviar a NCAP mensagem de sucesso
                 return;
             }  
@@ -253,7 +258,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS1.TEDSID, array11, 6);
     uint8_t array21[] = {11, 1, 0};
     memcpy(TCTEDS1.CHANNEL_TYPE, array21, 3);
-    uint8_t array31[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
+    uint8_t array31[] = {12, 10, 0, 128, 128, 130, 128, 124, 128, 128, 128, 128};
     memcpy(TCTEDS1.UNITS, array31, 12);
     uint8_t array41[] = {13, 1, 0};
     memcpy(TCTEDS1.LOW_RANGE_LIMIT, array41, 3);
@@ -275,7 +280,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS2.TEDSID, array12, 6);
     uint8_t array22[] = {11, 1, 0};
     memcpy(TCTEDS2.CHANNEL_TYPE, array22, 3);
-    uint8_t array32[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
+    uint8_t array32[] = {12, 10, 0, 128, 128, 130, 128, 124, 128, 128, 128, 128};
     memcpy(TCTEDS2.UNITS, array32, 12);
     uint8_t array42[] = {13, 1, 0};
     memcpy(TCTEDS2.LOW_RANGE_LIMIT, array42, 3);
@@ -295,7 +300,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS3.TEDSID, array13, 6);
     uint8_t array23[] = {11, 1, 0};
     memcpy(TCTEDS3.CHANNEL_TYPE, array23, 3);
-    uint8_t array33[] = {12, 10, 0, 128, 128, 130, 128, 124, 126, 128, 128, 128};
+    uint8_t array33[] = {12, 10, 0, 128, 128, 130, 128, 124, 128, 128, 128, 128};
     memcpy(TCTEDS3.UNITS, array33, 12);
     uint8_t array43[] = {13, 1, 0};
     memcpy(TCTEDS3.LOW_RANGE_LIMIT, array43, 3);
@@ -367,6 +372,23 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS6.DATA_MODEL_LENGTH, array76, 3);
     uint8_t array86[] = {42, 1, 8};
     memcpy(TCTEDS6.MODEL_SIG_BITS, array86, 3);
+    
+    uint8_t array17[] = {3, 4, 0, 3, 0, 1};
+    memcpy(TCTEDS7.TEDSID, array16, 6);
+    uint8_t array27[] = {11, 1, 1};
+    memcpy(TCTEDS7.CHANNEL_TYPE, array26, 3);
+    uint8_t array37[] = {12, 10, 0, 128, 128, 132, 130, 122, 126, 128, 128, 128};
+    memcpy(TCTEDS7.UNITS, array36, 12);
+    uint8_t array47[] = {13, 1, 0};
+    memcpy(TCTEDS7.LOW_RANGE_LIMIT, array46, 3);
+    uint8_t array57[] = {14, 1, 255};
+    memcpy(TCTEDS7.HIGH_RANGE_LIMIT, array56, 3);
+    uint8_t array67[] = {40, 1, 0};
+    memcpy(TCTEDS7.DATA_MODEL, array66, 3);
+    uint8_t array77[] = {41, 1, 1};
+    memcpy(TCTEDS7.DATA_MODEL_LENGTH, array76, 3);
+    uint8_t array87[] = {42, 1, 8};
+    memcpy(TCTEDS7.MODEL_SIG_BITS, array86, 3);
     
     
     return;
@@ -590,6 +612,35 @@ void send_TCTEDS(uint8_t channel) {
         }
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS6.MODEL_SIG_BITS[i]);
+        }}
+     if (channel == 7) {            // enviar TED do canal 3
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS7.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS7.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS7.MODEL_SIG_BITS[i]);
         }}
     
     

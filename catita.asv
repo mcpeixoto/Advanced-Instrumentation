@@ -50,7 +50,7 @@ if (suc(1) ==0)
     flag=0;
 else
     value = read(stim,suc(3), "uint8");
-    display(value);
+    display(te);
     flag=1;
 end
 i = i+1;
