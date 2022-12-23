@@ -1,4 +1,4 @@
-function pessoal
+function aviao
 %{ 
 FinalEx.m
 
@@ -37,6 +37,12 @@ z_medio = 0;
 write(stim, [0 4 3 2 0 2 0 1], "uint8");
 suc = read(stim,3, "uint8");
 pause(0.2);
+write(stim, [0 4 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2);
+write(stim, [0 4 3 2 0 2 0 1], "uint8");
+suc = read(stim,3, "uint8");
+pause(0.2);
 write(stim, [0 5 3 2 0 2 0 1], "uint8");
 suc = read(stim,3, "uint8");
 pause(0.2)
@@ -70,15 +76,6 @@ pause(0.2)
 write(stim, [0 6 3 2 0 2 0 1], "uint8");
 suc = read(stim,3, "uint8");
 write(stim, [0 7 3 2 0 2 0 1], "uint8");
-suc = read(stim,3, "uint8");
-pause(0.2)
-write(stim, [0 4 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
-write(stim, [0 5 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
-write(stim, [0 6 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
-write(stim, [0 7 3 2 0 2 0 0], "uint8");
 suc = read(stim,3, "uint8");
 
 
@@ -120,13 +117,7 @@ end
 x_medio = x_medio/50;
 y_medio = y_medio/50;
 z_medio = z_medio/50;
-% desliga leds
-write(stim, [0 5 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
-write(stim, [0 4 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
-write(stim, [0 6 3 2 0 2 0 0], "uint8");
-suc = read(stim,3, "uint8");
+
 
 fig = figure;
 
@@ -150,7 +141,7 @@ colormap(skymap);
 
 %% Add the plane - Fancy planes folder
 fv = stlread('test.stl');
-p1 = patch(fv,'FaceColor',       'red', ...
+p1 = patch(fv,'FaceColor',       'white', ...
          'EdgeColor',       'none',        ...
          'FaceLighting',    'gouraud',     ...
          'AmbientStrength', 0.15);
@@ -159,7 +150,7 @@ vert = p1.Vertices;
 material('metal')
 
 %% Add the ground + textures - Fancy environments folder Ex
-texture = imread('texture.jpg');
+texture = imread('tenta.jpg');
 
 
 ground = 10000*membrane(1,40)-10000;
@@ -201,27 +192,22 @@ axis([-10000 10000 -10000 10000 -10000 10000])
 tic
 told = 0;
 
+% desliga leds
+write(stim, [0 5 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 4 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 6 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+write(stim, [0 7 3 2 0 2 0 0], "uint8");
+suc = read(stim,3, "uint8");
+
 while(ishandle(fig))
 % now is the actual time
   time_stamp_current =  now
   tnew = toc;
 
 
-  %{
-    Pedir valores; retirar valores para x,y e z e v (pot)
-    xx = x- (x_medio)
-    yy = y - (y_medio)
-    zz = z - (z_medio)
-    Normalizar os valores
-    xx = xx/(xx^2 + yy^2 + zz^2)^(1/2)
-    yy = yy/(xx^2 + yy^2 + zz^2)^(1/2)
-    zz = zz/(xx^2 + yy^2 + zz^2)^(1/2)
-    rot = rot*angle2scm(xx, yy, zz)
-
-    # Velocidades é preciso testa as gamas de valores!!!
-    v = v*100 (? fator por testar)
-  %}
-  %pause(0.2)
      write(stim, [0 1 3 1 0 1 0], "uint8");
     suc = read(stim,3, "uint8");
     teds = read(stim,suc(3), "uint8");
@@ -305,7 +291,8 @@ while(ishandle(fig))
   elapsed = now - time_stamp_current;
   
   elapsed = elapsed * (10*10^9)
-  fig.Name = sprintf('FPS: %0.2f | Hz: %0.2f',1/elapsed,1/elapsed);
+  %fig.Name = sprintf('FPS: %0.2f | Hz: %0.2f',1/elapsed,1/elapsed);
+  %fig.Name = print('Simulador de aviação');
 
 
 
