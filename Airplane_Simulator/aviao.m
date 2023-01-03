@@ -180,7 +180,7 @@ vert = p1.Vertices;
 material('metal')
 
 %% Add the ground + textures - Fancy environments folder Ex
-texture = imread('tenta.jpg');
+texture = imread('texture.jpg');
 
 
 ground = 10000*membrane(1,40)-10000;
