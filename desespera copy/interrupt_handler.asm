@@ -9,9 +9,9 @@ PSECT intcode
 
     
 _int_handler:    ;when an interrupt happens, this function is called. It is your job to verify what interrupt happened and act accordingly
-    BANKSEL PIR0
-    BTFSC PIR0, 5 ; Q:check if the timer0 interrupt flag is set. If so, go to timer0_int_handler. If not, skip.
-    goto _timer0_int_handler
+    ;BANKSEL PIR0
+    ;BTFSC PIR0, 5 ; Q:check if the timer0 interrupt flag is set. If so, go to timer0_int_handler. If not, skip.
+    ;goto _timer0_int_handler
     
     ;BANKSEL PIR1
     ;BTFSC PIR1, 0   ;Q: check if the ADC interrupt flag is set. If so, go to adc_int_handler. If not, skip.
@@ -27,16 +27,16 @@ _int_handler:    ;when an interrupt happens, this function is called. It is your
     RETFIE
     
 
-_timer0_int_handler:
+;_timer0_int_handler:
    // BANKSEL PORTA
     //BTG PORTA,5  ;TOGGLE LED ON PORTA,5
-    BANKSEL PIR0
-    BCF PIR0,5 ;clear timer_int flag
+    ;BANKSEL PIR0
+    ;BCF PIR0,5 ;clear timer_int flag
 
     ; Call reset receive buffer function / watchdog
     //call _reset_receiv_buff
 
-    RETFIE  ;return from interruption
+    ;RETFIE  ;return from interruption
     
     
 _adc_int_handler:

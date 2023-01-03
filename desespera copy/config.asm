@@ -144,20 +144,20 @@ _config:
     ;================
     ;CONFIGURE TIMER0
     ;================
-    BANKSEL T0CON0
-    CLRF T0CON0
+    ;BANKSEL T0CON0
+    ;CLRF T0CON0
     
     // 303
-    BANKSEL T0CON1
-    MOVLW 0b01001100  //Q: SET THE PRESCALER TO ~= 16000
-    MOVWF T0CON1
+    ;BANKSEL T0CON1
+    ;MOVLW 0b01001100  //Q: SET THE PRESCALER TO ~= 16000
+    ;MOVWF T0CON1
     
     //BANKSEL T0CON0
     //MOVLW 0b11000001
     //MOVWF T0CON0
    
-    BANKSEL TMR0L
-    CLRF TMR0L  ;clear the counter
+    ;BANKSEL TMR0L
+    ;CLRF TMR0L  ;clear the counter
     
     ;=================
     ;ENABLE INTERRUPTS
