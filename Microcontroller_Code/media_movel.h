@@ -63,9 +63,6 @@ static Queue Q_X = {0};     // Global Queue For Accelerometer X axis
 static Queue Q_Y = {0};     // Global Queue For Accelerometer Y axis
 static Queue Q_Z = {0};     // Global Queue For Accelerometer Z axis
 
-// Dummy Stream off data to simulate the accelerometer
-uint8_t queue_stream[55] = {1,2,3,4,5,6,7,8,9,8,7,6,5,4,3,2,1,2,3,4,5,5,6,6,6,6,6,5,4,3,2,1,2,3,4,5,6,7,8,8,9,9,9,8,7,6,5,4,3,2,1,2,3,4,5};
-
 void init_queue(Queue *q) {
     q->start = 0;
     q->end = 0;
