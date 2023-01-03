@@ -1,0 +1,113 @@
+
+
+Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
+                                                                                                           Thu Dec 22 09:27:54 2022
+
+
+     1                           	processor	18F47Q10
+     2                           	pagewidth 132
+     3                           	opt	flic
+     4                           	psect	udata_acs,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     5                           	psect	udata_bank0,global,class=BANK0,space=1,delta=1,lowdata,noexec
+     6                           	psect	udata_bank1,global,class=BANK1,space=1,delta=1,lowdata,noexec
+     7                           	psect	udata_bank2,global,class=BANK2,space=1,delta=1,lowdata,noexec
+     8                           	psect	udata_bank3,global,class=BANK3,space=1,delta=1,lowdata,noexec
+     9                           	psect	udata_bank4,global,class=BANK4,space=1,delta=1,lowdata,noexec
+    10                           	psect	udata_bank5,global,class=BANK5,space=1,delta=1,lowdata,noexec
+    11                           	psect	udata_bank6,global,class=BANK6,space=1,delta=1,lowdata,noexec
+    12                           	psect	udata_bank7,global,class=BANK7,space=1,delta=1,lowdata,noexec
+    13                           	psect	udata_bank8,global,class=BANK8,space=1,delta=1,lowdata,noexec
+    14                           	psect	udata_bank9,global,class=BANK9,space=1,delta=1,lowdata,noexec
+    15                           	psect	udata_bank10,global,class=BANK10,space=1,delta=1,lowdata,noexec
+    16                           	psect	udata_bank11,global,class=BANK11,space=1,delta=1,lowdata,noexec
+    17                           	psect	udata_bank12,global,class=BANK12,space=1,delta=1,lowdata,noexec
+    18                           	psect	udata_bank14,global,class=BANK14,space=1,delta=1,lowdata,noexec
+    19                           	psect	udata,global,class=RAM,space=1,delta=1,noexec
+    20                           	psect	code,global,reloc=2,class=CODE,delta=1
+    21                           	psect	data,global,reloc=2,class=CONST,delta=1,noexec
+    22                           	psect	edata,global,class=EEDATA,space=3,delta=2,noexec
+    23                           	psect	text3,local,reloc=2,class=CODE,delta=1
+    24   000000                     
+    25                           	psect	edata
+    26   000000                     stk_offset	set	0
+    27   000000                     auto_size	set	0
+    28                           
+    29                           ; stack_auto defines a symbol /name/_offset which equates to the
+    30                           ; stack offset of the auto object in question
+    31   000000                     
+    32                           ; stack_param defines a symbol /name/_offset which equates to the
+    33                           ; stack offset of the parameter object in question
+    34   000000                     
+    35                           ; alloc_stack adjusts the SP to allocate space for auto objects
+    36                           ; it also links in to the btemp symbol so that can be used
+    37   000000                     
+    38                           ; restore_stack adjusts the SP to remove all auto and parameter
+    39                           ; objects from the stack prior to returning from a function
+    40   000000                     
+    41                           	psect	text3
+    42   0019D8                     _pass_variable_between_C_and_ASM:
+    43                           	callstack 0
+    44                           
+    45                           ;the argument (3) is stored in W when we call the function.
+    46   0019D8  0F05               	addlw	5	;Now we add "5" to W.
+    47                           
+    48                           ;now we are going to add a value to the global variable var_global, and we will need to use the W re
+      +                          gister. Since the function returns the value of W, we must save it.
+    49   0019DA  6E03               	movwf	3,c	;store W in a variable
+    50                           
+    51                           ;add 1 to the global variable
+    52   0019DC  0100               	banksel	_var_global
+    53   0019DE  0E01               	movlw	1
+    54   0019E0  2709               	addwf	_var_global,f,b	;the "1" in this instruction tells the compiler to save the result of the ADD
+      +                           to _var_global. If it was "0" it would be saved in "W".
+    55                           
+    56                           ;now we need to recover the W to return the result of adding (3) with (5).
+    57   0019E2  0B00               	andlw	0	;set W as 0
+    58   0019E4  2403               	addwf	3,w,c	;put the variable value back into W for the return. Here it is "0" so that the ADD is s
+      +                          aved into W.
+    59   0019E6  0012               	return		;when the function returns, the _var_global value is already updated and it will return the
+      +                           W value back to C for it to put in "result"
+    60                           tosu	equ	0xFFF
+    61                           tosh	equ	0xFFE
+    62                           tosl	equ	0xFFD
+    63                           stkptr	equ	0xFFC
+    64                           pclatu	equ	0xFFB
+    65                           pclath	equ	0xFFA
+    66                           pcl	equ	0xFF9
+    67                           tblptru	equ	0xFF8
+    68                           tblptrh	equ	0xFF7
+    69                           tblptrl	equ	0xFF6
+    70                           tablat	equ	0xFF5
+    71                           prodh	equ	0xFF4
+    72                           prodl	equ	0xFF3
+    73                           indf0	equ	0xFEF
+    74                           postinc0	equ	0xFEE
+    75                           postdec0	equ	0xFED
+    76                           preinc0	equ	0xFEC
+    77                           plusw0	equ	0xFEB
+    78                           fsr0h	equ	0xFEA
+    79                           fsr0l	equ	0xFE9
+    80                           wreg	equ	0xFE8
+    81                           indf1	equ	0xFE7
+    82                           postinc1	equ	0xFE6
+    83                           postdec1	equ	0xFE5
+    84                           preinc1	equ	0xFE4
+    85                           plusw1	equ	0xFE3
+    86                           fsr1h	equ	0xFE2
+    87                           fsr1l	equ	0xFE1
+    88                           bsr	equ	0xFE0
+    89                           indf2	equ	0xFDF
+    90                           postinc2	equ	0xFDE
+    91                           postdec2	equ	0xFDD
+    92                           preinc2	equ	0xFDC
+    93                           plusw2	equ	0xFDB
+    94                           fsr2h	equ	0xFDA
+    95                           fsr2l	equ	0xFD9
+    96                           status	equ	0xFD8
+
+
+Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
+Symbol Table                                                                                               Thu Dec 22 09:27:54 2022
+
+                         isa$std 000001  _pass_variable_between_C_and_ASM 19D8                       _var_global 0009  
+                       isa$xinst 000000  

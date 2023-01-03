@@ -1,0 +1,391 @@
+
+
+Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
+                                                                                                           Thu Dec 22 09:27:54 2022
+
+
+     1                           	processor	18F47Q10
+     2                           	pagewidth 132
+     3                           	opt	flic
+     4                           	psect	udata_acs,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     5                           	psect	udata_bank0,global,class=BANK0,space=1,delta=1,lowdata,noexec
+     6                           	psect	udata_bank1,global,class=BANK1,space=1,delta=1,lowdata,noexec
+     7                           	psect	udata_bank2,global,class=BANK2,space=1,delta=1,lowdata,noexec
+     8                           	psect	udata_bank3,global,class=BANK3,space=1,delta=1,lowdata,noexec
+     9                           	psect	udata_bank4,global,class=BANK4,space=1,delta=1,lowdata,noexec
+    10                           	psect	udata_bank5,global,class=BANK5,space=1,delta=1,lowdata,noexec
+    11                           	psect	udata_bank6,global,class=BANK6,space=1,delta=1,lowdata,noexec
+    12                           	psect	udata_bank7,global,class=BANK7,space=1,delta=1,lowdata,noexec
+    13                           	psect	udata_bank8,global,class=BANK8,space=1,delta=1,lowdata,noexec
+    14                           	psect	udata_bank9,global,class=BANK9,space=1,delta=1,lowdata,noexec
+    15                           	psect	udata_bank10,global,class=BANK10,space=1,delta=1,lowdata,noexec
+    16                           	psect	udata_bank11,global,class=BANK11,space=1,delta=1,lowdata,noexec
+    17                           	psect	udata_bank12,global,class=BANK12,space=1,delta=1,lowdata,noexec
+    18                           	psect	udata_bank14,global,class=BANK14,space=1,delta=1,lowdata,noexec
+    19                           	psect	udata,global,class=RAM,space=1,delta=1,noexec
+    20                           	psect	code,global,reloc=2,class=CODE,delta=1
+    21                           	psect	data,global,reloc=2,class=CONST,delta=1,noexec
+    22                           	psect	edata,global,class=EEDATA,space=3,delta=2,noexec
+    23                           	psect	text0,local,reloc=2,class=CODE,delta=1
+    24                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    25   000000                     
+    26                           	psect	edata
+    27   000000                     stk_offset	set	0
+    28   000000                     auto_size	set	0
+    29                           
+    30                           ; stack_auto defines a symbol /name/_offset which equates to the
+    31                           ; stack offset of the auto object in question
+    32   000000                     
+    33                           ; stack_param defines a symbol /name/_offset which equates to the
+    34                           ; stack offset of the parameter object in question
+    35   000000                     
+    36                           ; alloc_stack adjusts the SP to allocate space for auto objects
+    37                           ; it also links in to the btemp symbol so that can be used
+    38   000000                     
+    39                           ; restore_stack adjusts the SP to remove all auto and parameter
+    40                           ; objects from the stack prior to returning from a function
+    41   000000                     
+    42                           	psect	text0
+    43   00163C                     _config:
+    44                           	callstack 0
+    45                           
+    46                           ;===============
+    47                           ;CONFIGURE PORTA
+    48                           ;===============
+    49   00163C  010F               	banksel	3970
+    50   00163E  6B82               	clrf	3970,b	; Set all LatchA bits to zero
+    51   001640  0E01               	movlw	1
+    52   001642  010F               	banksel	3975
+    53   001644  6F87               	movwf	3975,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
+      +                          meter. All other are output pins
+    54   001646  0E01               	movlw	1
+    55   001648  010F               	banksel	3852
+    56   00164A  6F0C               	movwf	3852,b	;analog select. ((PORTA) and 0FFh), 0, a connects to potenciometer. The others are dig
+      +                          ital pins
+    57                           
+    58                           ;===============
+    59                           ;CONFIGURE PORTB
+    60                           ;===============
+    61   00164C  010F               	banksel	3971
+    62   00164E  6B83               	clrf	3971,b	; Set all LatchB bits to zero
+    63   001650  0E07               	movlw	7
+    64   001652  010F               	banksel	3971
+    65   001654  6F83               	movwf	3971,b	;defines the pin direction. 0=out, 1=in. ((PORTA) and 0FFh), 0, a connects to potencio
+      +                          meter. All other are output pins
+    66   001656  0E07               	movlw	7
+    67   001658  010F               	banksel	3860
+    68   00165A  6F14               	movwf	3860,b	; analog select. ((PORTB) and 0FFh), 0, a, ((PORTB) and 0FFh), 1, a, ((PORTB) and 0FFh
+      +                          ), 2, a connects to accelerometer. The others are digital pins
+    69                           
+    70                           ;===============
+    71                           ;CONFIGURE PORTC
+    72                           ;===============
+    73   00165C  010F               	banksel	3972
+    74   00165E  6B84               	clrf	3972,b	; Set all LatchD bits to zero
+    75   001660  010F               	banksel	3977
+    76   001662  6B89               	clrf	3977,b	;All pins are output
+    77   001664  8E89               	bsf	3977,7,c	;except ((PORTC) and 0FFh), 7, a, that will be used as RX - microchip specifies RX as 
+      +                          input pin
+    78   001666  010F               	banksel	3868
+    79   001668  6B1C               	clrf	3868,b	;All digital pins
+    80   00166A  010E               	banksel	3830
+    81   00166C  0E09               	movlw	9	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RC4PPS ((STATUS) and 0FFh), 6, a PUT
+      +                           THE EUSART1 TX ((CWG1CON1) and 0FFh), 5, b PIN ((PORTC) and 0FFh), 4, a? HINT: look in the 17.2 sec
+      +                          tion of the datasheet, table 17.2
+    82   00166E  6FF6               	movwf	3830,b	;place the EUSART1 (TX/CK) in ((PORTC) and 0FFh), 4, a
+    83   001670  010E               	banksel	3760
+    84   001672  0E17               	movlw	23	; Q: WHAT VALUE MUST WE GIVE ((STATUS) and 0FFh), 6, a RX1PPS ((STATUS) and 0FFh), 6, a PU
+      +                          T THE EUSART1 RX ((CWG1CON1) and 0FFh), 5, b PIN ((PORTC) and 0FFh), 7, a? HINT: look in the PPS cha
+      +                          pter of the datasheet
+    85   001674  6FB0               	movwf	3760,b	;place the EUSART1 (RX) in ((PORTC) and 0FFh), 7, a
+    86                           
+    87                           ;===============
+    88                           ;CONFIGURE CLOCK
+    89                           ;===============
+    90   001676  010E               	banksel	3795
+    91   001678  0E60               	movlw	96	;NOSC=0110 (internal high speed osc)
+    92   00167A  6FD3               	movwf	3795,b	;NDIV=0000 (divider=1, clk divided by 1)
+    93   00167C  010E               	banksel	3801
+    94   00167E  0E06               	movlw	6	; HFFRQ 0110 -> clk= 32 MHz
+    95   001680  6FD9               	movwf	3801,b
+    96   001682  010E               	banksel	3799
+    97   001684  0E40               	movlw	64	;internal clock @freq=OSCFRQ ativo
+    98   001686  6FD7               	movwf	3799,b
+    99                           
+   100                           ;===============
+   101                           ;CONFIGURE USART
+   102                           ;===============
+   103                           ;BR=9600 @ CLK=32 MHz
+   104                           ; Q: WHAT VALUE SHOULD WE PUT ((CWG1CON1) and 0FFh), 5, b SP1BRGL AND SP1BRG1H ((STATUS) and 0FFh), 
+      +                          6, a GET A BAUD RATE OF 9600 BPS FOR A CLOCK SPEED OF 32 MHZ? HINT: CHECK SECTION 28.2
+   105   001688  010F               	banksel	3994
+   106   00168A  0E33               	movlw	51
+   107   00168C  6E9A               	movwf	3994,c
+   108   00168E  0E00               	movlw	0
+   109   001690  6E9B               	movwf	3995,c
+   110   001692  010F               	banksel	3997
+   111   001694  0E20               	movlw	32	;8 data bits, TX enabled, ASYNC
+   112   001696  6E9D               	movwf	3997,c
+   113                           
+   114                           ; Q: HERE YOU MUST ENABLE THE USART AND THE RECEIVER WITH REGISTER RC1STA
+   115   001698  0EB0               	movlw	176
+   116   00169A  010F               	banksel	3996
+   117   00169C  6E9C               	movwf	3996,c
+   118                           
+   119                           ;=============
+   120                           ;CONFIGURE ADC
+   121                           ;=============
+   122                           ; ADPCH Possibilities
+   123                           ; 001011 ((PORTB) and 0FFh), 3, a/ANB3
+   124                           ; 001010 ((PORTB) and 0FFh), 2, a/ ANB2
+   125                           ; 001001 ((PORTB) and 0FFh), 1, a/ ANB1
+   126                           ; 001000 ((PORTB) and 0FFh), 0, a/ANB0
+   127                           ; 000000 ((PORTA) and 0FFh), 0, a/ANA0
+   128   00169E  010F               	banksel	3930
+   129   0016A0  0E08               	movlw	8	;set ((PORTA) and 0FFh), 0, a as ADC input
+   130   0016A2  6F5A               	movwf	3930,b
+   131   0016A4  010F               	banksel	3923
+   132   0016A6  0E00               	movlw	0	;Vref set to vdd and vss
+   133   0016A8  6F53               	movwf	3923,b
+   134   0016AA  010F               	banksel	3922
+   135   0016AC  0E0F               	movlw	15	; Q: SET THE ADC CLOCK FREQUENCY ((STATUS) and 0FFh), 6, a 1 MHZ, KNOWING THAT FOSC = 32 M
+      +                          HZ
+   136   0016AE  6F52               	movwf	3922,b
+   137   0016B0  010F               	banksel	3931
+   138   0016B2  0E00               	movlw	0	;Q: SET THE ADC ((STATUS) and 0FFh), 6, a: results left-justified, clock=Fosc/div, non-cont
+      +                          inuous operation
+   139   0016B4  6F5B               	movwf	3931,b
+   140                           
+   141                           ;================
+   142                           ;CONFIGURE TIMER0
+   143                           ;================
+   144   0016B6  010F               	banksel	4052
+   145   0016B8  6AD4               	clrf	4052,c
+   146   0016BA  010F               	banksel	4053
+   147   0016BC  0E4C               	movlw	76
+   148   0016BE  6ED5               	movwf	4053,c
+   149   0016C0  010F               	banksel	4050
+   150   0016C2  6AD2               	clrf	4050,c	;clear the counter
+   151                           
+   152                           ;=================
+   153                           ;ENABLE INTERRUPTS
+   154                           ;=================
+   155   0016C4  010E               	banksel	3781
+   156   0016C6  9BC5               	bcf	3781,5,b	;clear timer interrupt flag
+   157   0016C8  010E               	banksel	3782
+   158   0016CA  91C6               	bcf	3782,0,b	;clear ADC interrupt flag
+   159   0016CC  010E               	banksel	3784
+   160   0016CE  9BC8               	bcf	3784,5,b	;clear RX1 interrupt flag
+   161   0016D0  010E               	banksel	3773
+   162   0016D2  8BBD               	bsf	3773,5,b	; Q: enable timer int
+   163   0016D4  010E               	banksel	3774
+   164   0016D6  81BE               	bsf	3774,0,b	; Q: enable adc int
+   165   0016D8  010E               	banksel	3776
+   166   0016DA  8BC0               	bsf	3776,5,b	; Q: enable RX1 int
+   167   0016DC  010F               	banksel	4052
+   168   0016DE  8ED4               	bsf	4052,7,c	;start timer 0
+   169   0016E0  010F               	banksel	3931
+   170   0016E2  8F5B               	bsf	3931,7,b	;ENABLE ADC
+   171                           
+   172                           ; Q: HERE YOU MUST ENABLE PERIPHERAL INTERRUPTIONS AND GLOBAL INTERRUPTIONS
+   173   0016E4  010F               	banksel	4082
+   174   0016E6  8EF2               	bsf	4082,7,c
+   175   0016E8  8CF2               	bsf	4082,6,c
+   176   0016EA  0012               	return	
+   177                           
+   178                           	psect	config
+   179                           
+   180                           ;Config register CONFIG1L @ 0x300000
+   181                           ;	External Oscillator mode Selection bits
+   182                           ;	FEXTOSC = 0x4, user specified literal
+   183                           ;	Power-up default value for COSC bits
+   184                           ;	RSTOSC = 0x7, unprogrammed default
+   185   300000                     	org	3145728
+   186   300000  FC                 	db	252
+   187                           
+   188                           ;Config register CONFIG1H @ 0x300001
+   189                           ;	Clock Out Enable bit
+   190                           ;	CLKOUTEN = 0x1, unprogrammed default
+   191                           ;	Clock Switch Enable bit
+   192                           ;	CSWEN = 0x1, user specified literal
+   193                           ;	Fail-Safe Clock Monitor Enable bit
+   194                           ;	FCMEN = 0x1, unprogrammed default
+   195   300001                     	org	3145729
+   196   300001  FF                 	db	255
+   197                           
+   198                           ;Config register CONFIG2L @ 0x300002
+   199                           ;	unspecified, using default values
+   200                           ;	Master Clear Enable bit
+   201                           ;	MCLRE = 0x1, unprogrammed default
+   202                           ;	Power-up Timer Enable bit
+   203                           ;	PWRTE = 0x1, unprogrammed default
+   204                           ;	Low-power BOR enable bit
+   205                           ;	LPBOREN = 0x1, unprogrammed default
+   206                           ;	Brown-out Reset Enable bits
+   207                           ;	BOREN = 0x3, unprogrammed default
+   208   300002                     	org	3145730
+   209   300002  FF                 	db	255
+   210                           
+   211                           ;Config register CONFIG2H @ 0x300003
+   212                           ;	unspecified, using default values
+   213                           ;	Brown Out Reset Voltage selection bits
+   214                           ;	BORV = 0x3, unprogrammed default
+   215                           ;	ZCD Disable bit
+   216                           ;	ZCD = 0x1, unprogrammed default
+   217                           ;	PPSLOCK bit One-Way Set Enable bit
+   218                           ;	PPS1WAY = 0x1, unprogrammed default
+   219                           ;	Stack Full/Underflow Reset Enable bit
+   220                           ;	STVREN = 0x1, unprogrammed default
+   221                           ;	Extended Instruction Set Enable bit
+   222                           ;	XINST = 0x1, unprogrammed default
+   223   300003                     	org	3145731
+   224   300003  FF                 	db	255
+   225                           
+   226                           ;Config register CONFIG3L @ 0x300004
+   227                           ;	WDT Period Select bits
+   228                           ;	WDTCPS = 0x1F, unprogrammed default
+   229                           ;	WDT operating mode
+   230                           ;	WDTE = OFF, WDT Disabled
+   231   300004                     	org	3145732
+   232   300004  9F                 	db	159
+   233                           
+   234                           ;Config register CONFIG3H @ 0x300005
+   235                           ;	unspecified, using default values
+   236                           ;	WDT Window Select bits
+   237                           ;	WDTCWS = 0x7, unprogrammed default
+   238                           ;	WDT input clock selector
+   239                           ;	WDTCCS = 0x7, unprogrammed default
+   240   300005                     	org	3145733
+   241   300005  FF                 	db	255
+   242                           
+   243                           ;Config register CONFIG4L @ 0x300006
+   244                           ;	unspecified, using default values
+   245                           ;	Write Protection Block 0
+   246                           ;	WRT0 = 0x1, unprogrammed default
+   247                           ;	Write Protection Block 1
+   248                           ;	WRT1 = 0x1, unprogrammed default
+   249                           ;	Write Protection Block 2
+   250                           ;	WRT2 = 0x1, unprogrammed default
+   251                           ;	Write Protection Block 3
+   252                           ;	WRT3 = 0x1, unprogrammed default
+   253                           ;	Write Protection Block 4
+   254                           ;	WRT4 = 0x1, unprogrammed default
+   255                           ;	Write Protection Block 5
+   256                           ;	WRT5 = 0x1, unprogrammed default
+   257                           ;	Write Protection Block 6
+   258                           ;	WRT6 = 0x1, unprogrammed default
+   259                           ;	Write Protection Block 7
+   260                           ;	WRT7 = 0x1, unprogrammed default
+   261   300006                     	org	3145734
+   262   300006  FF                 	db	255
+   263                           
+   264                           ;Config register CONFIG4H @ 0x300007
+   265                           ;	unspecified, using default values
+   266                           ;	Configuration Register Write Protection bit
+   267                           ;	WRTC = 0x1, unprogrammed default
+   268                           ;	Boot Block Write Protection bit
+   269                           ;	WRTB = 0x1, unprogrammed default
+   270                           ;	Data EEPROM Write Protection bit
+   271                           ;	WRTD = 0x1, unprogrammed default
+   272                           ;	Scanner Enable bit
+   273                           ;	SCANE = 0x1, unprogrammed default
+   274                           ;	Low Voltage Programming Enable bit
+   275                           ;	LVP = 0x1, unprogrammed default
+   276   300007                     	org	3145735
+   277   300007  FF                 	db	255
+   278                           
+   279                           ;Config register CONFIG5L @ 0x300008
+   280                           ;	unspecified, using default values
+   281                           ;	UserNVM Program Memory Code Protection bit
+   282                           ;	CP = 0x1, unprogrammed default
+   283                           ;	DataNVM Memory Code Protection bit
+   284                           ;	CPD = 0x1, unprogrammed default
+   285   300008                     	org	3145736
+   286   300008  FF                 	db	255
+   287                           
+   288                           ;Config register CONFIG5H @ 0x300009
+   289                           ;	unspecified, using default values
+   290   300009                     	org	3145737
+   291   300009  FF                 	db	255
+   292                           
+   293                           ;Config register CONFIG6L @ 0x30000A
+   294                           ;	unspecified, using default values
+   295                           ;	Table Read Protection Block 0
+   296                           ;	EBTR0 = 0x1, unprogrammed default
+   297                           ;	Table Read Protection Block 1
+   298                           ;	EBTR1 = 0x1, unprogrammed default
+   299                           ;	Table Read Protection Block 2
+   300                           ;	EBTR2 = 0x1, unprogrammed default
+   301                           ;	Table Read Protection Block 3
+   302                           ;	EBTR3 = 0x1, unprogrammed default
+   303                           ;	Table Read Protection Block 4
+   304                           ;	EBTR4 = 0x1, unprogrammed default
+   305                           ;	Table Read Protection Block 5
+   306                           ;	EBTR5 = 0x1, unprogrammed default
+   307                           ;	Table Read Protection Block 6
+   308                           ;	EBTR6 = 0x1, unprogrammed default
+   309                           ;	Table Read Protection Block 7
+   310                           ;	EBTR7 = 0x1, unprogrammed default
+   311   30000A                     	org	3145738
+   312   30000A  FF                 	db	255
+   313                           
+   314                           ;Config register CONFIG6H @ 0x30000B
+   315                           ;	unspecified, using default values
+   316                           ;	Boot Block Table Read Protection bit
+   317                           ;	EBTRB = 0x1, unprogrammed default
+   318   30000B                     	org	3145739
+   319   30000B  FF                 	db	255
+   320                           tosu	equ	0xFFF
+   321                           tosh	equ	0xFFE
+   322                           tosl	equ	0xFFD
+   323                           stkptr	equ	0xFFC
+   324                           pclatu	equ	0xFFB
+   325                           pclath	equ	0xFFA
+   326                           pcl	equ	0xFF9
+   327                           tblptru	equ	0xFF8
+   328                           tblptrh	equ	0xFF7
+   329                           tblptrl	equ	0xFF6
+   330                           tablat	equ	0xFF5
+   331                           prodh	equ	0xFF4
+   332                           prodl	equ	0xFF3
+   333                           indf0	equ	0xFEF
+   334                           postinc0	equ	0xFEE
+   335                           postdec0	equ	0xFED
+   336                           preinc0	equ	0xFEC
+   337                           plusw0	equ	0xFEB
+   338                           fsr0h	equ	0xFEA
+   339                           fsr0l	equ	0xFE9
+   340                           wreg	equ	0xFE8
+   341                           indf1	equ	0xFE7
+   342                           postinc1	equ	0xFE6
+   343                           postdec1	equ	0xFE5
+   344                           preinc1	equ	0xFE4
+   345                           plusw1	equ	0xFE3
+   346                           fsr1h	equ	0xFE2
+   347                           fsr1l	equ	0xFE1
+   348                           bsr	equ	0xFE0
+   349                           indf2	equ	0xFDF
+   350                           postinc2	equ	0xFDE
+   351                           postdec2	equ	0xFDD
+   352                           preinc2	equ	0xFDC
+   353                           plusw2	equ	0xFDB
+   354                           fsr2h	equ	0xFDA
+   355                           fsr2l	equ	0xFD9
+   356                           status	equ	0xFD8
+
+
+Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
+Symbol Table                                                                                               Thu Dec 22 09:27:54 2022
+
+                           LATA 000F82                             LATB 000F83                             LATC 000F84  
+                           PIE0 000EBD                             PIE1 000EBE                             PIE3 000EC0  
+                           PIR0 000EC5                             PIR1 000EC6                             PIR3 000EC8  
+                          ADCLK 000F52                            ADPCH 000F5A                            ADREF 000F53  
+                          OSCEN 000ED7                            TMR0L 000FD2                            TRISA 000F87  
+                          TRISC 000F89                           ADCON0 000F5B                           ANSELA 000F0C  
+                         ANSELB 000F14                           ANSELC 000F1C                           T0CON0 000FD4  
+                         T0CON1 000FD5                           RC1STA 000F9C                           RC4PPS 000EF6  
+                         INTCON 000FF2                           OSCFRQ 000ED9                           RX1PPS 000EB0  
+                         TX1STA 000F9D                          SP1BRGH 000F9B                          SP1BRGL 000F9A  
+                        OSCCON1 000ED3                          _config 163C                          isa$std 000001  
+                      isa$xinst 000000  

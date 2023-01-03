@@ -1,0 +1,1125 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta> <reloc>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production/desespera.production.o
+cinit CODE 0 16EC 16EC AE 1 2
+idloc IDLOC 5 200000 200000 100 1 1
+text0 CODE 0 199C 199C 14 1 2
+text1 CODE 0 DBE DBE 61A 1 2
+text2 CODE 0 179A 179A 8A 1 2
+text3 CODE 0 18AE 18AE 50 1 2
+text4 CODE 0 13D8 13D8 1A2 1 2
+text5 CODE 0 1824 1824 8A 1 2
+text6 CODE 0 19B0 19B0 14 1 2
+text7 CODE 0 28 28 D96 1 2
+text8 CODE 0 1946 1946 30 1 2
+text9 CODE 0 157A 157A C2 1 2
+text10 CODE 0 1976 1976 26 1 2
+text11 CODE 0 19C4 19C4 14 1 2
+idataCOMRAM CODE 0 19F4 19F4 A 1 1
+cstackCOMRAM COMRAM 1 2E 2E 12 1 1
+cstackBANK0 BANK0 1 60 60 61 1 1
+cstackBANK1 BANK1 1 1B4 1B4 48 1 1
+bssBANK0 BANK0 1 C1 C1 3A 1 1
+bssBANK1 BANK1 1 100 100 6C 1 1
+bssBANK2 BANK2 1 200 200 24 1 1
+bssBANK3 BANK3 1 300 300 100 1 1
+idataBANK1 CODE 0 18FE 18FE 48 1 1
+idataBANK2 CODE 0 19E8 19E8 C 1 1
+dataBANK1 BANK1 1 16C 16C 48 1 1
+dataBANK2 BANK2 1 224 224 C 1 1
+dataCOMRAM COMRAM 1 40 40 A 1 1
+bssCOMRAM COMRAM 1 1 1 2D 1 1
+config CONFIG 4 300000 300000 C 1 1
+$build/default/production/interrupt_handler.o
+intcode CODE 0 8 8 1C 1 2
+$build/default/production/config.o
+text0 CODE 0 163C 163C B0 1 2
+config CONFIG 4 300000 300000 C 1 1
+$/tmp/xcXDPhAEc.o
+idloc IDLOC 5 200000 200000 100 1 1
+init CODE 0 24 24 4 1 2
+reset_vec CODE 0 0 0 4 1 2
+config CONFIG 4 300000 300000 C 1 1
+$build/default/production/pass_variable_between_C_and_ASM.o
+text3 CODE 0 19D8 19D8 10 1 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM FB-FF 1
+RAM 1FC-1FF 1
+RAM 230-2FF 1
+RAM 400-CFF 1
+RAM E00-E1E 1
+SFR D00-DFF 1
+SFR E1F-FFF 1
+BANK0 FB-FF 1
+BANK1 1FC-1FF 1
+BANK2 230-2FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-7 1
+CONST 19FE-1FFFF 1
+SMALLCONST 19FE-1FFFF 1
+CODE 4-7 1
+CODE 19FE-1FFFF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK14 E00-E1E 1
+BIGRAM 4A-5F 1
+BIGRAM FB-FF 1
+BIGRAM 1FC-1FF 1
+BIGRAM 230-2FF 1
+BIGRAM 400-CFF 1
+BIGRAM E00-E1E 1
+BIGSFR D00-DFF 1
+BIGSFR E1F-FFF 1
+COMRAM 4A-5F 1
+EEDATA 310000-3103FF 1
+MEDIUMCONST 19FE-FFFF 1
+MEDIUMCONST 11000-1FFFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production/desespera.production.o
+19C4 text11 CODE >78:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19C4 text11 CODE >79:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19C4 text11 CODE >80:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19D4 text11 CODE >81:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19D6 text11 CODE >82:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1976 text10 CODE >50:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1978 text10 CODE >52:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1978 text10 CODE >54:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1988 text10 CODE >55:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+198C text10 CODE >58:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+198C text10 CODE >60:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+199A text10 CODE >61:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+157A text9 CODE >269:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+157A text9 CODE >271:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1580 text9 CODE >272:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1586 text9 CODE >273:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+158C text9 CODE >274:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1594 text9 CODE >275:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+15A6 text9 CODE >276:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+15C6 text9 CODE >277:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+15CE text9 CODE >278:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+15E0 text9 CODE >279:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1600 text9 CODE >280:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1608 text9 CODE >281:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+161A text9 CODE >282:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+163A text9 CODE >284:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1946 text8 CODE >211:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1946 text8 CODE >212:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+194E text8 CODE >213:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1954 text8 CODE >214:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1974 text8 CODE >216:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+28 text7 CODE >287:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2C text7 CODE >291:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+3E text7 CODE >292:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+44 text7 CODE >293:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4A text7 CODE >294:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+50 text7 CODE >296:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+5A text7 CODE >297:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6C text7 CODE >298:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+8E text7 CODE >299:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+96 text7 CODE >300:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A8 text7 CODE >301:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+CA text7 CODE >302:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D2 text7 CODE >303:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E4 text7 CODE >304:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+106 text7 CODE >305:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+12E text7 CODE >306:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+140 text7 CODE >307:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14A text7 CODE >308:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+172 text7 CODE >309:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+184 text7 CODE >310:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+18E text7 CODE >311:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1B6 text7 CODE >312:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1C8 text7 CODE >313:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1D2 text7 CODE >314:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1FA text7 CODE >315:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+20C text7 CODE >316:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+216 text7 CODE >317:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+23E text7 CODE >318:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+250 text7 CODE >319:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+25A text7 CODE >320:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+26C text7 CODE >321:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+272 text7 CODE >322:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+278 text7 CODE >323:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+27E text7 CODE >325:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2A8 text7 CODE >326:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2BA text7 CODE >327:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2C4 text7 CODE >328:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2EC text7 CODE >329:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+2FE text7 CODE >330:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+308 text7 CODE >331:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+330 text7 CODE >332:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+342 text7 CODE >333:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+34C text7 CODE >334:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+374 text7 CODE >335:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+386 text7 CODE >336:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+390 text7 CODE >337:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+3B8 text7 CODE >338:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+3CA text7 CODE >339:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+3D4 text7 CODE >340:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+3FC text7 CODE >341:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+40E text7 CODE >342:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+418 text7 CODE >343:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+440 text7 CODE >344:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+452 text7 CODE >345:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+45C text7 CODE >346:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+484 text7 CODE >347:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+496 text7 CODE >348:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4A0 text7 CODE >349:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4B2 text7 CODE >350:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4B8 text7 CODE >351:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4BE text7 CODE >352:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4C4 text7 CODE >354:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+4EE text7 CODE >355:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+500 text7 CODE >356:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+50A text7 CODE >357:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+532 text7 CODE >358:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+544 text7 CODE >359:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+54E text7 CODE >360:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+576 text7 CODE >361:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+588 text7 CODE >362:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+592 text7 CODE >363:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+5BA text7 CODE >364:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+5CC text7 CODE >365:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+5D6 text7 CODE >366:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+5FE text7 CODE >367:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+610 text7 CODE >368:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+61A text7 CODE >369:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+642 text7 CODE >370:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+654 text7 CODE >371:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+65E text7 CODE >372:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+686 text7 CODE >373:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+698 text7 CODE >374:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6A2 text7 CODE >375:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6CA text7 CODE >376:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6DC text7 CODE >377:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6E6 text7 CODE >378:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6F8 text7 CODE >379:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+6FE text7 CODE >380:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+704 text7 CODE >381:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+70A text7 CODE >383:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+734 text7 CODE >384:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+746 text7 CODE >385:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+750 text7 CODE >386:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+778 text7 CODE >387:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+78A text7 CODE >388:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+794 text7 CODE >389:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+7BC text7 CODE >390:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+7CE text7 CODE >391:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+7D8 text7 CODE >392:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+800 text7 CODE >393:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+812 text7 CODE >394:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+81C text7 CODE >395:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+844 text7 CODE >396:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+856 text7 CODE >397:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+860 text7 CODE >398:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+888 text7 CODE >399:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+89A text7 CODE >400:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+8A4 text7 CODE >401:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+8CC text7 CODE >402:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+8DE text7 CODE >403:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+8E8 text7 CODE >404:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+910 text7 CODE >405:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+922 text7 CODE >406:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+92C text7 CODE >407:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+93E text7 CODE >408:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+944 text7 CODE >409:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+94A text7 CODE >410:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+950 text7 CODE >412:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+97A text7 CODE >413:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+98C text7 CODE >414:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+996 text7 CODE >415:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+9BE text7 CODE >416:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+9D0 text7 CODE >417:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+9DA text7 CODE >418:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A02 text7 CODE >419:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A14 text7 CODE >420:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A1E text7 CODE >421:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A46 text7 CODE >422:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A58 text7 CODE >423:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A62 text7 CODE >424:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A8A text7 CODE >425:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+A9C text7 CODE >426:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+AA6 text7 CODE >427:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+ACE text7 CODE >428:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+AE0 text7 CODE >429:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+AEA text7 CODE >430:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B12 text7 CODE >431:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B24 text7 CODE >432:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B2E text7 CODE >433:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B56 text7 CODE >434:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B68 text7 CODE >435:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B72 text7 CODE >436:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B84 text7 CODE >437:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B8A text7 CODE >438:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B90 text7 CODE >439:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+B96 text7 CODE >441:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+BC0 text7 CODE >442:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+BD2 text7 CODE >443:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+BDC text7 CODE >444:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C04 text7 CODE >445:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C16 text7 CODE >446:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C20 text7 CODE >447:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C48 text7 CODE >448:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C5A text7 CODE >449:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C64 text7 CODE >450:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C8C text7 CODE >451:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+C9E text7 CODE >452:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+CA8 text7 CODE >453:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+CD0 text7 CODE >454:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+CE2 text7 CODE >455:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+CEC text7 CODE >456:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D14 text7 CODE >457:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D26 text7 CODE >458:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D30 text7 CODE >459:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D58 text7 CODE >460:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D6A text7 CODE >461:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D74 text7 CODE >462:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+D9C text7 CODE >463:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DAE text7 CODE >464:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DB8 text7 CODE >467:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DBC text7 CODE >470:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19B0 text6 CODE >203:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19B0 text6 CODE >204:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19B6 text6 CODE >205:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19BC text6 CODE >206:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19C2 text6 CODE >208:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1824 text5 CODE >217:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1826 text5 CODE >231:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1836 text5 CODE >232:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+183C text5 CODE >235:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1852 text5 CODE >236:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1858 text5 CODE >239:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+186E text5 CODE >240:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1874 text5 CODE >242:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1878 text5 CODE >244:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1880 text5 CODE >249:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+188C text5 CODE >252:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1890 text5 CODE >255:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1890 text5 CODE >257:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+18A0 text5 CODE >260:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+18A8 text5 CODE >263:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+18AC text5 CODE >266:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13D8 text4 CODE >84:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13D8 text4 CODE >90:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13DC text4 CODE >91:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13E0 text4 CODE >92:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13F2 text4 CODE >93:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13F4 text4 CODE >91:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1408 text4 CODE >97:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+141A text4 CODE >98:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+141C text4 CODE >96:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+142E text4 CODE >102:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1432 text4 CODE >103:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1436 text4 CODE >150:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+146A text4 CODE >152:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+147C text4 CODE >153:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1484 text4 CODE >157:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1496 text4 CODE >158:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14A0 text4 CODE >165:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14B2 text4 CODE >167:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14C2 text4 CODE >168:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14CC text4 CODE >172:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14F0 text4 CODE >174:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+14FC text4 CODE >175:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+150C text4 CODE >179:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1530 text4 CODE >180:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1540 text4 CODE >184:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1564 text4 CODE >185:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1574 text4 CODE >192:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1578 text4 CODE >196:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+18AE text3 CODE >4:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18AE text3 CODE >11:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18B6 text3 CODE >12:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18BE text3 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18C2 text3 CODE >14:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18D2 text3 CODE >15:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18E2 text3 CODE >13:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+18FC text3 CODE >18:/opt/microchip/xc8/v2.40/pic/sources/c99/common/memcpy.c
+179A text2 CODE >477:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+179A text2 CODE >478:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+17AC text2 CODE >479:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+17C8 text2 CODE >480:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+17DA text2 CODE >481:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+17F6 text2 CODE >482:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1806 text2 CODE >483:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1822 text2 CODE >486:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DBE text1 CODE >488:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DBE text1 CODE >500:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DD0 text1 CODE >501:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DEC text1 CODE >508:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+DF8 text1 CODE >509:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E14 text1 CODE >519:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E26 text1 CODE >520:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E42 text1 CODE >523:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E4E text1 CODE >524:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E6A text1 CODE >525:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E76 text1 CODE >526:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E92 text1 CODE >530:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+E9E text1 CODE >531:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+EBA text1 CODE >535:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+EC6 text1 CODE >536:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+EE2 text1 CODE >540:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+EEE text1 CODE >541:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F0A text1 CODE >545:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F26 text1 CODE >546:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F42 text1 CODE >547:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F5E text1 CODE >548:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F7A text1 CODE >549:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+F96 text1 CODE >550:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+FB2 text1 CODE >551:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+FCE text1 CODE >552:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+FEA text1 CODE >555:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1006 text1 CODE >556:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1022 text1 CODE >557:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+103E text1 CODE >558:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+105A text1 CODE >559:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1076 text1 CODE >560:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1092 text1 CODE >561:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+10AE text1 CODE >562:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+10CA text1 CODE >571:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+10DC text1 CODE >572:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+10F8 text1 CODE >573:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1104 text1 CODE >574:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1120 text1 CODE >575:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1132 text1 CODE >576:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+114E text1 CODE >577:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+115A text1 CODE >578:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1176 text1 CODE >579:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1182 text1 CODE >580:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+119E text1 CODE >581:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+11AA text1 CODE >582:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+11C6 text1 CODE >583:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+11D2 text1 CODE >584:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+11EE text1 CODE >585:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+11FA text1 CODE >586:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1216 text1 CODE >590:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1232 text1 CODE >591:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+124E text1 CODE >592:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+126A text1 CODE >593:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1286 text1 CODE >594:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+12A2 text1 CODE >595:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+12BE text1 CODE >596:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+12DA text1 CODE >597:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+12F6 text1 CODE >602:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1312 text1 CODE >603:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+132E text1 CODE >604:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+134A text1 CODE >605:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1366 text1 CODE >606:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+1382 text1 CODE >607:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+139E text1 CODE >608:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13BA text1 CODE >609:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+13D6 text1 CODE >613:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+199C text0 CODE >38:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+199C text0 CODE >39:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19A0 text0 CODE >40:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19A4 text0 CODE >41:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19A8 text0 CODE >44:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+19A8 text0 CODE >46:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/main.c
+16EC cinit CODE >1476:/tmp/xcXADNfjk.s
+16EC cinit CODE >1478:/tmp/xcXADNfjk.s
+16EC cinit CODE >1481:/tmp/xcXADNfjk.s
+16EC cinit CODE >1483:/tmp/xcXADNfjk.s
+16EC cinit CODE >1484:/tmp/xcXADNfjk.s
+16EE cinit CODE >1485:/tmp/xcXADNfjk.s
+16F0 cinit CODE >1486:/tmp/xcXADNfjk.s
+16F0 cinit CODE >1646:/tmp/xcXADNfjk.s
+16F2 cinit CODE >1647:/tmp/xcXADNfjk.s
+16F4 cinit CODE >1648:/tmp/xcXADNfjk.s
+16F6 cinit CODE >1649:/tmp/xcXADNfjk.s
+16F8 cinit CODE >1650:/tmp/xcXADNfjk.s
+16FA cinit CODE >1651:/tmp/xcXADNfjk.s
+16FC cinit CODE >1652:/tmp/xcXADNfjk.s
+1700 cinit CODE >1653:/tmp/xcXADNfjk.s
+1704 cinit CODE >1654:/tmp/xcXADNfjk.s
+1704 cinit CODE >1655:/tmp/xcXADNfjk.s
+1706 cinit CODE >1656:/tmp/xcXADNfjk.s
+170A cinit CODE >1657:/tmp/xcXADNfjk.s
+170C cinit CODE >1658:/tmp/xcXADNfjk.s
+170E cinit CODE >1659:/tmp/xcXADNfjk.s
+1710 cinit CODE >1663:/tmp/xcXADNfjk.s
+1712 cinit CODE >1664:/tmp/xcXADNfjk.s
+1714 cinit CODE >1665:/tmp/xcXADNfjk.s
+1716 cinit CODE >1666:/tmp/xcXADNfjk.s
+1718 cinit CODE >1667:/tmp/xcXADNfjk.s
+171A cinit CODE >1668:/tmp/xcXADNfjk.s
+171C cinit CODE >1669:/tmp/xcXADNfjk.s
+1720 cinit CODE >1670:/tmp/xcXADNfjk.s
+1724 cinit CODE >1671:/tmp/xcXADNfjk.s
+1724 cinit CODE >1672:/tmp/xcXADNfjk.s
+1726 cinit CODE >1673:/tmp/xcXADNfjk.s
+172A cinit CODE >1674:/tmp/xcXADNfjk.s
+172C cinit CODE >1675:/tmp/xcXADNfjk.s
+172E cinit CODE >1676:/tmp/xcXADNfjk.s
+1730 cinit CODE >1680:/tmp/xcXADNfjk.s
+1732 cinit CODE >1681:/tmp/xcXADNfjk.s
+1734 cinit CODE >1682:/tmp/xcXADNfjk.s
+1736 cinit CODE >1683:/tmp/xcXADNfjk.s
+1738 cinit CODE >1684:/tmp/xcXADNfjk.s
+173A cinit CODE >1685:/tmp/xcXADNfjk.s
+173C cinit CODE >1686:/tmp/xcXADNfjk.s
+1740 cinit CODE >1687:/tmp/xcXADNfjk.s
+1744 cinit CODE >1688:/tmp/xcXADNfjk.s
+1744 cinit CODE >1689:/tmp/xcXADNfjk.s
+1746 cinit CODE >1690:/tmp/xcXADNfjk.s
+174A cinit CODE >1691:/tmp/xcXADNfjk.s
+174C cinit CODE >1692:/tmp/xcXADNfjk.s
+174E cinit CODE >1693:/tmp/xcXADNfjk.s
+1750 cinit CODE >1697:/tmp/xcXADNfjk.s
+1754 cinit CODE >1698:/tmp/xcXADNfjk.s
+1758 cinit CODE >1699:/tmp/xcXADNfjk.s
+1758 cinit CODE >1700:/tmp/xcXADNfjk.s
+175A cinit CODE >1701:/tmp/xcXADNfjk.s
+175C cinit CODE >1702:/tmp/xcXADNfjk.s
+175E cinit CODE >1703:/tmp/xcXADNfjk.s
+1760 cinit CODE >1704:/tmp/xcXADNfjk.s
+1762 cinit CODE >1705:/tmp/xcXADNfjk.s
+1764 cinit CODE >1708:/tmp/xcXADNfjk.s
+1768 cinit CODE >1709:/tmp/xcXADNfjk.s
+176A cinit CODE >1710:/tmp/xcXADNfjk.s
+176A cinit CODE >1711:/tmp/xcXADNfjk.s
+176C cinit CODE >1712:/tmp/xcXADNfjk.s
+176E cinit CODE >1713:/tmp/xcXADNfjk.s
+1770 cinit CODE >1716:/tmp/xcXADNfjk.s
+1774 cinit CODE >1717:/tmp/xcXADNfjk.s
+1776 cinit CODE >1718:/tmp/xcXADNfjk.s
+1776 cinit CODE >1719:/tmp/xcXADNfjk.s
+1778 cinit CODE >1720:/tmp/xcXADNfjk.s
+177A cinit CODE >1721:/tmp/xcXADNfjk.s
+177C cinit CODE >1724:/tmp/xcXADNfjk.s
+1780 cinit CODE >1725:/tmp/xcXADNfjk.s
+1782 cinit CODE >1726:/tmp/xcXADNfjk.s
+1782 cinit CODE >1727:/tmp/xcXADNfjk.s
+1784 cinit CODE >1728:/tmp/xcXADNfjk.s
+1786 cinit CODE >1729:/tmp/xcXADNfjk.s
+1788 cinit CODE >1732:/tmp/xcXADNfjk.s
+178C cinit CODE >1733:/tmp/xcXADNfjk.s
+178E cinit CODE >1734:/tmp/xcXADNfjk.s
+178E cinit CODE >1735:/tmp/xcXADNfjk.s
+1790 cinit CODE >1736:/tmp/xcXADNfjk.s
+1792 cinit CODE >1737:/tmp/xcXADNfjk.s
+1794 cinit CODE >1743:/tmp/xcXADNfjk.s
+1794 cinit CODE >1745:/tmp/xcXADNfjk.s
+1796 cinit CODE >1746:/tmp/xcXADNfjk.s
+$build/default/production/interrupt_handler.o
+8 intcode CODE >12:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+A intcode CODE >13:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+C intcode CODE >14:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+E intcode CODE >21:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+10 intcode CODE >23:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+12 intcode CODE >24:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+14 intcode CODE >25:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+18 intcode CODE >27:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+1A intcode CODE >31:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+1C intcode CODE >32:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+1E intcode CODE >33:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+20 intcode CODE >34:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+22 intcode CODE >39:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/interrupt_handler.asm
+$build/default/production/config.o
+163C text0 CODE >18:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+163E text0 CODE >19:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1640 text0 CODE >21:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1642 text0 CODE >22:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1644 text0 CODE >23:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1646 text0 CODE >25:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1648 text0 CODE >26:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+164A text0 CODE >27:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+164C text0 CODE >35:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+164E text0 CODE >36:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1650 text0 CODE >38:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1652 text0 CODE >39:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1654 text0 CODE >40:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1656 text0 CODE >42:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1658 text0 CODE >43:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+165A text0 CODE >44:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+165C text0 CODE >49:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+165E text0 CODE >50:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1660 text0 CODE >52:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1662 text0 CODE >53:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1664 text0 CODE >54:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1666 text0 CODE >56:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1668 text0 CODE >57:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+166A text0 CODE >60:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+166C text0 CODE >61:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+166E text0 CODE >62:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1670 text0 CODE >64:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1672 text0 CODE >65:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1674 text0 CODE >67:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1676 text0 CODE >75:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1678 text0 CODE >76:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+167A text0 CODE >77:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+167C text0 CODE >79:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+167E text0 CODE >80:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1680 text0 CODE >81:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1682 text0 CODE >83:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1684 text0 CODE >84:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1686 text0 CODE >85:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1688 text0 CODE >96:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+168A text0 CODE >97:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+168C text0 CODE >98:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+168E text0 CODE >99:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1690 text0 CODE >100:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1692 text0 CODE >102:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1694 text0 CODE >103:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1696 text0 CODE >104:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+1698 text0 CODE >107:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+169A text0 CODE >108:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+169C text0 CODE >109:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+169E text0 CODE >124:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16A0 text0 CODE >125:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16A2 text0 CODE >126:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16A4 text0 CODE >128:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16A6 text0 CODE >129:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16A8 text0 CODE >130:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16AA text0 CODE >134:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16AC text0 CODE >135:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16AE text0 CODE >136:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16B0 text0 CODE >139:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16B2 text0 CODE >140:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16B4 text0 CODE >141:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16B6 text0 CODE >148:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16B8 text0 CODE >149:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16BA text0 CODE >152:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16BC text0 CODE >153:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16BE text0 CODE >154:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16C0 text0 CODE >160:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16C2 text0 CODE >161:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16C4 text0 CODE >166:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16C6 text0 CODE >167:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16C8 text0 CODE >168:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16CA text0 CODE >169:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16CC text0 CODE >170:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16CE text0 CODE >171:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16D0 text0 CODE >173:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16D2 text0 CODE >174:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16D4 text0 CODE >175:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16D6 text0 CODE >176:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16D8 text0 CODE >177:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16DA text0 CODE >178:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16DC text0 CODE >180:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16DE text0 CODE >181:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16E0 text0 CODE >182:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16E2 text0 CODE >183:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16E4 text0 CODE >188:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16E6 text0 CODE >189:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16E8 text0 CODE >190:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+16EA text0 CODE >194:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/config.asm
+$build/default/production/pass_variable_between_C_and_ASM.o
+19D8 text3 CODE >19:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19DA text3 CODE >22:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19DC text3 CODE >25:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19DE text3 CODE >26:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19E0 text3 CODE >27:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19E2 text3 CODE >30:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19E4 text3 CODE >31:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+19E6 text3 CODE >33:/home/mcpeixoto/Desktop/3D Airplane Animation/desespera/pass_variable_between_C_and_ASM.asm
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+putch@byte 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+__LdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production/desespera.production.o
+__LdataBANK2 0 0 ABS 0 dataBANK2 dist/default/production/desespera.production.o
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/desespera.production.o
+__Hspace_0 19FE 0 ABS 0 - dist/default/production/desespera.production.o
+__Hspace_1 400 0 ABS 0 - dist/default/production/desespera.production.o
+__Hspace_2 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Hspace_3 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Hspace_4 60000C 0 ABS 0 - dist/default/production/desespera.production.o
+__HidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production/desespera.production.o
+__HidataBANK2 0 0 ABS 0 idataBANK2 dist/default/production/desespera.production.o
+send_TCTEDS@i_319 62 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_320 64 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_321 66 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_322 68 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_323 6A 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_324 6C 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_325 6E 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_326 70 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_327 72 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_328 74 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_329 76 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_330 78 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_331 7A 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_332 7C 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_333 7E 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_334 80 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_335 82 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_336 84 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_337 86 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_338 88 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_339 8A 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_340 8C 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_341 8E 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_342 90 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_343 92 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_344 94 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_345 96 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_346 98 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_347 9A 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_348 9C 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_349 9E 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_350 A0 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_351 A2 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_352 A4 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_353 A6 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_354 A8 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_355 AA 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_356 AC 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_357 AE 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_358 B0 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_359 B2 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_360 B4 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_361 B6 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_362 B8 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_363 BA 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_364 BC 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+send_TCTEDS@i_365 BE 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+_send_values 1824 0 CODE 0 text5 dist/default/production/desespera.production.o
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production/desespera.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXDPhAEc.o
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/desespera.production.o
+__end_of_define_TCTEDS 13D8 0 CODE 0 text1 dist/default/production/desespera.production.o
+__Hudata_bank0 0 0 ABS 0 udata_bank0 dist/default/production/desespera.production.o
+__Hudata_bank1 0 0 ABS 0 udata_bank1 dist/default/production/desespera.production.o
+__Hudata_bank2 0 0 ABS 0 udata_bank2 dist/default/production/desespera.production.o
+__Hudata_bank3 0 0 ABS 0 udata_bank3 dist/default/production/desespera.production.o
+__Hudata_bank4 0 0 ABS 0 udata_bank4 dist/default/production/desespera.production.o
+__Hudata_bank5 0 0 ABS 0 udata_bank5 dist/default/production/desespera.production.o
+__Hudata_bank6 0 0 ABS 0 udata_bank6 dist/default/production/desespera.production.o
+__Hudata_bank7 0 0 ABS 0 udata_bank7 dist/default/production/desespera.production.o
+__Hudata_bank8 0 0 ABS 0 udata_bank8 dist/default/production/desespera.production.o
+__Hudata_bank9 0 0 ABS 0 udata_bank9 dist/default/production/desespera.production.o
+_TCTEDS1 C1 0 BANK0 1 bssBANK0 dist/default/production/desespera.production.o
+_TCTEDS2 148 0 BANK1 1 bssBANK1 dist/default/production/desespera.production.o
+_TCTEDS3 124 0 BANK1 1 bssBANK1 dist/default/production/desespera.production.o
+_TCTEDS4 A 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+_TCTEDS5 100 0 BANK1 1 bssBANK1 dist/default/production/desespera.production.o
+_TCTEDS6 200 0 BANK2 1 bssBANK2 dist/default/production/desespera.production.o
+define_TCTEDS@F13285 18A 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13287 1B1 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13289 16C 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13291 1AE 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13293 1AB 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13295 1A8 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13297 1A5 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13299 1A2 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13301 184 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13303 19F 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13305 224 0 BANK2 1 dataBANK2 dist/default/production/desespera.production.o
+define_TCTEDS@F13307 19C 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13309 199 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13311 196 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13313 193 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@F13315 190 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/desespera.production.o
+___sp 0 0 STACK 2 stack /tmp/xcXDPhAEc.o
+_main 199C 0 CODE 0 text0 dist/default/production/desespera.production.o
+start 24 0 CODE 0 init /tmp/xcXDPhAEc.o
+_send_success 19B0 0 CODE 0 text6 dist/default/production/desespera.production.o
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/desespera.production.o
+__LidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production/desespera.production.o
+__LidataBANK2 0 0 ABS 0 idataBANK2 dist/default/production/desespera.production.o
+__end_of_send_TCTEDS DBE 0 CODE 0 text7 dist/default/production/desespera.production.o
+__Hpowerup 24 0 CODE 0 powerup dist/default/production/desespera.production.o
+__end_of_Identify_NCAP_cmd 157A 0 CODE 0 text4 dist/default/production/desespera.production.o
+__HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/desespera.production.o
+__accesstop 60 0 ABS 0 - /tmp/xcXDPhAEc.o
+intlevel0 0 0 CODE 0 text /tmp/xcXDPhAEc.o
+intlevel1 0 0 CODE 0 text /tmp/xcXDPhAEc.o
+intlevel2 0 0 CODE 0 text /tmp/xcXDPhAEc.o
+intlevel3 0 0 CODE 0 text /tmp/xcXDPhAEc.o
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/desespera.production.o
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/desespera.production.o
+_var_global 9 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+__Hifardata 0 0 CODE 0 ifardata dist/default/production/desespera.production.o
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production/desespera.production.o
+__pidataCOMRAM 19F4 0 CODE 0 idataCOMRAM dist/default/production/desespera.production.o
+_ADRESH F5F 0 ABS 0 - dist/default/production/desespera.production.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXDPhAEc.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXDPhAEc.o
+__LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/desespera.production.o
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/desespera.production.o
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/desespera.production.o
+__end_of_send_success 19C4 0 CODE 0 text6 dist/default/production/desespera.production.o
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/desespera.production.o
+__Hintcodelo 24 0 CODE 0 intcodelo dist/default/production/desespera.production.o
+__Hudata_bank10 0 0 ABS 0 udata_bank10 dist/default/production/desespera.production.o
+__Hudata_bank11 0 0 ABS 0 udata_bank11 dist/default/production/desespera.production.o
+__Hudata_bank12 0 0 ABS 0 udata_bank12 dist/default/production/desespera.production.o
+__Hudata_bank14 0 0 ABS 0 udata_bank14 dist/default/production/desespera.production.o
+__LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/desespera.production.o
+memcpy@tmp 3B 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+send_error@i 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+_Identify_NCAP_cmd 13D8 0 CODE 0 text4 dist/default/production/desespera.production.o
+__Lintcodelo 24 0 CODE 0 intcodelo dist/default/production/desespera.production.o
+start_initialization 16EC 0 CODE 0 cinit dist/default/production/desespera.production.o
+define_TCTEDS@array1 1CC 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array2 1D8 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array3 1B4 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array4 1DB 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array5 1DE 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array6 1E1 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array7 1E4 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array8 1E7 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/desespera.production.o
+___rparam_used 1 0 ABS 0 - dist/default/production/desespera.production.o
+_RC1REG F98 0 ABS 0 - dist/default/production/desespera.production.o
+__end_of_memcpy 18FE 0 CODE 0 text3 dist/default/production/desespera.production.o
+__pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+__pcstackBANK1 1B4 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+_TX1REG F99 0 ABS 0 - dist/default/production/desespera.production.o
+isa$xinst 0 0 ABS 0 - /tmp/xcXDPhAEc.o
+__Hbank0 0 0 ABS 0 bank0 dist/default/production/desespera.production.o
+__Hbank1 0 0 ABS 0 bank1 dist/default/production/desespera.production.o
+__Hbank2 0 0 ABS 0 bank2 dist/default/production/desespera.production.o
+__Hbank3 0 0 ABS 0 bank3 dist/default/production/desespera.production.o
+__Hbank4 0 0 ABS 0 bank4 dist/default/production/desespera.production.o
+__Hbank5 0 0 ABS 0 bank5 dist/default/production/desespera.production.o
+__Hbank6 0 0 ABS 0 bank6 dist/default/production/desespera.production.o
+__Hbank7 0 0 ABS 0 bank7 dist/default/production/desespera.production.o
+__Hbank8 0 0 ABS 0 bank8 dist/default/production/desespera.production.o
+__Hbank9 0 0 ABS 0 bank9 dist/default/production/desespera.production.o
+__Hcinit 0 0 ABS 0 cinit dist/default/production/desespera.production.o
+__Hconst 0 0 CONST 0 const dist/default/production/desespera.production.o
+__Hedata 0 0 ABS 0 edata dist/default/production/desespera.production.o
+__Hidata 0 0 CODE 0 idata dist/default/production/desespera.production.o
+__Hidloc 200100 0 IDLOC 5 idloc dist/default/production/desespera.production.o
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production/desespera.production.o
+__Hparam 0 0 COMRAM 1 rparam dist/default/production/desespera.production.o
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production/desespera.production.o
+__Hstack 0 0 STACK 2 stack dist/default/production/desespera.production.o
+__Htext0 0 0 ABS 0 text0 dist/default/production/desespera.production.o
+__Htext1 0 0 ABS 0 text1 dist/default/production/desespera.production.o
+__Htext2 0 0 ABS 0 text2 dist/default/production/desespera.production.o
+__Htext3 0 0 ABS 0 text3 dist/default/production/desespera.production.o
+__Htext4 0 0 ABS 0 text4 dist/default/production/desespera.production.o
+__Htext5 0 0 ABS 0 text5 dist/default/production/desespera.production.o
+__Htext6 0 0 ABS 0 text6 dist/default/production/desespera.production.o
+__Htext7 0 0 ABS 0 text7 dist/default/production/desespera.production.o
+__Htext8 0 0 ABS 0 text8 dist/default/production/desespera.production.o
+__Htext9 0 0 ABS 0 text9 dist/default/production/desespera.production.o
+__Hudata 0 0 ABS 0 udata dist/default/production/desespera.production.o
+_aux_buffer 300 0 BANK3 1 bssBANK3 dist/default/production/desespera.production.o
+__Hbank10 0 0 ABS 0 bank10 dist/default/production/desespera.production.o
+__Hbank11 0 0 ABS 0 bank11 dist/default/production/desespera.production.o
+__Hbank12 0 0 ABS 0 bank12 dist/default/production/desespera.production.o
+__Hbank14 0 0 ABS 0 bank14 dist/default/production/desespera.production.o
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/desespera.production.o
+__Hbigram 0 0 ABS 0 bigram dist/default/production/desespera.production.o
+__Hbigsfr 0 0 ABS 0 bigsfr dist/default/production/desespera.production.o
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXDPhAEc.o
+__end_of_send_values 18AE 0 CODE 0 text5 dist/default/production/desespera.production.o
+__Hcomram 0 0 ABS 0 comram dist/default/production/desespera.production.o
+__Hconfig 30000C 0 CONFIG 4 config dist/default/production/desespera.production.o
+__Lbank0 0 0 ABS 0 bank0 dist/default/production/desespera.production.o
+__Lbank1 0 0 ABS 0 bank1 dist/default/production/desespera.production.o
+__Lbank2 0 0 ABS 0 bank2 dist/default/production/desespera.production.o
+__Lbank3 0 0 ABS 0 bank3 dist/default/production/desespera.production.o
+__Lbank4 0 0 ABS 0 bank4 dist/default/production/desespera.production.o
+__Lbank5 0 0 ABS 0 bank5 dist/default/production/desespera.production.o
+__Lbank6 0 0 ABS 0 bank6 dist/default/production/desespera.production.o
+__Lbank7 0 0 ABS 0 bank7 dist/default/production/desespera.production.o
+__Lbank8 0 0 ABS 0 bank8 dist/default/production/desespera.production.o
+__Lbank9 0 0 ABS 0 bank9 dist/default/production/desespera.production.o
+__Lcinit 0 0 ABS 0 cinit dist/default/production/desespera.production.o
+__Lconst 0 0 CONST 0 const dist/default/production/desespera.production.o
+__Ledata 0 0 ABS 0 edata dist/default/production/desespera.production.o
+__Lidata 0 0 CODE 0 idata dist/default/production/desespera.production.o
+__Lidloc 0 0 IDLOC 5 idloc dist/default/production/desespera.production.o
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production/desespera.production.o
+__Lparam 0 0 COMRAM 1 rparam dist/default/production/desespera.production.o
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production/desespera.production.o
+__Lstack 0 0 STACK 2 stack dist/default/production/desespera.production.o
+__Ltext0 0 0 ABS 0 text0 dist/default/production/desespera.production.o
+__Ltext1 0 0 ABS 0 text1 dist/default/production/desespera.production.o
+__Ltext2 0 0 ABS 0 text2 dist/default/production/desespera.production.o
+__Ltext3 0 0 ABS 0 text3 dist/default/production/desespera.production.o
+__Ltext4 0 0 ABS 0 text4 dist/default/production/desespera.production.o
+__Ltext5 0 0 ABS 0 text5 dist/default/production/desespera.production.o
+__Ltext6 0 0 ABS 0 text6 dist/default/production/desespera.production.o
+__Ltext7 0 0 ABS 0 text7 dist/default/production/desespera.production.o
+__Ltext8 0 0 ABS 0 text8 dist/default/production/desespera.production.o
+__Ltext9 0 0 ABS 0 text9 dist/default/production/desespera.production.o
+__Ludata 0 0 ABS 0 udata dist/default/production/desespera.production.o
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production/desespera.production.o
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production/desespera.production.o
+memcpy@d1 35 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+memcpy@s1 37 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+__Habs1 0 0 ABS 0 abs1 dist/default/production/desespera.production.o
+__Hcode 0 0 ABS 0 code dist/default/production/desespera.production.o
+__Hdata 0 0 ABS 0 data dist/default/production/desespera.production.o
+__Hheap 0 0 HEAP 7 heap dist/default/production/desespera.production.o
+__Hinit 28 0 CODE 0 init dist/default/production/desespera.production.o
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production/desespera.production.o
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production/desespera.production.o
+__Htemp 0 0 COMRAM 1 temp dist/default/production/desespera.production.o
+__Htext 0 0 ABS 0 text dist/default/production/desespera.production.o
+__Labs1 0 0 ABS 0 abs1 dist/default/production/desespera.production.o
+__Lcode 0 0 ABS 0 code dist/default/production/desespera.production.o
+__Ldata 0 0 ABS 0 data dist/default/production/desespera.production.o
+__Lheap 0 0 HEAP 7 heap dist/default/production/desespera.production.o
+__Linit 24 0 CODE 0 init dist/default/production/desespera.production.o
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production/desespera.production.o
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production/desespera.production.o
+__Ltemp 0 0 COMRAM 1 temp dist/default/production/desespera.production.o
+__Ltext 0 0 ABS 0 text dist/default/production/desespera.production.o
+memcpy@d 3C 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+memcpy@n 39 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+memcpy@s 3E 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production/desespera.production.o
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production/desespera.production.o
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/desespera.production.o
+__Hintret 0 0 ABS 0 intret dist/default/production/desespera.production.o
+__Hirdata 0 0 CODE 0 irdata dist/default/production/desespera.production.o
+__S0 19FE 0 ABS 0 - dist/default/production/desespera.production.o
+__S1 400 0 ABS 0 - dist/default/production/desespera.production.o
+__S3 0 0 ABS 0 - dist/default/production/desespera.production.o
+__S5 0 0 ABS 0 - dist/default/production/desespera.production.o
+send_METATEDS@i 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+send_METATEDS@j 31 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+send_METATEDS@k 33 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+_config 163C 0 CODE 0 text0 build/default/production/config.o
+__HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/desespera.production.o
+__Ludata_bank10 0 0 ABS 0 udata_bank10 dist/default/production/desespera.production.o
+__Ludata_bank11 0 0 ABS 0 udata_bank11 dist/default/production/desespera.production.o
+__Ludata_bank12 0 0 ABS 0 udata_bank12 dist/default/production/desespera.production.o
+__Ludata_bank14 0 0 ABS 0 udata_bank14 dist/default/production/desespera.production.o
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production/desespera.production.o
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production/desespera.production.o
+__Lintentry 0 0 ABS 0 intentry dist/default/production/desespera.production.o
+__Hramtop 1000 0 RAM 0 ramtop dist/default/production/desespera.production.o
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production/desespera.production.o
+define_TCTEDS@array14 1D2 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array24 1EA 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array34 1C0 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array44 1ED 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array54 1F0 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array64 1F3 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array74 1F6 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_TCTEDS@array84 1F9 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_METATEDS@F13278 40 0 COMRAM 1 dataCOMRAM dist/default/production/desespera.production.o
+define_METATEDS@F13280 178 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+define_METATEDS@F13282 46 0 COMRAM 1 dataCOMRAM dist/default/production/desespera.production.o
+__pdataBANK1 16C 0 BANK1 1 dataBANK1 dist/default/production/desespera.production.o
+__pdataBANK2 224 0 BANK2 1 dataBANK2 dist/default/production/desespera.production.o
+__activetblptr 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Hstruct 0 0 COMRAM 1 struct dist/default/production/desespera.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/desespera.production.o
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production/desespera.production.o
+__LbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production/desespera.production.o
+__LbssBANK3 0 0 ABS 0 bssBANK3 dist/default/production/desespera.production.o
+__Htext10 0 0 ABS 0 text10 dist/default/production/desespera.production.o
+__Htext11 0 0 ABS 0 text11 dist/default/production/desespera.production.o
+_int_handler 8 0 CODE 0 intcode build/default/production/interrupt_handler.o
+_memcpy 18AE 0 CODE 0 text3 dist/default/production/desespera.production.o
+__ptext10 1976 0 CODE 0 text10 dist/default/production/desespera.production.o
+__ptext11 19C4 0 CODE 0 text11 dist/default/production/desespera.production.o
+_main_buffer 1 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+__Lbank10 0 0 ABS 0 bank10 dist/default/production/desespera.production.o
+__Lbank11 0 0 ABS 0 bank11 dist/default/production/desespera.production.o
+__Lbank12 0 0 ABS 0 bank12 dist/default/production/desespera.production.o
+__Lbank14 0 0 ABS 0 bank14 dist/default/production/desespera.production.o
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production/desespera.production.o
+__Lbigram 0 0 ABS 0 bigram dist/default/production/desespera.production.o
+__Lbigsfr 0 0 ABS 0 bigsfr dist/default/production/desespera.production.o
+__Lcomram 0 0 ABS 0 comram dist/default/production/desespera.production.o
+__Lconfig 0 0 CONFIG 4 config dist/default/production/desespera.production.o
+_LATAbits F82 0 ABS 0 - dist/default/production/desespera.production.o
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production/desespera.production.o
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production/desespera.production.o
+isa$std 1 0 ABS 0 - /tmp/xcXDPhAEc.o
+_send_error 1946 0 CODE 0 text8 dist/default/production/desespera.production.o
+_pass_variable_between_C_and_ASM 19D8 0 CODE 0 text3 build/default/production/pass_variable_between_C_and_ASM.o
+stackhi 0 0 ABS 0 - /tmp/xcXDPhAEc.o
+stacklo 0 0 ABS 0 - /tmp/xcXDPhAEc.o
+__Lintcode 8 0 CODE 0 intcode dist/default/production/desespera.production.o
+_get_char 19C4 0 CODE 0 text11 dist/default/production/desespera.production.o
+__Lintret 0 0 ABS 0 intret dist/default/production/desespera.production.o
+__Lirdata 0 0 CODE 0 irdata dist/default/production/desespera.production.o
+_ADCON0bits F5B 0 ABS 0 - dist/default/production/desespera.production.o
+__Lspace_0 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Lspace_1 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Lspace_2 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Lspace_3 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Lspace_4 0 0 ABS 0 - dist/default/production/desespera.production.o
+__pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+_send_TCTEDS 28 0 CODE 0 text7 dist/default/production/desespera.production.o
+_send_METATEDS 157A 0 CODE 0 text9 dist/default/production/desespera.production.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production/desespera.production.o
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production/desespera.production.o
+__end_of_get_char 19D8 0 CODE 0 text11 dist/default/production/desespera.production.o
+_PIR1bits EC6 0 ABS 0 - dist/default/production/desespera.production.o
+_PIR3bits EC8 0 ABS 0 - dist/default/production/desespera.production.o
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/desespera.production.o
+end_of_initialization 1794 0 CODE 0 cinit dist/default/production/desespera.production.o
+__end_of_define_METATEDS 1824 0 CODE 0 text2 dist/default/production/desespera.production.o
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production/desespera.production.o
+__Hintentry 0 0 ABS 0 intentry dist/default/production/desespera.production.o
+send_success@length 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/production/desespera.production.o
+send_values@channel 31 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/desespera.production.o
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production/desespera.production.o
+__HbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production/desespera.production.o
+__HbssBANK3 0 0 ABS 0 bssBANK3 dist/default/production/desespera.production.o
+_define_TCTEDS DBE 0 CODE 0 text1 dist/default/production/desespera.production.o
+__Lramtop 1000 0 RAM 0 ramtop dist/default/production/desespera.production.o
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production/desespera.production.o
+__pcinit 16EC 0 CODE 0 cinit dist/default/production/desespera.production.o
+__ptext0 199C 0 CODE 0 text0 dist/default/production/desespera.production.o
+__ptext1 DBE 0 CODE 0 text1 dist/default/production/desespera.production.o
+__ptext2 179A 0 CODE 0 text2 dist/default/production/desespera.production.o
+__ptext3 18AE 0 CODE 0 text3 dist/default/production/desespera.production.o
+__ptext4 13D8 0 CODE 0 text4 dist/default/production/desespera.production.o
+__ptext5 1824 0 CODE 0 text5 dist/default/production/desespera.production.o
+__ptext6 19B0 0 CODE 0 text6 dist/default/production/desespera.production.o
+__ptext7 28 0 CODE 0 text7 dist/default/production/desespera.production.o
+__ptext8 1946 0 CODE 0 text8 dist/default/production/desespera.production.o
+__ptext9 157A 0 CODE 0 text9 dist/default/production/desespera.production.o
+__Lstruct 0 0 COMRAM 1 struct dist/default/production/desespera.production.o
+__Ltext10 0 0 ABS 0 text10 dist/default/production/desespera.production.o
+__Ltext11 0 0 ABS 0 text11 dist/default/production/desespera.production.o
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcXDPhAEc.o
+__end_of_send_error 1976 0 CODE 0 text8 dist/default/production/desespera.production.o
+__Lpowerup 24 0 CODE 0 powerup dist/default/production/desespera.production.o
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/desespera.production.o
+__Ludata_bank0 0 0 ABS 0 udata_bank0 dist/default/production/desespera.production.o
+__Ludata_bank1 0 0 ABS 0 udata_bank1 dist/default/production/desespera.production.o
+__Ludata_bank2 0 0 ABS 0 udata_bank2 dist/default/production/desespera.production.o
+__Ludata_bank3 0 0 ABS 0 udata_bank3 dist/default/production/desespera.production.o
+__Ludata_bank4 0 0 ABS 0 udata_bank4 dist/default/production/desespera.production.o
+__Ludata_bank5 0 0 ABS 0 udata_bank5 dist/default/production/desespera.production.o
+__Ludata_bank6 0 0 ABS 0 udata_bank6 dist/default/production/desespera.production.o
+__Ludata_bank7 0 0 ABS 0 udata_bank7 dist/default/production/desespera.production.o
+__Ludata_bank8 0 0 ABS 0 udata_bank8 dist/default/production/desespera.production.o
+__Ludata_bank9 0 0 ABS 0 udata_bank9 dist/default/production/desespera.production.o
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/desespera.production.o
+___heap_hi 0 0 ABS 0 - /tmp/xcXDPhAEc.o
+___heap_lo 0 0 ABS 0 - /tmp/xcXDPhAEc.o
+define_METATEDS@array1 1C0 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_METATEDS@array2 1B4 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+define_METATEDS@array3 1C6 0 BANK1 1 cstackBANK1 dist/default/production/desespera.production.o
+___param_bank 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production/desespera.production.o
+__end_of__initialization 1794 0 CODE 0 cinit dist/default/production/desespera.production.o
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production/desespera.production.o
+_define_METATEDS 179A 0 CODE 0 text2 dist/default/production/desespera.production.o
+__pidataBANK1 18FE 0 CODE 0 idataBANK1 dist/default/production/desespera.production.o
+__pidataBANK2 19E8 0 CODE 0 idataBANK2 dist/default/production/desespera.production.o
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production/desespera.production.o
+_main_buffer_idx 8 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+__pcstackCOMRAM 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/desespera.production.o
+_aux_buffer_idx 7 0 COMRAM 1 bssCOMRAM dist/default/production/desespera.production.o
+__end_of_main 19B0 0 CODE 0 text0 dist/default/production/desespera.production.o
+send_TCTEDS@channel C0 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+_ADPCH F5A 0 ABS 0 - dist/default/production/desespera.production.o
+__Hudata_acs 0 0 ABS 0 udata_acs dist/default/production/desespera.production.o
+_RC1IF 7645 0 ABS 0 - dist/default/production/desespera.production.o
+__end_of_putch 199C 0 CODE 0 text10 dist/default/production/desespera.production.o
+__HRAM 0 0 ABS 0 - dist/default/production/desespera.production.o
+__Hbss 0 0 RAM 1 bss dist/default/production/desespera.production.o
+__Hram 0 0 ABS 0 ram dist/default/production/desespera.production.o
+__Hsfr 0 0 ABS 0 sfr dist/default/production/desespera.production.o
+__LRAM 1 0 ABS 0 - dist/default/production/desespera.production.o
+__Lbss 0 0 RAM 1 bss dist/default/production/desespera.production.o
+__Lram 0 0 ABS 0 ram dist/default/production/desespera.production.o
+__Lsfr 0 0 ABS 0 sfr dist/default/production/desespera.production.o
+_putch 1976 0 CODE 0 text10 dist/default/production/desespera.production.o
+__HdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production/desespera.production.o
+__HdataBANK2 0 0 ABS 0 dataBANK2 dist/default/production/desespera.production.o
+__initialization 16EC 0 CODE 0 cinit dist/default/production/desespera.production.o
+send_TCTEDS@i 60 0 BANK0 1 cstackBANK0 dist/default/production/desespera.production.o
+__pbssBANK0 C1 0 BANK0 1 bssBANK0 dist/default/production/desespera.production.o
+__pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production/desespera.production.o
+__pbssBANK2 200 0 BANK2 1 bssBANK2 dist/default/production/desespera.production.o
+__pbssBANK3 300 0 BANK3 1 bssBANK3 dist/default/production/desespera.production.o
+__pdataCOMRAM 40 0 COMRAM 1 dataCOMRAM dist/default/production/desespera.production.o
+_METATED E5 0 BANK0 1 bssBANK0 dist/default/production/desespera.production.o
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production/desespera.production.o
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/desespera.production.o
+__Ludata_acs 0 0 ABS 0 udata_acs dist/default/production/desespera.production.o
+__Lifardata 0 0 CODE 0 ifardata dist/default/production/desespera.production.o
+__end_of_send_METATEDS 163C 0 CODE 0 text9 dist/default/production/desespera.production.o
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/desespera.production.o
+__Hintcode 24 0 CODE 0 intcode dist/default/production/desespera.production.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cstackBANK0 1 60 60 9B 1
+reset_vec 0 0 0 4 1
+bssBANK1 1 100 100 FC 1
+bssBANK2 1 200 200 30 1
+bssBANK3 1 300 300 100 1
+intcode 0 8 8 19F6 1
+bssCOMRAM 1 1 1 49 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES
