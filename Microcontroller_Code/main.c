@@ -1,6 +1,6 @@
 /*Autores:
- * Maria Gabriela Jordão Oliveira 
- * Miguel Caçador Peixoto
+ * Maria Gabriela Jordï¿½o Oliveira 
+ * Miguel Caï¿½ador Peixoto
  */
 
 
@@ -41,7 +41,7 @@ uint8_t value[256];     // array para guardar offset e valores da NCAP
 
 //create the structs for the Meta TEDS and for the TransducerChannels TEDS for 3 channels
 struct METATEDS_TEMPLATE METATED;
-// 3 eixos do acelerómetro
+// 3 eixos do acelerï¿½metro
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS1;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS2;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS3;
@@ -55,7 +55,7 @@ void main(void) {
 
 
     config();
-    // inicializar as queue para a média móvel
+    // inicializar as queue para a mï¿½dia mï¿½vel
     init_queue(&Q_X);
     init_queue(&Q_Y);
     init_queue(&Q_Z);
@@ -86,9 +86,9 @@ void putch(char byte)
 
 
 uint8_t get_char (void){
-    while ( RC1IF != 1){   //Esperar por uma interrupção externa
+    while ( RC1IF != 1){   //Esperar por uma interrupï¿½ï¿½o externa
     }
-    return RC1REG; // Retorna o que está no registo RC1REG! Received data. Após a leitura do buffer a flag fica a 0.
+    return RC1REG; // Retorna o que estï¿½ no registo RC1REG! Received data. Apï¿½s a leitura do buffer a flag fica a 0.
 }   
 
 void Identify_NCAP_cmd(void) {
@@ -99,7 +99,7 @@ void Identify_NCAP_cmd(void) {
         info[info_ind] = get_char();   
         info_ind += 1;
     }
-    // Começar a guardar offset e valores com base no campo 5 do array anterior 
+    // Comeï¿½ar a guardar offset e valores com base no campo 5 do array anterior 
     info_ind = 0;
     while (value_ind < info[5] ){
         value[value_ind] = get_char();   
@@ -107,7 +107,7 @@ void Identify_NCAP_cmd(void) {
     }
     value_ind = 0;
     
-    // descodificação
+    // descodificaï¿½ï¿½o
     // Vamos receber bytes em hexa - slide 30
     // 2 hex - Destination Transducer MSB - info[0]
     // 2 hex - Destination Transducer LSB  - info[1]
@@ -120,11 +120,11 @@ void Identify_NCAP_cmd(void) {
     
     
     // Nota:
-    // Quando se pede a Meta Teds, o transdutor de destino não interessa
+    // Quando se pede a Meta Teds, o transdutor de destino nï¿½o interessa
     
     
     // CMD Class Slide 31, tab 15   
-    // 01 - Comando comum do TIM  e Trandutores (Para pedir informações)
+    // 01 - Comando comum do TIM  e Trandutores (Para pedir informaï¿½ï¿½es)
     // 03 - Tranducer operating state - ler dados
     
     //CMD Functions 
@@ -212,8 +212,6 @@ void write_success(void){   // codigo de sucesso
     return;
 }
 
-
-
 void define_METATEDS(void) {
     uint8_t array1[] = {3, 4, 0, 1, 0, 1};
     memcpy(METATED.TEDSID, array1, 6);
@@ -266,11 +264,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS3.DATA_MODEL_LENGTH, TCTEDS1.DATA_MODEL_LENGTH, 3);
     memcpy(TCTEDS3.MODEL_SIG_BITS, TCTEDS1.MODEL_SIG_BITS, 3);
     
-    
-    
-    
     //TCTEDS4 - TEDS DO TRANSDUCER CHANNEL 4 - led
-    
     uint8_t array14[] = {3, 4, 0, 3, 0, 1};
     memcpy(TCTEDS4.TEDSID, array14, 6);
     uint8_t array24[] = {11, 1, 1};
@@ -416,12 +410,10 @@ void send_TCTEDS(uint8_t channel) {
         putch(36);
 
         for (int i = 0; i < 6; i++) {
-            putch(TCTEDS2.TEDSID[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS2.CHANNEL_TYPE[i]);
-        }
-        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS2.TEDSID[i]);    // Now send data
+    //putch(ADRESL);
+    //putch(channel);
+    
             putch(TCTEDS2.UNITS[i]);
         }
         for (int i = 0; i < 3; i++) {
@@ -566,7 +558,7 @@ void send_TCTEDS(uint8_t channel) {
 }
 
 void send_values(uint8_t channel){        
-     //Vamos ter 3 canais (acelerómetro)
+     //Vamos ter 3 canais (acelerï¿½metro)
     
     // Success/Fail Flag 01
     // Length (MSB) 00
@@ -603,6 +595,7 @@ void send_values(uint8_t channel){
     
     // Success/Fail Flag
     putch(1); // Success
+
     // Length  
     // MSB
     putch(0);
@@ -611,17 +604,17 @@ void send_values(uint8_t channel){
 
     // Start new conversion
     ADCON0bits.ADGO = 1;
+
     // Ensure ADC conversion is over 
     while (PIR1bits.ADIF == 0){
         ;
     }
-     putch(get_next_value(q,ADRESH));
+    
+    // Send data
+    putch(get_next_value(q,ADRESH));
+
     // Reset ADC flag
     PIR1bits.ADIF = 0;
      
-    // Now send data
-    //putch(ADRESL);
-    //putch(channel);
-    
     return;
 }
