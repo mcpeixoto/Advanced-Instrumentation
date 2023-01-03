@@ -18,14 +18,13 @@ _config:
     BANKSEL LATA
     CLRF LATA,1 ; Set all LatchA bits to zero
     
-    MOVLW 0b00000001 
+    MOVLW 0b00000000
     BANKSEL TRISA
-    MOVWF TRISA,1 ;defines the pin direction. 0=out, 1=in. RA0 connects to potenciometer. All other are output pins
+    MOVWF TRISA,1 ;defines the pin direction. 0=out, 1=in. 
     
-    MOVLW 0b00000001
+    MOVLW 0b00000000
     BANKSEL ANSELA
-    MOVWF ANSELA,1 ;analog select. RA0 connects to potenciometer. The others are digital pins
-    
+    MOVWF ANSELA,1 ;analog select. 
     
     ;===============
     ;CONFIGURE PORTB
