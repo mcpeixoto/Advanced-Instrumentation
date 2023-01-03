@@ -233,7 +233,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS1.UNITS, array31, 12);
     uint8_t array41[] = {13, 1, 0};
     memcpy(TCTEDS1.LOW_RANGE_LIMIT, array41, 3);
-    uint8_t array51[] = {14, 0, 255};
+    uint8_t array51[] = {14, 1, 255};
     memcpy(TCTEDS1.HIGH_RANGE_LIMIT, array51, 3);
     uint8_t array61[] = {40, 1, 0};
     memcpy(TCTEDS1.DATA_MODEL, array61, 3);
@@ -273,7 +273,7 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS4.UNITS, array34, 12);
     uint8_t array44[] = {13, 1, 0};
     memcpy(TCTEDS4.LOW_RANGE_LIMIT, array44, 3);
-    uint8_t array54[] = {14, 0, 1};
+    uint8_t array54[] = {14, 1, 1};
     memcpy(TCTEDS4.HIGH_RANGE_LIMIT, array54, 3);
     uint8_t array64[] = {40, 1, 0};
     memcpy(TCTEDS4.DATA_MODEL, array64, 3);
