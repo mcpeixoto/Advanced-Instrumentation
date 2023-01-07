@@ -3,7 +3,7 @@
  * Miguel Ca�ador Peixoto
  */
 
-
+// Includes
 #include <xc.h>
 #include <stdio.h>
 #include <float.h>
@@ -14,13 +14,12 @@
 #define __QMA
 #include "media_movel.h"
 
-#define _XTAL_FREQ 32000000   //the clock frequency defined in config() must be provided here for the delay function
+#define _XTAL_FREQ 32000000   // Definir frequência de clock
 
-//declaration of global variables and functions
+// Declaração de variaveis globais e funções
 void config(void);
+char var_global;
 void __interrupt() int_handler(void); 
-
-
 void define_METATEDS(void);
 void define_TCTEDS(void);
 void Identify_NCAP_cmd(void);
@@ -31,75 +30,84 @@ void fail (void);
 void write_success(void);
 void send_values (uint8_t);
 void enviar_valor(uint8_t canal);
-char pos;
-char var_global;
 uint8_t info_ind = 0;   // indice do proximo array
 uint8_t info[6];        // array que guarda primeiros 6 bits da NCAP
 uint8_t value_ind= 0;   // indice do proximo array
 uint8_t value[256];     // array para guardar offset e valores da NCAP
+//char pos;
 
-
-//create the structs for the Meta TEDS and for the TransducerChannels TEDS for 3 channels
+// Estruturas para a Meta TEDS e para as TEDS dos canais dos transdutores //
 struct METATEDS_TEMPLATE METATED;
-// 3 eixos do aceler�metro
+// 3 eixos do acelerómetro
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS1;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS2;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS3;
-// 3 leds
+// 4 leds
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS4;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS5;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS6;
 struct TRANSDUCERCHANNEL_TEDS_TEMPLATE TCTEDS7;
 
+
+// Main
 void main(void) {
-
-
+    // Configurações
     config();
-    // inicializar as queue para a m�dia m�vel
+
+    // Inicializar as queue para a média móvel
     init_queue(&Q_X);
     init_queue(&Q_Y);
     init_queue(&Q_Z);
     
-    // definir a metated e a teds
+    // Definir as META TEDS e as TEDS dos canais
     define_METATEDS();
     define_TCTEDS();
 
-    
+    // Loop infinito
     while (1) {
         ;
         }
     
 }
 
+// Putch - função para enviar dados para o serial
 void putch(char byte) 
 {
+    // Esperar até que o buffer esteja vazio
     while (PIR3bits.TX1IF == 0) {
         ;
     }
-    TX1REG = byte; /* transmit a character to Serial IO */
 
-    //wait until it is sent
+    // Enviar o byte
+    TX1REG = byte; 
+
+    // Esperar até que o byte seja enviado
     while (PIR3bits.TX1IF == 0) {
         ;
     }
 }
 
-
+// get_char - função para receber dados do serial
 uint8_t get_char (void){
-    while ( RC1IF != 1){   //Esperar por uma interrup��o externa
+    // Esperar até que o buffer esteja cheio (interrupção)
+    while ( RC1IF != 1){
     }
-    return RC1REG; // Retorna o que est� no registo RC1REG! Received data. Ap�s a leitura do buffer a flag fica a 0.
+
+    // Retorna o que está no registo RC1REG. Após a leitura do buffer a flag fica a 0.
+    return RC1REG;
 }   
 
+// Identify_NCAP_cmd - função para identificar o comando NCAP
+// Esta função é chamada sempre que se recebem dados pelo ISR
 void Identify_NCAP_cmd(void) {
     
-    // Primeiros 6 bytes
+    // Receber os primeiros 6 bytes
     PIR3bits.TX1IF = 0;
     while (info_ind < 6){
         info[info_ind] = get_char();   
         info_ind += 1;
     }
-    // Come�ar a guardar offset e valores com base no campo 5 do array anterior 
+    // Guardar offset e valores com base no campo 5 do array anterior 
     info_ind = 0;
     while (value_ind < info[5] ){
         value[value_ind] = get_char();   
@@ -107,7 +115,7 @@ void Identify_NCAP_cmd(void) {
     }
     value_ind = 0;
     
-    // descodifica��o
+    // Identificar o comando NCAP
     // Vamos receber bytes em hexa - slide 30
     // 2 hex - Destination Transducer MSB - info[0]
     // 2 hex - Destination Transducer LSB  - info[1]
@@ -117,94 +125,94 @@ void Identify_NCAP_cmd(void) {
     // 2 hex - Length MSB LSB - info[5]
     // 2 hex - Length defined from above, MSB Command-dependent octets - info[6]
     // 2 hex - Length defined from above, LSB Command-dependent octets  - info[7]
-    
-    
+    //
     // Nota:
-    // Quando se pede a Meta Teds, o transdutor de destino n�o interessa
-    
-    
-    // CMD Class Slide 31, tab 15   
-    // 01 - Comando comum do TIM  e Trandutores (Para pedir informa��es)
+    // Quando se pede a Meta Teds, o transdutor de destino não é relevante
+    //
+    // Informações sobre cada Campo:
+    //
+    // > CMD Class - Slide 31, tab 15   
+    // 01 - Comando comum do TIM  e Trandutores (Para pedir informações)
     // 03 - Tranducer operating state - ler dados
-    
-    //CMD Functions 
-    // Classe de Metateds Slide 32, tab 16 (1))
+    //
+    // > CMD Functions 
+    // Classe de Metateds - Slide 32, tab 16 (1))
     // 02 - Ler TEDS
-    // Classe de Transducer operating state Slide 38 (3)
+    // Classe de Transducer operating state - Slide 38 (3)
     // 01 - Ler dos canais
-    
-    // Command dependant Slide 33, tab 17
+    //
+    // > Command Dependant - Slide 33, tab 17
     // 01 - METATEDS
     // 03 - Transdutores
-    
-    // This function needs to respond with:
+    //
+    // Esta função necessita de responder à NCAP com o seguinte formato:
     // 2 hex - Success/Fail Flag 
     // 2 hex - Length (MSB)
     // 2 hex - Length (LSB)
     // x hex - Data (x = Length)
     
-    if( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 1)){ // TESTA SE NCAP PEDE METATED
-    
-        send_METATEDS(); 
+    // Testar se o comando é para ler a Meta TEDS
+    if( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 1)){
+        send_METATEDS(); // Enviar Meta TEDS
         return;
     }
     
-    if( info[1] <= 7 ){ // depende de quantos canais temos, neste caso temos 3 canais 
-        
-        if ( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 3)){ // TESTA SE NCAP PEDE UMA TED
-            //common command -> 1; read Teds seg ; len -> 2; TC TEDS -> 3 ;
-            
-            send_TCTEDS(info[1]); // ENVIA A TCTED DO CANAL PEDIDO  
+    // Testar se o comando é para ler a TEDS de um canal ou ler/escrever dados num canal
+    if( info[1] <= 7 ){ // Verifica se o número de canais está dentro dos limites - 7 canais max
+        // Verificar se é um pedido de TC TEDS
+        if ( (info[2] == 1) && (info[3] == 2) &&  (info[5] == 2) && (value[0] == 3)){
+            send_TCTEDS(info[1]); // Envia TC TEDS do canal pedido
             return;
         }
         
-        if (info[2] == 3){             // transudutor
-            
-            if (info[3] == 1){         // ler do transdutor do canal info[1]
-                send_values(info[1]); 
+        // Se chegamos até aqui, é porque é um pedido de ler/escrever num transdutor
+        if (info[2] == 3){ // Verificar se é transdutor
+            // Verificar se é um pedido de LEITURA
+            if (info[3] == 1){
+                send_values(info[1]); // ler do transdutor do canal info[1]
                 return;
             }
-            //leds
-             if ((info[3] == 2) && (info[1] == 4)){ //escrever no transdutor do canal 4
-                
+            // Verificar se é um pedido de ESCRITA
+            // Se sim, só é possivel nos canais de 4 a 7 (LEDS)
+             if ((info[3] == 2) && (info[1] == 4)){ // Escrever no transdutor do canal 4
                 LATAbits.LATA4 = value[1];
-                write_success();    // enviar a NCAP mensagem de sucesso
+                write_success();    // Enviar a NCAP mensagem de sucesso
                 return;
             }
-            if ((info[3] == 2) && (info[1] == 5)){ //escrever no transdutor do canal 5 
+            if ((info[3] == 2) && (info[1] == 5)){ // Escrever no transdutor do canal 5 
                 LATAbits.LATA5 = value[1];
-                write_success();    // enviar a NCAP mensagem de sucesso
+                write_success();    // Enviar a NCAP mensagem de sucesso
                 return;
             }
-            if ((info[3] == 2) && (info[1] == 6)){ //escrever no transdutor do canal 6 
+            if ((info[3] == 2) && (info[1] == 6)){ // Escrever no transdutor do canal 6 
                 LATAbits.LATA6 = value[1];
-                write_success();    // enviar a NCAP mensagem de sucesso
+                write_success();    // Enviar a NCAP mensagem de sucesso
                 return;
             }  
-             if ((info[3] == 2) && (info[1] == 7)){ //escrever no transdutor do canal 7
+             if ((info[3] == 2) && (info[1] == 7)){ // Escrever no transdutor do canal 7
                 LATAbits.LATA7 = value[1];
-                write_success();    // enviar a NCAP mensagem de sucesso
+                write_success();    // Enviar a NCAP mensagem de sucesso
                 return;
             }  
         }
     }
-    // mensagem de erro
-    fail();
+    // Se chegamos até aqui, é porque o comando não é válido
+    fail(); // Enviar a NCAP mensagem de erro
     
     return;
     
 }
 
-// mensagem de erro, 0 0 0
-void fail (void){      // codigo de erro 
+// fail - Mensagem de erro, enviar 0 0 0
+void fail (void){
     for(int i = 0; i<3;i++){
         putch(0);
     }
     return;
 }
 
-// sucesso 1 0 0 (sem enviar mais nada)
-void write_success(void){   // codigo de sucesso 
+// write_success - Mensagem de sucesso, enviar 1 0 0
+void write_success(void){
     putch(1);
     for(int i = 0; i<2;i++){
         putch(0);
@@ -212,6 +220,73 @@ void write_success(void){   // codigo de sucesso
     return;
 }
 
+
+// send_values - Envia os valores dos canais
+void send_values(uint8_t channel){        
+    //Vamos ter 3 canais disponíveis para leitura (acelerómetro)
+    
+    // Iremos ter que responder com o seguinte formato:
+    // Success/Fail Flag 01
+    // Length (MSB) 00
+    // Length (LSB) 01 (I have requested the sensor to read 1 value, which needs 1 byte)
+    // Data XX
+
+
+    // Vamos começar por dizer ao ADC que canal ler,
+    // ao fazer mudar o registo ADPCH para um destes valores:
+    // 001010 RB2/ANB2  // Z
+    // 001001 RB1/ANB1  // Y
+    // 001000 RB0/ANB0  // X
+   
+    Queue*q=NULL;
+    // Ler X axis
+    if (channel == 1) {
+        ADPCH = 0b00001000;
+        q=&Q_X;
+    // Ler Y axis
+    } else if (channel == 2) {
+        ADPCH = 0b00001001;
+        q=&Q_Y;
+    // Ler Z axis
+    } else if (channel == 3) {
+        ADPCH = 0b00001010;
+        q=&Q_Z;
+    } else {
+        // Se canal inválido, enviar mensagem de erro e retornar
+        fail();
+        return;
+    }
+    
+
+    // Enviar flag de sucesso
+    putch(1); // 1 = Successo
+
+    // Enviar Length  
+    // MSB
+    putch(0);
+    // LSB
+    putch(1);
+
+    // Dizer ao ADC para começar a fazer a conversão
+    ADCON0bits.ADGO = 1;
+
+    // Esperar que a conversão esteja pronta
+    while (PIR1bits.ADIF == 0){
+        ;
+    }
+    
+    // Enviamos o valor do ADC
+    putch(get_next_value(q,ADRESH));
+
+    // Limpar a flag de conversão pronta
+    PIR1bits.ADIF = 0;
+
+    return;
+}
+
+
+
+// define_METATEDS - Função para definir a Meta TEDS
 void define_METATEDS(void) {
     uint8_t array1[] = {3, 4, 0, 1, 0, 1};
     memcpy(METATED.TEDSID, array1, 6);
@@ -223,6 +298,7 @@ void define_METATEDS(void) {
     return;
 }
 
+// define_TCTEDS - Função para definir a TEDS de cada canal
 void define_TCTEDS(void) {
     //TCTEDS1 - TEDS DO TRANSDUCER CHANNEL 1 - SENSOR
     uint8_t array11[] = {3, 4, 0, 3, 0, 1};
@@ -242,8 +318,6 @@ void define_TCTEDS(void) {
     uint8_t array81[] = {42, 1, 8};
     memcpy(TCTEDS1.MODEL_SIG_BITS, array81, 3);
 
-    
-    
     ///TCTEDS2 - TEDS DO TRANSDUCER CHANNEL 2 - SENSOR
     memcpy(TCTEDS2.TEDSID, TCTEDS1.TEDSID, 6);
     memcpy(TCTEDS2.CHANNEL_TYPE, TCTEDS1.CHANNEL_TYPE, 3);
@@ -282,8 +356,7 @@ void define_TCTEDS(void) {
     uint8_t array84[] = {42, 1, 8};
     memcpy(TCTEDS4.MODEL_SIG_BITS, array84, 3);
     
-    
-   //TCTEDS5 - TEDS DO TRANSDUCER CHANNEL 5 - led
+    //TCTEDS5 - TEDS DO TRANSDUCER CHANNEL 5 - led
     memcpy(TCTEDS5.TEDSID, TCTEDS4.TEDSID, 6);
     memcpy(TCTEDS5.CHANNEL_TYPE, TCTEDS4.CHANNEL_TYPE, 3);
     memcpy(TCTEDS5.UNITS, TCTEDS4.UNITS, 12);
@@ -292,8 +365,6 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS5.DATA_MODEL, TCTEDS4.DATA_MODEL, 3);
     memcpy(TCTEDS5.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
     memcpy(TCTEDS5.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
-
-    
     
     //TCTEDS6 - TEDS DO TRANSDUCER CHANNEL 6 - led
     memcpy(TCTEDS6.TEDSID, TCTEDS4.TEDSID, 6);
@@ -315,13 +386,11 @@ void define_TCTEDS(void) {
     memcpy(TCTEDS7.DATA_MODEL_LENGTH, TCTEDS4.DATA_MODEL_LENGTH, 3);
     memcpy(TCTEDS7.MODEL_SIG_BITS, TCTEDS4.MODEL_SIG_BITS, 3);
     
-    
     return;
 }
 
-
+// send_METATEDS - Envia as META TEDS do dispositivo
 void send_METATEDS(void) {
-
     putch(1);
     putch(0);
     putch(22);
@@ -337,9 +406,8 @@ void send_METATEDS(void) {
     return;
 }
 
+// send_TCTEDS - Envia as TEDS do transdutor do canal especificado
 void send_TCTEDS(uint8_t channel) {
-    
-    //channel1 TEDS
     
     if (channel == 1) {         // enviar TED do canal 1 
         putch(1);
@@ -370,50 +438,21 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS1.MODEL_SIG_BITS[i]);
         }
-        }
-        if (channel == 4) {            // enviar TED do canal 4
+    }
+    
+
+    if (channel == 2) {         // enviar TED do canal 2
         putch(1);
         putch(0);
         putch(36);
 
         for (int i = 0; i < 6; i++) {
-            putch(TCTEDS4.TEDSID[i]);
+            putch(TCTEDS2.TEDSID[i]);
         }
         for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.CHANNEL_TYPE[i]);
+            putch(TCTEDS2.CHANNEL_TYPE[i]);
         }
-        for (int i = 0; i < 12; i++) {
-            putch(TCTEDS4.UNITS[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.LOW_RANGE_LIMIT[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.HIGH_RANGE_LIMIT[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.DATA_MODEL[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.DATA_MODEL_LENGTH[i]);
-        }
-        for (int i = 0; i < 3; i++) {
-            putch(TCTEDS4.MODEL_SIG_BITS[i]);
-        }
-    } 
-    
-    //channel2 TEDS
-    
-        if (channel == 2) {         // enviar TED do canal 2
-        putch(1);
-        putch(0);
-        putch(36);
-
-        for (int i = 0; i < 6; i++) {
-            putch(TCTEDS2.TEDSID[i]);    // Now send data
-    //putch(ADRESL);
-    //putch(channel);
-    
+        for (int i = 0; i < 12; i++) {    
             putch(TCTEDS2.UNITS[i]);
         }
         for (int i = 0; i < 3; i++) {
@@ -432,8 +471,8 @@ void send_TCTEDS(uint8_t channel) {
             putch(TCTEDS2.MODEL_SIG_BITS[i]);
         }
     } 
-    //channel3 TEDS
-    
+
+
      if (channel == 3) {            // enviar TED do canal 3
         putch(1);
         putch(0);
@@ -463,7 +502,39 @@ void send_TCTEDS(uint8_t channel) {
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS3.MODEL_SIG_BITS[i]);
         }
+    }
+
+    if (channel == 4) {            // enviar TED do canal 4
+        putch(1);
+        putch(0);
+        putch(36);
+
+        for (int i = 0; i < 6; i++) {
+            putch(TCTEDS4.TEDSID[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.CHANNEL_TYPE[i]);
+        }
+        for (int i = 0; i < 12; i++) {
+            putch(TCTEDS4.UNITS[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.LOW_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.HIGH_RANGE_LIMIT[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.DATA_MODEL_LENGTH[i]);
+        }
+        for (int i = 0; i < 3; i++) {
+            putch(TCTEDS4.MODEL_SIG_BITS[i]);
+        }
     } 
+
     if (channel == 5) {            // enviar TED do canal 5
         putch(1);
         putch(0);
@@ -494,6 +565,7 @@ void send_TCTEDS(uint8_t channel) {
             putch(TCTEDS5.MODEL_SIG_BITS[i]);
         }
     }
+
     if (channel == 6) {            // enviar TED do canal 6
         putch(1);
         putch(0);
@@ -522,7 +594,9 @@ void send_TCTEDS(uint8_t channel) {
         }
         for (int i = 0; i < 3; i++) {
             putch(TCTEDS6.MODEL_SIG_BITS[i]);
-        }}
+        }
+    }
+
      if (channel == 7) {            // enviar TED do canal 7
         putch(1);
         putch(0);
@@ -554,67 +628,5 @@ void send_TCTEDS(uint8_t channel) {
         }}
     
     
-    return;
-}
-
-void send_values(uint8_t channel){        
-     //Vamos ter 3 canais (aceler�metro)
-    
-    // Success/Fail Flag 01
-    // Length (MSB) 00
-    // Length (LSB) 01 (I have requested the sensor to read 1 value, which needs 1 byte)
-    // Data XX
-
-    // ADPCH
-    // 001010 RB2/ ANB2 // Z
-    // 001001 RB1/ ANB1 // Y
-    // 001000 RB0/ANB0 // X
-   
-    Queue*q=NULL;
-    // Read X axis
-    if (channel == 1) {
-        ADPCH = 0b00001000;
-        q=&Q_X;
-    // Read Y axis
-    } else if (channel == 2) {
-        ADPCH = 0b00001001;
-        q=&Q_Y;
-    // Read Z axis
-    } else if (channel == 3) {
-        ADPCH = 0b00001010;
-        q=&Q_Z;
-    // Read Potentiometer
-    } else if (channel == 4) {
-        ADPCH = 0b00000000;
-        
-    } else {
-        // send error message
-        fail();
-        return;
-    }
-    
-    // Success/Fail Flag
-    putch(1); // Success
-
-    // Length  
-    // MSB
-    putch(0);
-    // LSB
-    putch(1);
-
-    // Start new conversion
-    ADCON0bits.ADGO = 1;
-
-    // Ensure ADC conversion is over 
-    while (PIR1bits.ADIF == 0){
-        ;
-    }
-    
-    // Send data
-    putch(get_next_value(q,ADRESH));
-
-    // Reset ADC flag
-    PIR1bits.ADIF = 0;
-     
     return;
 }
